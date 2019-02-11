@@ -6,6 +6,7 @@ public class PyreScript : MonoBehaviour {
 
     public GameObject gameWorld;
     public GameObject pyreParticles;
+    public AudioClip triggerSFX;
 
     private bool isPyreOn = false;
 
@@ -13,7 +14,12 @@ public class PyreScript : MonoBehaviour {
 	void Start ()
     {
         pyreParticles.SetActive(false);
-	}
+
+        if (gameWorld == null)
+        {
+            gameWorld = GameObject.FindGameObjectWithTag("GameWorld");
+        }
+    }
 
     //Gets called to disable the checkpoint
     public void DisableCheckpoint()
@@ -30,6 +36,7 @@ public class PyreScript : MonoBehaviour {
             isPyreOn = true;
             pyreParticles.SetActive(true);
             gameWorld.GetComponent<CheckpointManager>().ActivateCheckpoint(gameObject);
+            gameWorld.GetComponent<PauseGame>().player.GetComponent<FireScript>().SFXPlayer.PlayOneShot(triggerSFX);
         }
     }
 }

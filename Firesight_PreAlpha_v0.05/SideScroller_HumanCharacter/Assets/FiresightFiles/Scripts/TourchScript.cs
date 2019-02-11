@@ -6,6 +6,10 @@ public class TourchScript : MonoBehaviour {
 
     public GameObject torchParticles;
     public bool isTorchLit = false;
+
+    [Header("Only use is isTorchLit = false")]
+    public GameObject player;
+    public AudioClip torchTriggerSFX;
     public float torchLifeTimer = 60;
 
     private bool isTorchActivated = false;
@@ -22,6 +26,11 @@ public class TourchScript : MonoBehaviour {
         else
         {
             torchParticles.SetActive(false);
+
+            if (player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
         }
 	}
 	
@@ -51,6 +60,7 @@ public class TourchScript : MonoBehaviour {
             isTorchActivated = true;
             torchParticles.SetActive(true);
             currentLifeTimer = torchLifeTimer;
+            player.GetComponent<FireScript>().SFXPlayer.PlayOneShot(torchTriggerSFX);
         }
     }
 }

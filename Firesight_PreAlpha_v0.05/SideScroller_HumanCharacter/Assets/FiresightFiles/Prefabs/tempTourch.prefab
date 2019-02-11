@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23521940722281840}
   - component: {fileID: 65378906632619086}
   - component: {fileID: 114039984556175710}
-  - component: {fileID: 114407871809831394}
   - component: {fileID: 82330359439281706}
   m_Layer: 0
   m_Name: tempTourch
@@ -239,22 +238,6 @@ MonoBehaviour:
   torchParticles: {fileID: 1829752908598442}
   isTorchLit: 0
   torchLifeTimer: 60
---- !u!114 &114407871809831394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1510120210465198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01183c52816f3434794b947a32bc184e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectTriggered: {fileID: 1510120210465198}
-  triggerSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
-  triggerType: 2
-  animTrigger: 
-  levelLoadName: 
 --- !u!198 &198240682983245510
 ParticleSystem:
   m_ObjectHideFlags: 1

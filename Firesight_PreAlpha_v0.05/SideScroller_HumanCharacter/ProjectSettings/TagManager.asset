@@ -13,6 +13,8 @@ TagManager:
   - Checkpoint
   - Waypoint
   - Fireball
+  - SFXPlayer
+  - GameWorld
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class FireScript : MonoBehaviour
     public GameObject playableFirePrefab;
     public GameObject camera;
     public GameObject player;
+    public AudioSource SFXPlayer;
     public float maxFireVelocity = 20f;
     public float fireBurnOutTimerLength = 15.0f;
 
@@ -23,6 +24,11 @@ public class FireScript : MonoBehaviour
     {
         fireBurnOutTimer = 0.0f;
         isPlayerInControl = true;
+
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     // Update is called once per frame
