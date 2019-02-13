@@ -13,14 +13,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 43
     width: 1920
     height: 997
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 56
+  controlID: 88
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,8 +64,8 @@ MonoBehaviour:
     y: 0
     width: 360
     height: 947
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 57
+  controlID: 119
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 58
+  controlID: 120
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 14430
+  m_LastSelectedObjectID: 49964
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -461,7 +461,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 768
     width: 1558
     height: 250
@@ -478,20 +478,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/FiresightFiles/Scripts
+    - Assets/FiresightFiles
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/FiresightFiles/Scripts
+  - Assets/FiresightFiles
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Administrator\Desktop\Firesight\Firesight_PreAlpha_v0.05\SideScroller_HumanCharacter
+  m_LastProjectPath: C:\Users\Administrator\Desktop\github\Firesight\Firesight_PreAlpha_v0.05\SideScroller_HumanCharacter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: d02d0000
-    m_LastClickedID: 11728
-    m_ExpandedIDs: 00000000c42b0000262c0000ca2c00002a2d00004e2d0000902d0000042e00000e2e00004c2e0000ce2e0000e42e0000f02e0000662f0000942f00009c2f00009e2f0000b42f000000300000543000009e300000b8300000143100005e310000ac310000b8310000da3100005232000098320000763300007e330000be3300002a340000383400004634000000ca9a3b
+    m_SelectedIDs: 0a500000
+    m_LastClickedID: 20490
+    m_ExpandedIDs: 00000000e2350000a6490000d6490000de490000e6490000ec490000f4490000fe490000064a0000184a0000204a0000364a0000604a0000684a0000c24a0000da4a0000e84a0000a64c0000d04c00004c4d0000944d0000144e00001c4e00003e4e00000c4f0000304f00003e4f0000ae4f0000ea4f00000a500000785000007c500000965000002e51000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -519,7 +519,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c42b0000262c0000ca2c00002a2d00004e2d0000902d0000042e00000e2e00004c2e0000ce2e0000e42e0000f02e0000662f0000942f00009c2f00009e2f0000b42f000000300000543000009e300000b8300000143100005e310000ac310000b8310000da3100005232000098320000763300007e330000be3300002a3400003834000046340000
+    m_ExpandedIDs: 00000000e2350000a6490000d6490000de490000e6490000ec490000f4490000fe490000064a0000184a0000204a0000364a0000604a0000684a0000c24a0000da4a0000e84a0000a64c0000d04c00004c4d0000944d0000144e00001c4e00003e4e00000c4f0000304f00003e4f0000ae4f0000ea4f00000a500000785000007c500000965000002e510000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3482
+    x: 1562
     y: 92
     width: 358
     height: 926
@@ -628,16 +628,16 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 92
     width: 203
     height: 655
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3a360000
-    m_LastClickedID: 13882
-    m_ExpandedIDs: e0fbffff00000000c037000016390000
+    m_SelectedIDs: 2cc30000
+    m_LastClickedID: 49964
+    m_ExpandedIDs: aacafdffaccafdffdcedfdffd2fffdffce74feffa083feff4cd6feffbef3feff3afbfeff261effff3a2dfffff447ffff0000000094640000c4880000c8890000208d0000b48d000012a600007eb7000048b80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -681,20 +681,20 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2127
+    x: 207
     y: 92
     width: 1351
     height: 655
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 75.0188332
+  lastFramingTime: 2024.8614675
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 53.415813, y: 0.803143, z: -0.35867167}
+    m_Target: {x: 39.433193, y: 2.382565, z: -2.1167746}
     speed: 2
-    m_Value: {x: 53.415813, y: 0.803143, z: -0.35867167}
+    m_Value: {x: 39.433193, y: 2.382565, z: -2.1167746}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -722,13 +722,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.19253723, y: -0.23811364, z: 0.048220985, w: -0.9507397}
+    m_Target: {x: -0.13770549, y: -0.048416782, z: 0.006739446, w: -0.9892662}
     speed: 2
-    m_Value: {x: -0.19253725, y: -0.23811366, z: 0.04822099, w: -0.95073974}
+    m_Value: {x: -0.13770549, y: -0.048416782, z: 0.006739446, w: -0.9892662}
   m_Size:
-    m_Target: 5.3782096
+    m_Target: 16.2352
     speed: 2
-    m_Value: 5.3782096
+    m_Value: 16.2352
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -760,7 +760,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2127
+    x: 207
     y: 92
     width: 1351
     height: 655
@@ -839,7 +839,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 768
     width: 1558
     height: 250

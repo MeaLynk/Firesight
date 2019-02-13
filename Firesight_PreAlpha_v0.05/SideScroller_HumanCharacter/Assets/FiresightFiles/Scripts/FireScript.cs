@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FireScript : MonoBehaviour
 {
+    [Header("SCENE NEEDS \"GameWorld\" PREFAB")]
+    [Header("IN ORDER TO WORK.")]
     public GameObject fireObject;
     public GameObject playableFirePrefab;
     public GameObject camera;
@@ -76,50 +78,33 @@ public class FireScript : MonoBehaviour
     {
         fireBurnOutTimer += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        //-------------------------------------------------------------------------------------------------------------
+        //NEW CODE
+
+        fireDirection = new Vector3(0, 0, 0);
+        Vector3 newVelocity = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+
+        //Adjusting the Horizontal movement
+        if (Input.GetAxisRaw("Horizontal") != 0)
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
+            fireDirection = new Vector3(horizontal * 20, fireDirection.y);
 
-            fireDirection = new Vector3(horizontal * 20, vertical * 20, 0);
+            newVelocity.x += (fireDirection.x * Time.deltaTime);
 
-            currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity += (fireDirection * Time.deltaTime);
-
-            //Checks if the velocity is over the max X velocity
+            //If fireball is over max velocity
             if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x >= maxFireVelocity)
             {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.x = maxFireVelocity;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+                newVelocity.x = maxFireVelocity;
             }
             else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x <= -maxFireVelocity)
             {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.x = -maxFireVelocity;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
-            }
-
-            //Checks if the velocity is over the max Y velocity
-            if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y >= maxFireVelocity)
-            {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.y = maxFireVelocity;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
-            }
-            else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y <= -maxFireVelocity)
-            {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.y = -maxFireVelocity;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+                newVelocity.x = -maxFireVelocity;
             }
         }
         else
         {
-            fireDirection = new Vector3(0, 0, 0);
+            fireDirection.x = 0;
 
             //Checks if the velocity should slow down to zero or stay 0 for X
             if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x >= 0.1f)
@@ -132,13 +117,34 @@ public class FireScript : MonoBehaviour
             }
             else
             {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.x = 0;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+                fireDirection.x = 0;
             }
+            newVelocity.x -= (fireDirection.x * Time.deltaTime);
+        }
 
-            //Checks if the velocity should slow down to zero or stay 0 for Y
+        //Adjusting the Vertical movement
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            float vertical = Input.GetAxisRaw("Vertical");
+            fireDirection = new Vector3(fireDirection.x, vertical * 20);
+
+            newVelocity.y += (fireDirection.y * Time.deltaTime);
+
+            //If fireball is over max velocity
+            if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y >= maxFireVelocity)
+            {
+                newVelocity.y = maxFireVelocity;
+            }
+            else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y <= -maxFireVelocity)
+            {
+                newVelocity.y = -maxFireVelocity;
+            }
+        }
+        else
+        {
+            fireDirection.y = 0;
+
+            //Checks if the velocity should slow down to zero or stay 0 for X
             if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y >= 0.1f)
             {
                 fireDirection.y = 20;
@@ -149,14 +155,99 @@ public class FireScript : MonoBehaviour
             }
             else
             {
-                Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
-                temp.y = 0;
-
-                currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+                fireDirection.y = 0;
             }
-
-            currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity -= (fireDirection * Time.deltaTime);
+            newVelocity.y -= (fireDirection.y * Time.deltaTime);
         }
+
+        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = newVelocity;
+
+        //-------------------------------------------------------------------------------------------------------------
+        //OLD CODE (Delete when new code 100% works)
+
+        //if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        //{
+        //    float horizontal = Input.GetAxisRaw("Horizontal");
+        //    float vertical = Input.GetAxisRaw("Vertical");
+
+        //    fireDirection = new Vector3(horizontal * 20, vertical * 20, 0);
+
+        //    currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity += (fireDirection * Time.deltaTime);
+
+        //    //Checks if the velocity is over the max X velocity
+        //    if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x >= maxFireVelocity)
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.x = maxFireVelocity;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+        //    else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x <= -maxFireVelocity)
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.x = -maxFireVelocity;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+
+        //    //Checks if the velocity is over the max Y velocity
+        //    if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y >= maxFireVelocity)
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.y = maxFireVelocity;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+        //    else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y <= -maxFireVelocity)
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.y = -maxFireVelocity;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+        //}
+        //else
+        //{
+        //    fireDirection = new Vector3(0, 0, 0);
+
+        //    //Checks if the velocity should slow down to zero or stay 0 for X
+        //    if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x >= 0.1f)
+        //    {
+        //        fireDirection.x = 20;
+        //    }
+        //    else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.x <= -0.1f)
+        //    {
+        //        fireDirection.x = -20;
+        //    }
+        //    else
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.x = 0;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+
+        //    //Checks if the velocity should slow down to zero or stay 0 for Y
+        //    if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y >= 0.1f)
+        //    {
+        //        fireDirection.y = 20;
+        //    }
+        //    else if (currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.y <= -0.1f)
+        //    {
+        //        fireDirection.y = -20;
+        //    }
+        //    else
+        //    {
+        //        Vector3 temp = currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity;
+        //        temp.y = 0;
+
+        //        currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = temp;
+        //    }
+
+        //    currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity -= (fireDirection * Time.deltaTime);
+        //}
+
+        //-------------------------------------------------------------------------------------------------------------
 
         //Checks if the player has more time to control the fireball
         if (fireBurnOutTimer >= fireBurnOutTimerLength)

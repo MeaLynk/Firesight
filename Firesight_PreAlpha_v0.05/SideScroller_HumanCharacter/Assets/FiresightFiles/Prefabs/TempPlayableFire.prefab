@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4254382010587786}
   - component: {fileID: 54756137905223954}
   - component: {fileID: 136370842390632946}
-  - component: {fileID: 114848991495475792}
   m_Layer: 0
   m_Name: TempPlayableFire
   m_TagString: Fireball
@@ -91,7 +90,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3d7551b9c4fdf2d448b7825d6f48ef83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,21 +165,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114848991495475792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108292810818010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff72e5e5a4af1fd499eb118ff4756f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  smoothSpeed: 0.125
-  maxSpeed: 0.2
-  offset: {x: 0, y: 0, z: 0}
 --- !u!135 &135354271024055712
 SphereCollider:
   m_ObjectHideFlags: 1
