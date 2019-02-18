@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/FiresightFiles/Scenes/FireSight_1stLV_WhiteBoxAdjusted_Playable.unity
-  isLoaded: 1
-  isActive: 1
