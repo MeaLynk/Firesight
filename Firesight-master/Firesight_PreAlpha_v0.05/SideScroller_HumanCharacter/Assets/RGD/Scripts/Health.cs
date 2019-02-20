@@ -116,6 +116,8 @@ public class Health : MonoBehaviour
 		if (spawnOnDeath.Length != 0)
 			foreach(GameObject obj in spawnOnDeath)
 				Instantiate(obj, transform.position, Quaternion.Euler(Vector3.zero));
+
+        GameObject.FindGameObjectWithTag("GameWorld").GetComponent<DeathScript>().ResetObjects();
 	}
 	
 	//calculate impact damage on collision

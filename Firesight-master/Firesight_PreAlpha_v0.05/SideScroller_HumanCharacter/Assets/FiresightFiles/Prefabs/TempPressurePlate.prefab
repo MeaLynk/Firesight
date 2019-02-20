@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1223516373640878}
+  m_RootGameObject: {fileID: 1682477278039412}
   m_IsPrefabAsset: 1
---- !u!1 &1223516373640878
+--- !u!1 &1682477278039412
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4823892492181502}
-  - component: {fileID: 33999833212213832}
-  - component: {fileID: 65443945989307510}
-  - component: {fileID: 23812504618868682}
-  - component: {fileID: 82080818144057298}
-  - component: {fileID: 114192218985780142}
+  - component: {fileID: 4578318740045818}
+  - component: {fileID: 33125017733168918}
+  - component: {fileID: 65920316222354740}
+  - component: {fileID: 23787580653598876}
+  - component: {fileID: 82596510460819422}
+  - component: {fileID: 114817255217411896}
   m_Layer: 0
-  m_Name: Pressure Plate
+  m_Name: TempPressurePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4823892492181502
+--- !u!4 &4578318740045818
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.18129, y: 49.228, z: -93.49753}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.44634, y: 0.2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23812504618868682
+--- !u!23 &23787580653598876
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: b16ccc7ce113acb47a039ab22dcaf3f5, type: 2}
+  - {fileID: 2100000, guid: 9403102869255104aa62a0b820f64502, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,31 +79,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33999833212213832
+--- !u!33 &33125017733168918
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65443945989307510
+--- !u!65 &65920316222354740
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &82080818144057298
+--- !u!82 &82596510460819422
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -193,12 +193,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114192218985780142
+--- !u!114 &114817255217411896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1223516373640878}
+  m_GameObject: {fileID: 1682477278039412}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8f51618b7b89ac4596d3f8579b91590, type: 3}
@@ -208,6 +208,6 @@ MonoBehaviour:
     type: 2}
   spikesPrefab: {fileID: 1450367824513124, guid: cb704b7c3765d214192a7c6acf56b508,
     type: 2}
-  effect: 2
-  arrowAmount: 0
+  effect: 1
+  arrowAmount: 6
   isActivated: 0

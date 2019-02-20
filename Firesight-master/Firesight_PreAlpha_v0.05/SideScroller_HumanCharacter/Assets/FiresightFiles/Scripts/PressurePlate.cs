@@ -13,6 +13,7 @@ public class PressurePlate : MonoBehaviour
     #region Private Variable
     private GameObject[] arrows;
     private GameObject spikes;
+    private Vector3 startingPos;                        //Stores object's starting pos for resetting
     public bool isActivated;                            //bool for when the pressure plate is activated
     private bool isLowered;                             //bool for whether the presure plate has been lowered
     private bool spikesGenerated;                       //bool for whether the spikes have been risen or not
@@ -30,6 +31,7 @@ public class PressurePlate : MonoBehaviour
         isLowered = false;
         spikesGenerated = false;
         eventTimer = 0.0f;
+        startingPos = gameObject.GetComponent<Transform>().position;
     }
 
     // Update is called once per frame
@@ -68,7 +70,7 @@ public class PressurePlate : MonoBehaviour
                     {
                         arrows[i].transform.position = new Vector3(arrows[i].transform.position.x +
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
-                            arrows[i].transform.position.z);
+                            arrows[i].transform.position.z); //maybe try basing the arrow x pos based on the player's current pos since the player can run past the arrow spawn point before they even spawn
                     }
                     if (effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
                     {
@@ -76,7 +78,7 @@ public class PressurePlate : MonoBehaviour
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
                             arrows[i].transform.position.z);
                     }
-                    if (arrows[i].)
+                    //if (arrows[i].) //commented out in order to run====================================================================================
                 }
             }
             #endregion
@@ -104,9 +106,10 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && isActivated == false)
         {
             isActivated = true;
+            Debug.Log("Presure Plate Activated");
         }
     }
 
@@ -123,5 +126,25 @@ public class PressurePlate : MonoBehaviour
             arrows[index].transform.position = new Vector3(this.transform.position.x + 10.0f,
                 transform.position.y + 1.6f, transform.position.z);
         }
+    }
+
+    //Resets the presure plate and all of it's values for when the player respawns
+    public void ResetPresurePlate()
+    {
+        for(int i = 0 ; i < arrows.Length ; i++)
+        {
+            Destroy(arrows[i]);
+        }
+
+        arrows = new GameObject[arrowAmount];
+        isActivated = false;
+        isLowered = false;
+        spikesGenerated = false;
+        eventTimer = 0.0f;
+        gameObject.GetComponent<Transform>().position = startingPos;
+        arrowIndex = 0;
+        spikeHeight = 0.0f;
+        gameObject.GetComponent<Collider>().enabled = true;
+        lowerAmount = 0.11f;
     }
 }
