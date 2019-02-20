@@ -4,24 +4,31 @@ public class PressurePlate : MonoBehaviour
 {
     #region Public Variables
     public GameObject arrowPrefab;
-    public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SHOOT_ARROWS_FROM_TOP, NONE };
+    public GameObject spikesPrefab;
+    public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SPIKES, NONE };
     public EffectTypes effect;      //the effect the pressure plate will have
+    public int arrowAmount;
     #endregion
 
     #region Private Variable
-    private GameObject[] arrows = new GameObject[3];
+    private GameObject[] arrows;
+    private GameObject spikes;
     public bool isActivated;                            //bool for when the pressure plate is activated
     private bool isLowered;                             //bool for whether the presure plate has been lowered
+    private bool spikesGenerated;                       //bool for whether the spikes have been risen or not
     private float lowerAmount = 0.11f;                  //the amount to lower the pressure plate by
     private float eventTimer;                           //the timer for how long the event should last
+    private float spikeHeight = 0.0f;
     private int arrowIndex = 0;
     #endregion
 
     // Use this for initialization
     void Start()
     {
+        arrows = new GameObject[arrowAmount];
         isActivated = false;
         isLowered = false;
+        spikesGenerated = false;
         eventTimer = 0.0f;
     }
 
@@ -30,8 +37,8 @@ public class PressurePlate : MonoBehaviour
     {
         if (isActivated)
         {
-            this.GetComponent<Collider>().enabled = false;
             //lowers the pressure plate and activates the sound it will use
+            this.GetComponent<Collider>().enabled = false;
             if (!isLowered)
             {
                 if (this.GetComponent<AudioSource>().isPlaying == false)
@@ -46,13 +53,12 @@ public class PressurePlate : MonoBehaviour
                 }
             }
             #region Shoot Arrows Functionality
-            if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT || effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT
-                || effect == EffectTypes.SHOOT_ARROWS_FROM_TOP)
+            if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT || effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
             {
                 eventTimer += Time.deltaTime;
-                if (eventTimer >= 2.0f && arrowIndex <= 2)  //continue to spawn arrows until 3 have been shot
+                if (eventTimer >= 2.0f && arrowIndex < arrowAmount)  //continue to spawn arrows while we have less then specified
                 {
-                    ShootArrow(arrowIndex);
+                    SpawnArrow(arrowIndex);
                     eventTimer = 0.0f;
                     arrowIndex++;
                 }
@@ -70,6 +76,26 @@ public class PressurePlate : MonoBehaviour
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
                             arrows[i].transform.position.z);
                     }
+                    if (arrows[i].)
+                }
+            }
+            #endregion
+            #region Spikes Functionality
+            else if (effect == EffectTypes.SPIKES)
+            {
+                eventTimer += Time.deltaTime;
+                if (!spikesGenerated)
+                {
+                    spikes = Instantiate(spikesPrefab);
+                    spikes.transform.position = new Vector3(this.transform.position.x - 0.7f,
+                       transform.position.y - 1.2f, transform.position.z + 0.6f);
+                    spikesGenerated = true;
+                }
+                if (spikesGenerated && spikeHeight <= 0.9f)
+                {
+                    spikes.transform.position = new Vector3(spikes.transform.position.x,
+                        spikes.transform.position.y + (1.2f * Time.deltaTime), spikes.transform.position.z);
+                    spikeHeight += (1.2f * Time.deltaTime);
                 }
             }
             #endregion
@@ -84,7 +110,7 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
-    private void ShootArrow(int index)
+    private void SpawnArrow(int index)
     {
         arrows[index] = Instantiate(arrowPrefab);
         if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT)

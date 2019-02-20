@@ -16,6 +16,7 @@ TagManager:
   - SFXPlayer
   - GameWorld
   - Arrow
+  - GroundSpikes
   layers:
   - Default
   - TransparentFX

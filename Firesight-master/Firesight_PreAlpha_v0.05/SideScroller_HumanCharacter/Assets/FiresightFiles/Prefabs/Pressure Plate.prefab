@@ -206,5 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 1114395354142798, guid: d3b5f23cdc0d9d04a98a88443fd634dd,
     type: 2}
-  effect: 0
+  spikesPrefab: {fileID: 1450367824513124, guid: cb704b7c3765d214192a7c6acf56b508,
+    type: 2}
+  effect: 2
+  arrowAmount: 0
   isActivated: 0
