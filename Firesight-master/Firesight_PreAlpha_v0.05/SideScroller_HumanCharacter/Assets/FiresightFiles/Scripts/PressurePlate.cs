@@ -5,15 +5,15 @@ public class PressurePlate : MonoBehaviour
     #region Public Variables
     public GameObject arrowPrefab;
     public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SHOOT_ARROWS_FROM_TOP, NONE };
-    public EffectTypes effect;
+    public EffectTypes effect;      //the effect the pressure plate will have
     #endregion
 
     #region Private Variable
     private GameObject[] arrows = new GameObject[3];
-    public bool isActivated;
-    private bool isLowered;
-    private float lowerAmount = 0.11f;
-    private float eventTimer;
+    public bool isActivated;                            //bool for when the pressure plate is activated
+    private bool isLowered;                             //bool for whether the presure plate has been lowered
+    private float lowerAmount = 0.11f;                  //the amount to lower the pressure plate by
+    private float eventTimer;                           //the timer for how long the event should last
     private int arrowIndex = 0;
     #endregion
 
@@ -30,6 +30,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (isActivated)
         {
+            this.GetComponent<Collider>().enabled = false;
             //lowers the pressure plate and activates the sound it will use
             if (!isLowered)
             {
@@ -44,22 +45,16 @@ public class PressurePlate : MonoBehaviour
                     this.GetComponent<AudioSource>().Stop();
                 }
             }
-            //determines what direction the arrows are being shot from
+            #region Shoot Arrows Functionality
             if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT || effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT
                 || effect == EffectTypes.SHOOT_ARROWS_FROM_TOP)
             {
                 eventTimer += Time.deltaTime;
-                if (eventTimer >= 2.0f && arrowIndex <= 2)
+                if (eventTimer >= 2.0f && arrowIndex <= 2)  //continue to spawn arrows until 3 have been shot
                 {
                     ShootArrow(arrowIndex);
                     eventTimer = 0.0f;
                     arrowIndex++;
-                }
-                else if (arrowIndex > 2 && eventTimer >= 2.0f)
-                {
-                    arrowIndex = 0;
-                    eventTimer = 0.0f;
-                    isActivated = false;
                 }
                 for (int i = 0; i < arrowIndex; i++)
                 {
@@ -69,11 +64,16 @@ public class PressurePlate : MonoBehaviour
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
                             arrows[i].transform.position.z);
                     }
+                    if (effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
+                    {
+                        arrows[i].transform.position = new Vector3(arrows[i].transform.position.x -
+                            (10.0f * Time.deltaTime), arrows[i].transform.position.y,
+                            arrows[i].transform.position.z);
+                    }
                 }
-
             }
+            #endregion
         }
-        this.GetComponent<Collider>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,7 +90,12 @@ public class PressurePlate : MonoBehaviour
         if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT)
         {
             arrows[index].transform.position = new Vector3(this.transform.position.x - 10.0f,
-                transform.position.y + 1.8f, transform.position.z);
+                transform.position.y + 1.6f, transform.position.z);
+        }
+        else if (effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
+        {
+            arrows[index].transform.position = new Vector3(this.transform.position.x + 10.0f,
+                transform.position.y + 1.6f, transform.position.z);
         }
     }
 }

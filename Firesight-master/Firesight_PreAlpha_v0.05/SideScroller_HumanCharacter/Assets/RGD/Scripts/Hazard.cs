@@ -30,17 +30,22 @@ public class Hazard : MonoBehaviour
 	{
 		if(!collisionEnter)
 			return;
+        if (tag == "Arrow")
+        {
+            this.enabled = false;
+            this.gameObject.SetActive(false);
+        }
 		foreach(string tag in effectedTags)
 			if(col.transform.tag == tag)
 			{
 				dealDamage.Attack (col.gameObject, damage, pushHeight, pushForce);
-				if (hitSound)
+                if (hitSound)
 				{
 					aSource.clip = hitSound;
 					aSource.Play();
 				}
-			}
-	}
+            }
+    }
 	
 	//if were checking for a trigger enter, attack what enters the trigger
 	void OnTriggerEnter(Collider other)

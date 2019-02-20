@@ -15,6 +15,7 @@ TagManager:
   - Fireball
   - SFXPlayer
   - GameWorld
+  - Arrow
   layers:
   - Default
   - TransparentFX
