@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 23309161657703100}
   - component: {fileID: 33964453010541608}
   - component: {fileID: 114451110292072748}
-  - component: {fileID: 64712446780580438}
+  - component: {fileID: 114317362937807378}
+  - component: {fileID: 65053093184170334}
   m_Layer: 0
   m_Name: GroundSpikesPrefab
   m_TagString: Untagged
@@ -85,8 +86,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450367824513124}
   m_Mesh: {fileID: 0}
---- !u!64 &64712446780580438
-MeshCollider:
+--- !u!65 &65053093184170334
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -94,11 +95,21 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.9371134, y: 5.6948657, z: 1.0000001}
+  m_Center: {x: 0.49688697, y: 2.8474329, z: -0.50000006}
+--- !u!114 &114317362937807378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450367824513124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168c1650a6dc62b4999430272b0285b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!114 &114451110292072748
 MonoBehaviour:
   m_ObjectHideFlags: 1

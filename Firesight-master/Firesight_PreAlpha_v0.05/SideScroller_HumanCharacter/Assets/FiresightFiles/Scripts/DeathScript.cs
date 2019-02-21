@@ -22,9 +22,12 @@ public class DeathScript : MonoBehaviour {
     //Resets the all gameobjects to their default states
     public void ResetObjects()
     {
-        for(int i = 0; i < presurePlates.Length; i++)
+        for (int i = 0; i < presurePlates.Length; i++)
         {
-            presurePlates[i].GetComponent<PressurePlate>().ResetPresurePlate();
+            if (presurePlates[i] != null)
+            {
+                presurePlates[i].GetComponent<PressurePlate>().ResetPresurePlate();
+            }
         }
     }
 }

@@ -102,8 +102,13 @@ public class PressurePlate : MonoBehaviour
             #region Spikes Functionality
             else if (effect == EffectTypes.SPIKES)
             {
+<<<<<<< HEAD
                 eventTimer += Time.deltaTime;
                 if (!spikesGenerated && eventTimer >= 1.0f)
+=======
+                eventTimer += Time.deltaTime;  //Spikes spawn a little too fast, try to wait a few miliseconds for the player to be in the middle of the presure plate to spawn them (test timing in the test scene)
+                if (!spikesGenerated)
+>>>>>>> c201a56e8cf54c13a63da0bb66f9d3b21c8a4009
                 {
                     spikes = Instantiate(spikesPrefab);
                     spikes.transform.position = new Vector3(this.transform.position.x - 0.7f,
@@ -148,20 +153,38 @@ public class PressurePlate : MonoBehaviour
     //Resets the presure plate and all of it's values for when the player respawns
     public void ResetPresurePlate()
     {
+<<<<<<< HEAD
         for (int i = 0; i < arrows.Length; i++)
+=======
+        if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT || effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
         {
-            Destroy(arrows[i]);
+            for (int i = 0; i < arrows.Length; i++)
+            {
+                Destroy(arrows[i]);
+            }
+
+            arrows = new GameObject[arrowAmount];
+            arrowIndex = 0;
+            Debug.Log("Arrows Reset.");
+        }
+        else if(effect == EffectTypes.SPIKES)
+>>>>>>> c201a56e8cf54c13a63da0bb66f9d3b21c8a4009
+        {
+            Destroy(spikes);
+            spikeHeight = 0.0f;
+            spikesGenerated = false;
+            Debug.Log("Spikes Reset.");
         }
 
+<<<<<<< HEAD
         arrows = new GameObject[arrowAmount];
         spikes = new GameObject();
+=======
+>>>>>>> c201a56e8cf54c13a63da0bb66f9d3b21c8a4009
         isActivated = false;
         isLowered = false;
-        spikesGenerated = false;
         eventTimer = 0.0f;
         gameObject.GetComponent<Transform>().position = startingPos;
-        arrowIndex = 0;
-        spikeHeight = 0.0f;
         gameObject.GetComponent<Collider>().enabled = true;
         lowerAmount = 0.11f;
     }
