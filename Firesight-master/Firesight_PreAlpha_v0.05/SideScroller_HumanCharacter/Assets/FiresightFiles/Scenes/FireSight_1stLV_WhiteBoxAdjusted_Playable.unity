@@ -9259,16 +9259,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114130997856104662, guid: ca452324e56aeb4478b7c951dff65a84,
-        type: 2}
-      propertyPath: presurePlates.Array.data[0]
-      value: 
-      objectReference: {fileID: 2021109936}
     - target: {fileID: 114549092103320410, guid: ca452324e56aeb4478b7c951dff65a84,
         type: 2}
       propertyPath: player
       value: 
       objectReference: {fileID: 271497958}
+    - target: {fileID: 114130997856104662, guid: ca452324e56aeb4478b7c951dff65a84,
+        type: 2}
+      propertyPath: presurePlates.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021109936}
     - target: {fileID: 114436460461352142, guid: ca452324e56aeb4478b7c951dff65a84,
         type: 2}
       propertyPath: player
@@ -19216,25 +19216,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 65920316222354740, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 3.4378192
+    - target: {fileID: 1682477278039412, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2, type: 2}
+      propertyPath: m_Name
+      value: PressurePlate001
       objectReference: {fileID: 0}
-    - target: {fileID: 65920316222354740, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2,
+    - target: {fileID: 114817255217411896, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2,
         type: 2}
-      propertyPath: m_Center.z
-      value: 0.08902395
-      objectReference: {fileID: 0}
-    - target: {fileID: 65920316222354740, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1.2678562
-      objectReference: {fileID: 0}
-    - target: {fileID: 65920316222354740, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.13392814
+      propertyPath: effect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c5af33cc2c0474ea9c9697c6f7f5a2, type: 2}
@@ -23086,7 +23075,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.4099503
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
