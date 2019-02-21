@@ -85,7 +85,7 @@ public class PressurePlate : MonoBehaviour
             #region Spikes Functionality
             else if (effect == EffectTypes.SPIKES)
             {
-                eventTimer += Time.deltaTime;
+                eventTimer += Time.deltaTime;  //Spikes spawn a little too fast, try to wait a few miliseconds for the player to be in the middle of the presure plate to spawn them (test timing in the test scene)
                 if (!spikesGenerated)
                 {
                     spikes = Instantiate(spikesPrefab);
@@ -131,19 +131,29 @@ public class PressurePlate : MonoBehaviour
     //Resets the presure plate and all of it's values for when the player respawns
     public void ResetPresurePlate()
     {
-        for(int i = 0 ; i < arrows.Length ; i++)
+        if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT || effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
         {
-            Destroy(arrows[i]);
+            for (int i = 0; i < arrows.Length; i++)
+            {
+                Destroy(arrows[i]);
+            }
+
+            arrows = new GameObject[arrowAmount];
+            arrowIndex = 0;
+            Debug.Log("Arrows Reset.");
+        }
+        else if(effect == EffectTypes.SPIKES)
+        {
+            Destroy(spikes);
+            spikeHeight = 0.0f;
+            spikesGenerated = false;
+            Debug.Log("Spikes Reset.");
         }
 
-        arrows = new GameObject[arrowAmount];
         isActivated = false;
         isLowered = false;
-        spikesGenerated = false;
         eventTimer = 0.0f;
         gameObject.GetComponent<Transform>().position = startingPos;
-        arrowIndex = 0;
-        spikeHeight = 0.0f;
         gameObject.GetComponent<Collider>().enabled = true;
         lowerAmount = 0.11f;
     }
