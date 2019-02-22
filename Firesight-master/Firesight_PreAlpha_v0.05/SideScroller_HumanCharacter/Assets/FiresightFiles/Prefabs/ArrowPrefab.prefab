@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 82492673656410430}
   - component: {fileID: 114499159436559118}
   - component: {fileID: 114340741579203090}
-  - component: {fileID: 114740277009147312}
   m_Layer: 0
   m_Name: ArrowPrefab
   m_TagString: Arrow
@@ -225,30 +224,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bd7b9387439034e9a96a7f83f5c304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114740277009147312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114395354142798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b30fea94f9bbcc47a3debf39fb2672e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactSound: {fileID: 0}
-  hurtSound: {fileID: 0}
-  deadSound: {fileID: 0}
-  currentHealth: 1
-  takeImpactDmg: 1
-  onlyRigidbodyImpact: 0
-  respawn: 0
-  impactFilterTag: []
-  hitFlashDelay: 0.1
-  flashDuration: 0.9
-  hitFlashColor: {r: 1, g: 0, b: 0, a: 1}
-  flashObject: {fileID: 0}
-  spawnOnDeath: []
-  dead: 0
-  flashing: 0
-  respawnPos: {x: 0, y: 0, z: 0}

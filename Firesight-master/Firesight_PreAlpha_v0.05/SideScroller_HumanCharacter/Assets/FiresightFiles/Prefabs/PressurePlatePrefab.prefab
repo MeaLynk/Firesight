@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 82596510460819422}
   - component: {fileID: 114817255217411896}
   m_Layer: 0
-  m_Name: TempPressurePlate
-  m_TagString: Untagged
+  m_Name: PressurePlatePrefab
+  m_TagString: PressurePlate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,4 +211,4 @@ MonoBehaviour:
   effect: 3
   arrowAmount: 6
   pressurePlateLowerSpeed: 15
-  isActivated: 0
+  isReactivatable: 0

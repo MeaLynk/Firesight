@@ -17,6 +17,8 @@ TagManager:
   - GameWorld
   - Arrow
   - GroundSpikes
+  - PressurePlate
+  - Key
   layers:
   - Default
   - TransparentFX
