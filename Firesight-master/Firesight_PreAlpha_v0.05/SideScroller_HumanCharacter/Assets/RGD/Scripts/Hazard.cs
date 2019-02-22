@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 //add this class to hazards such as lava or spikes, use "effectedTags" to choose which objects can be hurt by this hazard
 [RequireComponent(typeof(DealDamage))]
@@ -12,7 +13,7 @@ public class Hazard : MonoBehaviour
     public bool collisionEnter = true;                      //are we checking for collider collision? (ie: hits the actual collider of the object)
     public string[] effectedTags = { "Player" };                //which objects are vulnerable to this hazard (tags)
     public AudioClip hitSound;                              //sound to play when an object is hurt by this hazard
- 
+
     private DealDamage dealDamage;
     private AudioSource aSource;
 
