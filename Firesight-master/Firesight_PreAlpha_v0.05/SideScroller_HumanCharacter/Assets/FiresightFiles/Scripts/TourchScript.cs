@@ -11,6 +11,8 @@ public class TourchScript : MonoBehaviour {
     public GameObject player;
     public AudioClip torchTriggerSFX;
     public float torchLifeTimer = 60;
+    [Header("False is fireball / True is player")]
+    public bool isPlayerTrigger = false;
 
     private bool isTorchActivated = false;
     private float currentLifeTimer = 0;
@@ -55,7 +57,7 @@ public class TourchScript : MonoBehaviour {
     //Checks if player activates torch
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && isTorchActivated == false)
+        if((other.tag == "Player" && isPlayerTrigger == true) || (other.tag == "Fireball" && isPlayerTrigger == false) && isTorchActivated == false)
         {
             isTorchActivated = true;
             torchParticles.SetActive(true);

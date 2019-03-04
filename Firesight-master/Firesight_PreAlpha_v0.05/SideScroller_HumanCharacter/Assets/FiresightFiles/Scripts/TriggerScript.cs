@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerAnim : MonoBehaviour {
+public class TriggerScript : MonoBehaviour {
 
     [Header("Use 'Trigger' for the name of the trigger in Animator")]
     public GameObject objectWithAnimation;
