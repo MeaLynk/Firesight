@@ -9,57 +9,58 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1682477278039412}
+  m_RootGameObject: {fileID: 1762323407272196}
   m_IsPrefabAsset: 1
---- !u!1 &1682477278039412
+--- !u!1 &1762323407272196
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4578318740045818}
-  - component: {fileID: 33125017733168918}
-  - component: {fileID: 65920316222354740}
-  - component: {fileID: 23787580653598876}
-  - component: {fileID: 82596510460819422}
-  - component: {fileID: 114817255217411896}
+  - component: {fileID: 4687811746932952}
+  - component: {fileID: 33393253122183256}
+  - component: {fileID: 23217670373776280}
+  - component: {fileID: 65679815774063276}
+  - component: {fileID: 114264283214098402}
+  - component: {fileID: 65594209645185376}
+  - component: {fileID: 82438483741387190}
   m_Layer: 0
-  m_Name: TempPressurePlate
-  m_TagString: PressurePlate
+  m_Name: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4578318740045818
+--- !u!4 &4687811746932952
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 221.22, y: 1.8216072, z: 0.11791897}
-  m_LocalScale: {x: 1.44634, y: 0.2, z: 2}
+  m_GameObject: {fileID: 1762323407272196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 4, z: 3.79}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23787580653598876
+--- !u!23 &23217670373776280
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
+  m_GameObject: {fileID: 1762323407272196}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 9403102869255104aa62a0b820f64502, type: 2}
+  - {fileID: 2100000, guid: 5d0d82b53574736419f627a7c5e2eda7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,31 +80,43 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33125017733168918
+--- !u!33 &33393253122183256
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
+  m_GameObject: {fileID: 1762323407272196}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65920316222354740
+--- !u!65 &65594209645185376
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
+  m_GameObject: {fileID: 1762323407272196}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &82596510460819422
+--- !u!65 &65679815774063276
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762323407272196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5581932, y: 1, z: 1}
+  m_Center: {x: -0.010126114, y: 0, z: 0}
+--- !u!82 &82438483741387190
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
+  m_GameObject: {fileID: 1762323407272196}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -193,21 +206,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114817255217411896
+--- !u!114 &114264283214098402
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682477278039412}
+  m_GameObject: {fileID: 1762323407272196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f51618b7b89ac4596d3f8579b91590, type: 3}
+  m_Script: {fileID: 11500000, guid: e539e14dc7dc85c4b9119bacc4d2ebcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 1114395354142798, guid: d3b5f23cdc0d9d04a98a88443fd634dd,
-    type: 2}
-  spikesPrefab: {fileID: 1450367824513124, guid: cb704b7c3765d214192a7c6acf56b508,
-    type: 2}
-  effect: 2
-  arrowAmount: 6
-  isActivated: 0
+  requirementObjects:
+  - {fileID: 0}
+  isLocked: 0
+  isClosed: 0
+  doorLiftLimit: 8

@@ -5,7 +5,7 @@ public class PressurePlate : MonoBehaviour
     #region Public Variables
     public GameObject arrowPrefab;
     public GameObject spikesPrefab;
-    public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SPIKES, NONE };
+    public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SPIKES, OPEN_DOOR, NONE };
     public EffectTypes effect;      //the effect the pressure plate will have
     public int arrowAmount;
     #endregion
@@ -99,6 +99,12 @@ public class PressurePlate : MonoBehaviour
                         spikes.transform.position.y + (1.2f * Time.deltaTime), spikes.transform.position.z);
                     spikeHeight += (1.2f * Time.deltaTime);
                 }
+            }
+            #endregion
+            #region Open Door Functionality
+            else if (effect == EffectTypes.OPEN_DOOR)
+            {
+
             }
             #endregion
         }
