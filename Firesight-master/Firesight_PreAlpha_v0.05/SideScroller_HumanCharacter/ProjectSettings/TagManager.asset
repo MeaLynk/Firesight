@@ -19,6 +19,7 @@ TagManager:
   - GroundSpikes
   - PressurePlate
   - Key
+  - Hint
   layers:
   - Default
   - TransparentFX

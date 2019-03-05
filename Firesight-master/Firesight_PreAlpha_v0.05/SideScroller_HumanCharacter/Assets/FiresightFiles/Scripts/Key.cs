@@ -3,6 +3,7 @@
 public class Key : MonoBehaviour
 {
     public bool isCollected;
+    public string keyHint;
 
     private Vector3 startPos;
 
@@ -13,6 +14,7 @@ public class Key : MonoBehaviour
     {
         isCollected = false;
         startPos = transform.position;
+        keyHint = "there must be a key around here";
     }
 
     //-----------------------------------------------------------

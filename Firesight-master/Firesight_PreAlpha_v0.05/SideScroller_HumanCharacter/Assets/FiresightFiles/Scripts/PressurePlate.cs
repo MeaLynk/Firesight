@@ -8,6 +8,7 @@ public class PressurePlate : MonoBehaviour
     public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SPIKES, OPEN_DOOR, NONE };
     public EffectTypes effect;      //the effect the pressure plate will have
     public int arrowAmount;
+    public string pressurePlateHint;
     #endregion
 
     #region Private Variable
@@ -32,6 +33,7 @@ public class PressurePlate : MonoBehaviour
         spikesGenerated = false;
         eventTimer = 0.0f;
         startingPos = gameObject.GetComponent<Transform>().position;
+        pressurePlateHint = "something around here must open it";
     }
 
     // Update is called once per frame
