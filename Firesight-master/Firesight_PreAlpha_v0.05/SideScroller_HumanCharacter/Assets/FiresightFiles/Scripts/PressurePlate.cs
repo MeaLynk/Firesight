@@ -8,7 +8,8 @@ public class PressurePlate : MonoBehaviour
     public enum EffectTypes { SHOOT_ARROWS_FROM_LEFT, SHOOT_ARROWS_FROM_RIGHT, SPIKES, OPEN_DOOR, NONE };
     public EffectTypes effect;      //the effect the pressure plate will have
     public int arrowAmount;
-    public string pressurePlateHint;
+    public float lowerAmount = 11.0f;                  //the amount to lower the pressure plate by
+    [Range(0, 100)] public float lowerSpeed = 55;
     #endregion
 
     #region Private Variable
@@ -18,10 +19,10 @@ public class PressurePlate : MonoBehaviour
     public bool isActivated;                            //bool for when the pressure plate is activated
     private bool isLowered;                             //bool for whether the presure plate has been lowered
     private bool spikesGenerated;                       //bool for whether the spikes have been risen or not
-    private float lowerAmount = 0.11f;                  //the amount to lower the pressure plate by
     private float eventTimer;                           //the timer for how long the event should last
     private float spikeHeight = 0.0f;
     private int arrowIndex = 0;
+    private float pressurePlateLowerAmount;
     #endregion
 
     // Use this for initialization
@@ -33,7 +34,9 @@ public class PressurePlate : MonoBehaviour
         spikesGenerated = false;
         eventTimer = 0.0f;
         startingPos = gameObject.GetComponent<Transform>().position;
-        pressurePlateHint = "something around here must open it";
+        lowerAmount = lowerAmount * 0.01f;
+        lowerSpeed = lowerSpeed * 0.001f;
+        pressurePlateLowerAmount = lowerAmount;
     }
 
     // Update is called once per frame
@@ -48,9 +51,9 @@ public class PressurePlate : MonoBehaviour
                 if (this.GetComponent<AudioSource>().isPlaying == false)
                     this.GetComponent<AudioSource>().Play();
                 this.transform.position = new Vector3(this.transform.position.x,
-                    this.transform.position.y - (0.055f * Time.deltaTime), this.transform.position.z);
-                lowerAmount -= (0.055f * Time.deltaTime);
-                if (lowerAmount <= 0.0f)
+                    this.transform.position.y - (lowerSpeed * Time.deltaTime), this.transform.position.z);
+                lowerAmount -= (lowerSpeed * Time.deltaTime);
+                if (lowerAmount<= 0.0f)
                 {
                     isLowered = true;
                     this.GetComponent<AudioSource>().Stop();
@@ -72,7 +75,7 @@ public class PressurePlate : MonoBehaviour
                     {
                         arrows[i].transform.position = new Vector3(arrows[i].transform.position.x +
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
-                            arrows[i].transform.position.z); //maybe try basing the arrow x pos based on the player's current pos since the player can run past the arrow spawn point before they even spawn
+                            arrows[i].transform.position.z);
                     }
                     if (effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
                     {
@@ -80,7 +83,6 @@ public class PressurePlate : MonoBehaviour
                             (10.0f * Time.deltaTime), arrows[i].transform.position.y,
                             arrows[i].transform.position.z);
                     }
-                    //if (arrows[i].) //commented out in order to run====================================================================================
                 }
             }
             #endregion
@@ -127,12 +129,13 @@ public class PressurePlate : MonoBehaviour
         if (effect == EffectTypes.SHOOT_ARROWS_FROM_LEFT)
         {
             arrows[index].transform.position = new Vector3(this.transform.position.x - 10.0f,
-                transform.position.y + 1.6f, transform.position.z);
+                transform.position.y + 1.3f, transform.position.z);
+            arrows[index].transform.rotation = new Quaternion(0, 180, 0, 0);
         }
         else if (effect == EffectTypes.SHOOT_ARROWS_FROM_RIGHT)
         {
             arrows[index].transform.position = new Vector3(this.transform.position.x + 10.0f,
-                transform.position.y + 1.6f, transform.position.z);
+                transform.position.y + 1.3f, transform.position.z);
         }
     }
 
@@ -150,7 +153,7 @@ public class PressurePlate : MonoBehaviour
             arrowIndex = 0;
             Debug.Log("Arrows Reset.");
         }
-        else if(effect == EffectTypes.SPIKES)
+        else if (effect == EffectTypes.SPIKES)
         {
             Destroy(spikes);
             spikeHeight = 0.0f;
@@ -163,6 +166,6 @@ public class PressurePlate : MonoBehaviour
         eventTimer = 0.0f;
         gameObject.GetComponent<Transform>().position = startingPos;
         gameObject.GetComponent<Collider>().enabled = true;
-        lowerAmount = 0.11f;
+        lowerAmount = pressurePlateLowerAmount;
     }
 }

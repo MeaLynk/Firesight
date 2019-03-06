@@ -38,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682477278039412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 221.22, y: 1.8216072, z: 0.11791897}
-  m_LocalScale: {x: 1.44634, y: 0.2, z: 2}
+  m_LocalPosition: {x: -18, y: -66.1, z: 5.9973984}
+  m_LocalScale: {x: 1.44634, y: 0.19999999, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.2678562, z: 3.4378192}
+  m_Center: {x: 0, y: 0.13392814, z: 0.08902395}
 --- !u!82 &82596510460819422
 AudioSource:
   m_ObjectHideFlags: 1
@@ -208,6 +208,8 @@ MonoBehaviour:
     type: 2}
   spikesPrefab: {fileID: 1450367824513124, guid: cb704b7c3765d214192a7c6acf56b508,
     type: 2}
-  effect: 2
-  arrowAmount: 6
+  effect: 4
+  arrowAmount: 4
+  lowerAmount: 11
+  lowerSpeed: 55
   isActivated: 0
