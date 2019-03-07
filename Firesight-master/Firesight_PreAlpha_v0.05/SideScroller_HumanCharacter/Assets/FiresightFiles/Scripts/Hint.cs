@@ -94,4 +94,15 @@ public class Hint : MonoBehaviour
         hintAreaLeft = true;
     }
 
+    //--------------------------------------------------------------------
+    // Used to reset the hints upon death 
+    //--------------------------------------------------------------------
+    public void ResetHint()
+    {
+        speechBubble.GetComponent<SpriteRenderer>().enabled = false;
+        hintText.text = ""; ;
+        hintAreaLeft = false;
+        hintTimer = 0.0f;
+        hintUsed = false;
+    }
 }
