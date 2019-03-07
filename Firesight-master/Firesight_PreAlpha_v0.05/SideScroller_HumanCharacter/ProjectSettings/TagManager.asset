@@ -19,7 +19,7 @@ TagManager:
   - GroundSpikes
   - PressurePlate
   - Key
-  - Hint
+  - Door
   layers:
   - Default
   - TransparentFX

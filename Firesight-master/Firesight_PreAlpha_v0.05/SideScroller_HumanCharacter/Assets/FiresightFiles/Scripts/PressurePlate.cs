@@ -9,7 +9,7 @@ public class PressurePlate : MonoBehaviour
     public EffectTypes effect;      //the effect the pressure plate will have
     public int arrowAmount;
     public float lowerAmount = 11.0f;                  //the amount to lower the pressure plate by
-    [Range(0, 100)] public float lowerSpeed = 55;
+    public float lowerSpeed = 55.0f;
     #endregion
 
     #region Private Variable
@@ -53,7 +53,7 @@ public class PressurePlate : MonoBehaviour
                 this.transform.position = new Vector3(this.transform.position.x,
                     this.transform.position.y - (lowerSpeed * Time.deltaTime), this.transform.position.z);
                 lowerAmount -= (lowerSpeed * Time.deltaTime);
-                if (lowerAmount<= 0.0f)
+                if (lowerAmount <= 0.0f)
                 {
                     isLowered = true;
                     this.GetComponent<AudioSource>().Stop();

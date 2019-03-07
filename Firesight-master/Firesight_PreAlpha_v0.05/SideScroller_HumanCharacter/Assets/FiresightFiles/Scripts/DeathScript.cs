@@ -8,6 +8,7 @@ public class DeathScript : MonoBehaviour {
     public GameObject[] presurePlates;
     public GameObject[] doors;
     public GameObject[] keys;
+    public GameObject speechBubble;
 
 	// Use this for initialization
 	void Start ()
@@ -45,5 +46,6 @@ public class DeathScript : MonoBehaviour {
                 keys[i].GetComponent<Key>().ResetKey();
             }
         }
+        speechBubble.GetComponent<Hint>().ResetHint();
     }
 }

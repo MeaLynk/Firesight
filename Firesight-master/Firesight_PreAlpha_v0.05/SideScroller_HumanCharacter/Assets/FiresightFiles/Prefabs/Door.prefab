@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 82438483741387190}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,10 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e539e14dc7dc85c4b9119bacc4d2ebcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requirementObjects:
-  - {fileID: 0}
+  requirementObjects: []
   isLocked: 0
   isClosed: 0
   doorLiftLimit: 40
-  collisionCounter: 0
-  hint: {fileID: 1826616683518294, guid: 8630ecc39d4ec9f40b4bb67955a49da8, type: 2}
