@@ -1,103 +1,97 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Hint : MonoBehaviour
 {
-    public GameObject[] objectsWithHints;
-    public bool[] usedHint;
+    //--------------------------------------------------------------------
+    // Public Members
+    public enum HintType { LOCKED_DOOR, DANGEROUS_PRESSURE_PLATE, NONE };
+    public HintType hintType;
+    public bool hintUsed;
 
-    private string hintObject;
-    private float hintVisibilityTime;
+    //--------------------------------------------------------------------
+    // Private Members
+    private GameObject speechBubble;
+    private GameObject player;
+    private TextMesh hintText;
+    private bool hintAreaLeft;
+    private float hintTimer;
 
+    //--------------------------------------------------------------------
     // Use this for initialization
-    void Start()
+    //--------------------------------------------------------------------
+    private void Start()
     {
-        hintObject = "";
-        hintVisibilityTime = 0.0f;
-        usedHint = new bool[objectsWithHints.Length];
-        for (int i = 0; i < usedHint.Length; i++)
-        {
-            usedHint[i] = false;
-        }
+        speechBubble = GameObject.Find("SpeechBubble");
+        player = GameObject.FindGameObjectWithTag("Player");
+        hintText = GameObject.Find("SpeechBubbleText").GetComponent<TextMesh>();
+        hintAreaLeft = false;
+        hintUsed = false;
+        hintTimer = 0.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    //--------------------------------------------------------------------
+    // Update called once per frame
+    //--------------------------------------------------------------------
+    private void Update()
     {
-        transform.position = GameObject.FindGameObjectWithTag("Player").transform.position
-            + new Vector3(2, 2.25f, 0);
+        //if speech bubble is enabled
+        if (speechBubble.GetComponent<SpriteRenderer>().enabled == true)
+        {
+            //make speech bubble follow the player
+            speechBubble.transform.position = player.transform.position + new Vector3(2, 2.25f, 0);
 
-        if (hintObject == "")
-        {
-            CheckForHintCollision();
-        }
-        else if (hintObject == "dangerous pressure plate")
-        {
-            GetComponent<SpriteRenderer>().enabled = true;
-            hintVisibilityTime += Time.deltaTime;
-            GameObject.Find("SpeechBubbleText").GetComponent<TextMesh>().text = "I better watch my step!";
-        }
-        else if (hintObject == "locked door")
-        {
-            GetComponent<SpriteRenderer>().enabled = true;
-            hintVisibilityTime += Time.deltaTime;
-            GameObject.Find("SpeechBubbleText").GetComponent<TextMesh>().text = "This door appears to be \r\nlocked. Maybe I should \r\nlook for a key or something \r\non the ground.";
-        }
-
-        if (hintVisibilityTime >= 1.5f)
-        {
-            GetComponent<SpriteRenderer>().enabled = false;
-            hintVisibilityTime = 0.0f;
-            hintObject = "";
-            GameObject.Find("SpeechBubbleText").GetComponent<TextMesh>().text = "";
-        }
-    }
-
-    public void CheckForHintCollision()
-    {
-        for (int i = 0; i < objectsWithHints.Length; i++)
-        {
-            if (objectsWithHints[i].tag == "Key" && !usedHint[i])
+            if (hintType == HintType.LOCKED_DOOR && !hintUsed)
             {
-                if (GameObject.FindGameObjectWithTag("Player").transform.position.x <= objectsWithHints[i].transform.position.x + 2 ||
-                    GameObject.FindGameObjectWithTag("Player").transform.position.x >= objectsWithHints[i].transform.position.x - 2)
-                {
-                    usedHint[i] = true;
-                    hintObject = "key";
-                }
+                hintText.text = "This door appears to be \r\nlocked. I better look for a \r\nkey or something on the \r\nground.";
             }
-            else if (objectsWithHints[i].tag == "PressurePlate" && !usedHint[i])
+            else if (hintType == HintType.DANGEROUS_PRESSURE_PLATE && !hintUsed)
             {
-                if (objectsWithHints[i].GetComponent<PressurePlate>().effect != PressurePlate.EffectTypes.OPEN_DOOR)
-                {
-                    if (GameObject.FindGameObjectWithTag("Player").transform.position.x <= objectsWithHints[i].transform.position.x + 5 &&
-                        GameObject.FindGameObjectWithTag("Player").transform.position.x >= objectsWithHints[i].transform.position.x - 5)
-                    {
-                        usedHint[i] = true;
-                        hintObject = "dangerous pressure plate";
-                    }
-                }
+                hintText.text = "I better watch my step.";
             }
-            else if (objectsWithHints[i].tag == "Door")
+            else if (hintUsed)
             {
-                if (objectsWithHints[i].GetComponent<Door>().isLocked)
+                hintText.text = "";
+            }
+        }
+        //if the player has left the hint area and the hint hasn't been displayed yet
+        if (hintAreaLeft == true && !hintUsed)
+        {
+            hintTimer += Time.deltaTime;
+            if (hintTimer >= 3.0f)
+            {
+                if (hintType != HintType.LOCKED_DOOR)
                 {
-                    if (GameObject.FindGameObjectWithTag("Player").transform.position.x <= objectsWithHints[i].transform.position.x + 5 &&
-                        GameObject.FindGameObjectWithTag("Player").transform.position.x >= objectsWithHints[i].transform.position.x - 5)
-                    {
-                        hintObject = "locked door";
-                    }
+                    hintUsed = true;
                 }
+                hintTimer = 0.0f;
+                speechBubble.GetComponent<SpriteRenderer>().enabled = false;
+                hintText.text = "";
             }
         }
     }
 
-    public void ResetHint()
+    //--------------------------------------------------------------------
+    // What happens when something enters the collider
+    //--------------------------------------------------------------------
+    private void OnTriggerEnter(Collider other)
     {
-        hintObject = "";
-        hintVisibilityTime = 0.0f;
-        for (int i = 0; i < usedHint.Length; i++)
+        if (other.tag != "Player")
         {
-            usedHint[i] = false;
+            return;
+        }
+        else if (!hintUsed)
+        {
+            speechBubble.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
+
+    //--------------------------------------------------------------------
+    // What happens when something exits the collider
+    //--------------------------------------------------------------------
+    private void OnTriggerExit(Collider other)
+    {
+        hintAreaLeft = true;
+    }
+
 }

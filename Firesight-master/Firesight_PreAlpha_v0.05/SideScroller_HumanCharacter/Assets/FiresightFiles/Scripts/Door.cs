@@ -4,6 +4,7 @@ public class Door : MonoBehaviour
 {
     #region Public Members
     public GameObject[] requirementObjects;
+    public Hint hint;
     public bool isLocked;
     public bool isClosed;
     public float doorLiftLimit = 0.0f;
@@ -50,6 +51,11 @@ public class Door : MonoBehaviour
                 Debug.Log("Door Open");
                 GetComponent<AudioSource>().Stop();
             }
+        }
+        if (!isLocked)
+        {
+            hint.hintUsed = true;
+            GameObject.Find("SpeechBubble").GetComponent<SpriteRenderer>().enabled = false;
         }
 
     }

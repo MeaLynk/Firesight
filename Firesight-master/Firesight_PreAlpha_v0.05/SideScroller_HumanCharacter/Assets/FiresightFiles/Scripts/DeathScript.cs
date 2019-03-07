@@ -46,6 +46,6 @@ public class DeathScript : MonoBehaviour {
                 keys[i].GetComponent<Key>().ResetKey();
             }
         }
-        speechBubble.GetComponent<Hint>().ResetHint();
+
     }
 }
