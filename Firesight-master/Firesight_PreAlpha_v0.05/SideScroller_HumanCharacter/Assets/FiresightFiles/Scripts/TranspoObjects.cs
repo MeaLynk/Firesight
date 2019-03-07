@@ -6,6 +6,8 @@ public class TranspoObjects : MonoBehaviour {
 
     [Header("MATERIAL MUST BE SET TO TRANSPARENT TO WORK.")]
     public float fadeSpeed = 1.0f;
+    [Header("0.0 = Transparent, 1.0 = Solid")]
+    public float maxTranspo = 0.0f;
 
     private bool isPlayerInRange = false;
     private bool isProgressChanged = false;
@@ -51,15 +53,15 @@ public class TranspoObjects : MonoBehaviour {
     //Timer for transpo
     private void transpoTimer()
     {
-        if(isPlayerInRange == true && transpoProgress > 0)
+        if(isPlayerInRange == true && transpoProgress > maxTranspo)
         {
             currentTranspoTimer -= Time.deltaTime;
             transpoProgress = currentTranspoTimer/fadeSpeed;
             isProgressChanged = true;
 
-            if(transpoProgress <= 0)
+            if(transpoProgress <= maxTranspo)
             {
-                transpoProgress = 0;
+                transpoProgress = maxTranspo;
             }
         }
         else if(isPlayerInRange == false && transpoProgress < 1)

@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1093926125503782
 GameObject:
   m_ObjectHideFlags: 1
@@ -528,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1190069860332542
 GameObject:
   m_ObjectHideFlags: 1
@@ -574,7 +574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1202861918158768
 GameObject:
   m_ObjectHideFlags: 1
@@ -1464,7 +1464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1510605669662330
 GameObject:
   m_ObjectHideFlags: 1
@@ -1753,7 +1753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1611874903900722
 GameObject:
   m_ObjectHideFlags: 1
@@ -2329,7 +2329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1855560669648950
 GameObject:
   m_ObjectHideFlags: 1
@@ -2587,7 +2587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1961219114371992
 GameObject:
   m_ObjectHideFlags: 1
@@ -2740,7 +2740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1987860987290352
 GameObject:
   m_ObjectHideFlags: 1
@@ -3387,9 +3387,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424557076370672}
-  m_LocalRotation: {x: 0, y: 0.99865234, z: -0, w: -0.051900197}
-  m_LocalPosition: {x: 21.4, y: 6.326, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 79.5, y: 3.4, z: -1.36}
+  m_LocalScale: {x: 0.9724, y: 0.97216123, z: 1}
   m_Children:
   - {fileID: 4212174780787886}
   - {fileID: 4540138174045652}
@@ -3398,7 +3398,7 @@ Transform:
   - {fileID: 4223174820206742}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 185.95, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4244726144187260
 Transform:
   m_ObjectHideFlags: 1
@@ -3918,8 +3918,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976295045716380}
-  m_LocalRotation: {x: -0.0032290146, y: 0.9891279, z: 0.14670137, w: 0.009716482}
-  m_LocalPosition: {x: 0.0011845022, y: 0.8304412, z: -0.051750198}
+  m_LocalRotation: {x: -0.0032290148, y: 0.9891278, z: 0.14670138, w: 0.009716483}
+  m_LocalPosition: {x: 0.0011830908, y: 0.8304892, z: -0.05165662}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
   m_Children:
   - {fileID: 4363437809625584}
@@ -4007,7 +4007,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954924850560222}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.0000002384187, y: 0.00000005960483, z: 0.000000536442}
+  m_LocalPosition: {x: -29.27744, y: -1.4245776, z: 0.00000011920926}
   m_LocalScale: {x: 1.0000002, y: 1.0000004, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 4211645331278834}
@@ -5617,7 +5617,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 10
+  MinDistance: 9.801177
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -5735,7 +5735,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424557076370672}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f10185cfc6321e941b069b5cf1374539, type: 3}
   m_Name: 
@@ -5790,7 +5790,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 2e8e5af580018034788a23c65a6ccec9, type: 3}
   landSound: {fileID: 8300000, guid: 857ac2f7dc8de0c4389c33422e72fc95, type: 3}
   accel: 50
-  airAccel: 8
+  airAccel: 10
   decel: 7.6
   airDecel: 1.1
   rotateSpeed: 3
@@ -5821,7 +5821,7 @@ MonoBehaviour:
   impactSound: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 6b4133ead3acfd54483130f3bcbcf581, type: 3}
   deadSound: {fileID: 8300000, guid: 6b4133ead3acfd54483130f3bcbcf581, type: 3}
-  currentHealth: 15
+  currentHealth: 1
   takeImpactDmg: 0
   onlyRigidbodyImpact: 0
   respawn: 1

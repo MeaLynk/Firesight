@@ -35,7 +35,7 @@ public class CheckpointManager : MonoBehaviour {
             if(checkpointPyres[i] == inNewCheckpoint && inNewCheckpoint.tag == "Checkpoint")
             {
                 currentCheckpoint = i;
-                player.GetComponent<Health>().respawnPos = checkpointPyres[i].GetComponent<Transform>().position;
+                player.GetComponent<Health>().respawnPos = new Vector3(checkpointPyres[i].GetComponent<Transform>().position.x, checkpointPyres[i].GetComponent<Transform>().position.y, player.GetComponent<Transform>().position.z);
                 break;
             }
         }

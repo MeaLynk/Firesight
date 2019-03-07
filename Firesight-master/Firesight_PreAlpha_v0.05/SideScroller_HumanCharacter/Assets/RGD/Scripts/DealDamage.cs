@@ -16,8 +16,8 @@ public class DealDamage : MonoBehaviour
 		if (victim.GetComponent<Rigidbody>() && !victim.GetComponent<Rigidbody>().isKinematic)
 		{
 			victim.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-			victim.GetComponent<Rigidbody>().AddForce (pushDir.normalized * pushForce, ForceMode.VelocityChange);
-			victim.GetComponent<Rigidbody>().AddForce (Vector3.up * pushHeight, ForceMode.VelocityChange);
+			//victim.GetComponent<Rigidbody>().AddForce (pushDir.normalized * pushForce, ForceMode.VelocityChange);
+			//victim.GetComponent<Rigidbody>().AddForce (Vector3.up * pushHeight, ForceMode.VelocityChange);
 		}
 		//deal dmg
 		if(health && !health.flashing)

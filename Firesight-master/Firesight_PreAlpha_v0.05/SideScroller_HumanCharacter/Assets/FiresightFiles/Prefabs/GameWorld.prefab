@@ -55,6 +55,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   presurePlates:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  doors: []
+  keys: []
+  speechBubble: {fileID: 0}
 --- !u!114 &114436460461352142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,4 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  checkpointPyres: []
+  checkpointPyres:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
