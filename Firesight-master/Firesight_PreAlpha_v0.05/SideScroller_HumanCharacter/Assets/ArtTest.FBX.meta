@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 581e00fd26ccce449ac7fc1d048d3af9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: EdgeDefault
+    100004: EdgeEndLeft
+    100006: EdgeEndRight
+    100008: EdgeStairLeft
+    100010: EdgeStairRight
+    100012: FloorDefault
+    100014: FloorEndLeft
+    100016: FloorEndRight
+    100018: FloorStairLeft
+    100020: FloorStairRight
+    100022: FloorTrapPressurePlate
+    100024: PillarsLeft
+    100026: PillarsRight
+    100028: RoofDefault
+    100030: RoofDefaultCamera
+    100032: RoofStairsLeft
+    100034: RoofStairsLeftCamera
+    100036: RoofStairsRight
+    100038: RoofStairsRightCamera
+    100040: WallDefault
+    100042: WallDefaultCamera
+    100044: WallStairsLeft
+    100046: WallStairsLeftCamera
+    100048: WallStairsRight
+    100050: WallStairsRightCamera
+    400000: //RootNode
+    400002: EdgeDefault
+    400004: EdgeEndLeft
+    400006: EdgeEndRight
+    400008: EdgeStairLeft
+    400010: EdgeStairRight
+    400012: FloorDefault
+    400014: FloorEndLeft
+    400016: FloorEndRight
+    400018: FloorStairLeft
+    400020: FloorStairRight
+    400022: FloorTrapPressurePlate
+    400024: PillarsLeft
+    400026: PillarsRight
+    400028: RoofDefault
+    400030: RoofDefaultCamera
+    400032: RoofStairsLeft
+    400034: RoofStairsLeftCamera
+    400036: RoofStairsRight
+    400038: RoofStairsRightCamera
+    400040: WallDefault
+    400042: WallDefaultCamera
+    400044: WallStairsLeft
+    400046: WallStairsLeftCamera
+    400048: WallStairsRight
+    400050: WallStairsRightCamera
+    2100000: 'Material #23'
+    2100002: 'Material #46'
+    2100004: 'Material #47'
+    2100006: 'Material #22'
+    2100008: 'Material #70'
+    2100010: 'Material #73'
+    2100012: 'Material #96'
+    2300000: EdgeDefault
+    2300002: EdgeEndLeft
+    2300004: EdgeEndRight
+    2300006: EdgeStairLeft
+    2300008: EdgeStairRight
+    2300010: FloorDefault
+    2300012: FloorEndLeft
+    2300014: FloorEndRight
+    2300016: FloorStairLeft
+    2300018: FloorStairRight
+    2300020: FloorTrapPressurePlate
+    2300022: PillarsLeft
+    2300024: PillarsRight
+    2300026: RoofDefault
+    2300028: RoofDefaultCamera
+    2300030: RoofStairsLeft
+    2300032: RoofStairsLeftCamera
+    2300034: RoofStairsRight
+    2300036: RoofStairsRightCamera
+    2300038: WallDefault
+    2300040: WallDefaultCamera
+    2300042: WallStairsLeft
+    2300044: WallStairsLeftCamera
+    2300046: WallStairsRight
+    2300048: WallStairsRightCamera
+    3300000: EdgeDefault
+    3300002: EdgeEndLeft
+    3300004: EdgeEndRight
+    3300006: EdgeStairLeft
+    3300008: EdgeStairRight
+    3300010: FloorDefault
+    3300012: FloorEndLeft
+    3300014: FloorEndRight
+    3300016: FloorStairLeft
+    3300018: FloorStairRight
+    3300020: FloorTrapPressurePlate
+    3300022: PillarsLeft
+    3300024: PillarsRight
+    3300026: RoofDefault
+    3300028: RoofDefaultCamera
+    3300030: RoofStairsLeft
+    3300032: RoofStairsLeftCamera
+    3300034: RoofStairsRight
+    3300036: RoofStairsRightCamera
+    3300038: WallDefault
+    3300040: WallDefaultCamera
+    3300042: WallStairsLeft
+    3300044: WallStairsLeftCamera
+    3300046: WallStairsRight
+    3300048: WallStairsRightCamera
+    4300000: FloorTrapPressurePlate
+    4300002: FloorEndRight
+    4300004: FloorEndLeft
+    4300006: FloorDefault
+    4300008: FloorStairLeft
+    4300010: FloorStairRight
+    4300012: WallDefault
+    4300014: WallStairsRight
+    4300016: EdgeDefault
+    4300018: EdgeStairRight
+    4300020: EdgeStairLeft
+    4300022: PillarsLeft
+    4300024: RoofDefault
+    4300026: RoofStairsRight
+    4300028: WallStairsLeft
+    4300030: RoofStairsLeft
+    4300032: PillarsRight
+    4300034: RoofStairsLeftCamera
+    4300036: RoofDefaultCamera
+    4300038: RoofStairsRightCamera
+    4300040: EdgeEndRight
+    4300042: EdgeEndLeft
+    4300044: WallDefaultCamera
+    4300046: WallStairsLeftCamera
+    4300048: WallStairsRightCamera
+    6400000: EdgeDefault
+    6400002: EdgeEndLeft
+    6400004: EdgeEndRight
+    6400006: EdgeStairLeft
+    6400008: EdgeStairRight
+    6400010: FloorDefault
+    6400012: FloorEndLeft
+    6400014: FloorEndRight
+    6400016: FloorStairLeft
+    6400018: FloorStairRight
+    6400020: FloorTrapPressurePlate
+    6400022: PillarsLeft
+    6400024: PillarsRight
+    6400026: RoofDefault
+    6400028: RoofDefaultCamera
+    6400030: RoofStairsLeft
+    6400032: RoofStairsLeftCamera
+    6400034: RoofStairsRight
+    6400036: RoofStairsRightCamera
+    6400038: WallDefault
+    6400040: WallDefaultCamera
+    6400042: WallStairsLeft
+    6400044: WallStairsLeftCamera
+    6400046: WallStairsRight
+    6400048: WallStairsRightCamera
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
