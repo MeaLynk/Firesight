@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/TestScene.unity
     guid: b9870f6df513ba14f8eed5307811890a
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/MainMenuScene.unity
     guid: 69e349e272a4e48449eb3abff6c23e4a
   - enabled: 0
@@ -17,13 +17,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/FiresightFiles/Scenes/FireSight_1stLV_WhiteBoxAdjusted_Playable.unity
     guid: ffe4272ed60863e4b923ba274167253c
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/FireSight_Level2Actual.unity
     guid: 8e8ef14a632c9b04eafe1de0e18df875
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/FireSight_Level1Adjusted_WhiteBox.unity
     guid: 2f4133951ece50149bcfbac0886326f9
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/FireSight_Level3Actual.unity
     guid: 02b7e5469eda67f41b9894720ed1ec5f
+  - enabled: 0
+    path: Assets/FiresightFiles/Scenes/FireSightLevelReDesign - Copy.unity
+    guid: 029f1c7d696a37d42b7c2d4bffb8be3f
+  - enabled: 1
+    path: Assets/FiresightFiles/Scenes/ArtDemo.unity
+    guid: 62bbce69f0f629142878a1c31b3cf674
   m_configObjects: {}
