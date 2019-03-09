@@ -9,9 +9,11 @@ public class DeathScript : MonoBehaviour {
     public GameObject[] doors;
     public GameObject[] keys;
     public GameObject[] hints;
+    public GameObject[] burnableRopes;
+    //maybe add reset animations trigger if it is needed
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
@@ -51,6 +53,13 @@ public class DeathScript : MonoBehaviour {
             if (hints[i] != null)
             {
                 hints[i].GetComponent<Hint>().ResetHint();
+            }
+        }
+        for (int i = 0; i < burnableRopes.Length; i++)
+        {
+            if (burnableRopes[i] != null)
+            {
+                burnableRopes[i].GetComponent<BurnRope>().ResetRopes();
             }
         }
     }

@@ -5,14 +5,33 @@ using UnityEngine;
 public class BurnRope : MonoBehaviour {
 
     public GameObject platform;
+    public GameObject rope;
     [Header("Put audio source on the platform, NOT THE ROPE")]
     public AudioClip burningSFX;
 
-	// Use this for initialization
-	void Start ()
+    private Vector3 defaultPos;
+    private Quaternion defaultRot;
+
+    // Use this for initialization
+    void Start ()
     {
-        platform.GetComponent<Rigidbody>().useGravity = false;
-        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        if(platform == null)
+        {
+            Debug.LogError("NO PLATFORM IN BurnRope SCRIPT");
+        }
+        else
+        {
+            platform.GetComponent<Rigidbody>().useGravity = false;
+            platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            defaultPos = platform.GetComponent<Transform>().position;
+            defaultRot = platform.GetComponent<Transform>().rotation;
+        }
+
+        if(rope == null)
+        {
+            Debug.LogError("NO ROPE IN BurnRope SCRIPT");
+        }
 	}
 	
 	// Update is called once per frame
@@ -22,16 +41,31 @@ public class BurnRope : MonoBehaviour {
 	}
 
     //Triggers Object destruction
-    private void OnTriggerEnter(Collider other)
+    public void Trigger()
     {
-        if (other.tag == "Fireball")
-        {
-            platform.GetComponent<AudioSource>().PlayOneShot(burningSFX);
+        rope.GetComponent<BoxCollider>().enabled = false;
+        rope.SetActive(false);
 
-            platform.GetComponent<Rigidbody>().useGravity = true;
-            platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
-            Destroy(gameObject);
-        }
+        platform.GetComponent<AudioSource>().PlayOneShot(burningSFX);
+        platform.GetComponent<Rigidbody>().useGravity = true;
+        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
     }
+
+    //Gets called to reset ropes
+    public void ResetRopes()
+    {
+        rope.SetActive(true);
+        rope.GetComponent<BoxCollider>().enabled = true;
+
+        platform.GetComponent<Rigidbody>().useGravity = false;
+        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        platform.GetComponent<Transform>().position = defaultPos;
+        platform.GetComponent<Transform>().rotation = defaultRot;
+    }
+
+    //private void OnGUI()
+    //{
+    //    GUI.Box(new Rect(10, 400, 120, 40), defaultPos.ToString());
+    //}
 }
