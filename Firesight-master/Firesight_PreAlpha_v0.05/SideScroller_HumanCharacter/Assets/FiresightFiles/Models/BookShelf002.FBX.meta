@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 68e72effc37dc934085a839695a8f73f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Book045
+    100002: Book046
+    100004: Book047
+    100006: Book048
+    100008: Book049
+    100010: Book050
+    100012: Book051
+    100014: Book052
+    100016: Book053
+    100018: Book054
+    100020: Book055
+    100022: Book056
+    100024: Book057
+    100026: //RootNode
+    100028: Box001
+    400000: Book045
+    400002: Book046
+    400004: Book047
+    400006: Book048
+    400008: Book049
+    400010: Book050
+    400012: Book051
+    400014: Book052
+    400016: Book053
+    400018: Book054
+    400020: Book055
+    400022: Book056
+    400024: Book057
+    400026: //RootNode
+    400028: Box001
+    2100000: BookCase_main
+    2100002: Brass
+    2100004: BookCover002
+    2100006: BookPages
+    2100008: BookCover003
+    2100010: BookCover004
+    2100012: BookCover001
+    2300000: Book045
+    2300002: Book046
+    2300004: Book047
+    2300006: Book048
+    2300008: Book049
+    2300010: Book050
+    2300012: Book051
+    2300014: Book052
+    2300016: Book053
+    2300018: Book054
+    2300020: Book055
+    2300022: Book056
+    2300024: Book057
+    2300026: Box001
+    3300000: Book045
+    3300002: Book046
+    3300004: Book047
+    3300006: Book048
+    3300008: Book049
+    3300010: Book050
+    3300012: Book051
+    3300014: Book052
+    3300016: Book053
+    3300018: Book054
+    3300020: Book055
+    3300022: Book056
+    3300024: Book057
+    3300026: Box001
+    4300000: Box001
+    4300002: Book045
+    4300004: Book046
+    4300006: Book047
+    4300008: Book048
+    4300010: Book049
+    4300012: Book050
+    4300014: Book051
+    4300016: Book052
+    4300018: Book053
+    4300020: Book054
+    4300022: Book055
+    4300024: Book056
+    4300026: Book057
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCase_main
+    second: {fileID: 2100000, guid: 500510cdf552f0846983e2d2ce4e6c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCover001
+    second: {fileID: 2100000, guid: bb9d73d381e7f644fb951a1984061144, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCover002
+    second: {fileID: 2100000, guid: c24bb56116445be42a3a6d4d1ad97dcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCover003
+    second: {fileID: 2100000, guid: a8462874adc9d794d9f038220cb67c30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookCover004
+    second: {fileID: 2100000, guid: f66f2002ef66e4e4687045e462994d5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BookPages
+    second: {fileID: 2100000, guid: bf65c9540eb6b5e4f9ad36db6c3f088e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brass
+    second: {fileID: 2100000, guid: 9fb33b9ac2d7b1441a70edfa131da0f0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
