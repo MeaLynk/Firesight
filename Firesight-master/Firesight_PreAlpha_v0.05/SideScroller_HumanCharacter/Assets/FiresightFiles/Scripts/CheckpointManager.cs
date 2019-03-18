@@ -6,6 +6,7 @@ public class CheckpointManager : MonoBehaviour {
 
     public GameObject player;
     public GameObject[] checkpointPyres;
+    public bool showDebugUI = false;
 
     private int currentCheckpoint = -5;
 
@@ -46,6 +47,9 @@ public class CheckpointManager : MonoBehaviour {
     //Debug Menu
     private void OnGUI()
     {
-        GUI.Box(new Rect(10, 50, 170, 40), "Current Checkpoint in array: \n" + currentCheckpoint);
+        if (showDebugUI == true)
+        {
+            GUI.Box(new Rect(10, 50, 170, 40), "Current Checkpoint in array: \n" + currentCheckpoint);
+        }
     }
 }

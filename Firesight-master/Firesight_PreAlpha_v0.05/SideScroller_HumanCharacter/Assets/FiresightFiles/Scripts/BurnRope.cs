@@ -57,6 +57,7 @@ public class BurnRope : MonoBehaviour {
     {
         rope.SetActive(true);
         rope.GetComponent<BoxCollider>().enabled = true;
+        rope.GetComponent<TriggerRope>().ResetStuff();
 
         platform.GetComponent<Rigidbody>().useGravity = false;
         platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;

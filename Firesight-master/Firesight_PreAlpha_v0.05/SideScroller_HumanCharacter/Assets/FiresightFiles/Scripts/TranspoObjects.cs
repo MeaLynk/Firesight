@@ -6,6 +6,7 @@ public class TranspoObjects : MonoBehaviour {
 
     [Header("MATERIAL MUST BE SET TO TRANSPARENT TO WORK.")]
     public float fadeSpeed = 1.0f;
+    [Header("OBJECT WITH SCRIPT MUST HAVE MESH RENDERER IF TRUE.")]
     public bool affectChildObjects = false;
     [Header("0.0 = Transparent, 1.0 = Solid")]
     public float maxTranspo = 0.0f;

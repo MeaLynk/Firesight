@@ -10,9 +10,11 @@ public class FireScript : MonoBehaviour
     public GameObject playableFirePrefab;
     public GameObject camera;
     public GameObject player;
+    public GameObject cameraTarget;
     public AudioSource SFXPlayer;
     public float maxFireVelocity = 20f;
     public float fireBurnOutTimerLength = 15.0f;
+    public bool showDebugUI = false;
 
     private bool isPlayerInControl;
     private float fireBurnOutTimer;
@@ -31,6 +33,13 @@ public class FireScript : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
+        if(cameraTarget == null)
+        {
+            cameraTarget = player;
+        }
+
+        camera.GetComponent<CameraFollow>().target = cameraTarget.transform;
     }
 
     // Update is called once per frame
@@ -180,7 +189,7 @@ public class FireScript : MonoBehaviour
         Destroy(currentPlayableFirePrefab);
 
         camera.GetComponent<CameraFollow>().isPlayerInUse = true;
-        camera.GetComponent<CameraFollow>().target = gameObject.transform;
+        camera.GetComponent<CameraFollow>().target = cameraTarget.transform;
 
         fireBurnOutTimer = 0.0f;
     }
@@ -188,7 +197,7 @@ public class FireScript : MonoBehaviour
     //Debug GUI
     private void OnGUI()
     {
-        if (currentPlayableFirePrefab != null)
+        if (currentPlayableFirePrefab != null && showDebugUI == true)
         {
             GUI.Box(new Rect(10, 300, 120, 40), "Fireball velocity: \n" + currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.ToString());
             GUI.Box(new Rect(10, 350, 120, 40), "Burn Out Timer: \n" + ((int)fireBurnOutTimerLength - (int)fireBurnOutTimer).ToString());
