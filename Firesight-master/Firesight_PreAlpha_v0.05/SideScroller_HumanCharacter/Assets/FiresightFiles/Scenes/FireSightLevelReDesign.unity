@@ -2246,6 +2246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 179036889}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &207071090
 BoxCollider:
@@ -3242,6 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1055894335}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &335282066
 BoxCollider:
@@ -4831,6 +4833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 799746104}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &460262753
 BoxCollider:
@@ -9369,6 +9372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1171016343}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &869286145
 BoxCollider:
@@ -12952,6 +12956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1809211012}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &1175248767
 BoxCollider:
@@ -13378,6 +13383,11 @@ Prefab:
     - target: {fileID: 100000, guid: ac79453cdfd497e4fb70bd15a2766204, type: 2}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212941199839834140, guid: ac79453cdfd497e4fb70bd15a2766204,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac79453cdfd497e4fb70bd15a2766204, type: 2}
@@ -18903,6 +18913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 1
+  affectChildObjects: 0
+  maxTranspo: 0
 --- !u!1 &1331162525
 GameObject:
   m_ObjectHideFlags: 0
@@ -20137,6 +20149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1895789841}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &1489570795
 BoxCollider:
@@ -20486,6 +20499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 2037001864}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &1519107120
 BoxCollider:
@@ -25846,6 +25860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1067020240}
+  rope: {fileID: 0}
   burningSFX: {fileID: 8300000, guid: 7794161af435a1340a774c5ff4cc6cc1, type: 3}
 --- !u!65 &2095881554
 BoxCollider:
@@ -26394,6 +26409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectWithAnimation: {fileID: 0}
+  timeBeforeActivation: 0
 --- !u!82 &2126986448
 AudioSource:
   m_ObjectHideFlags: 0

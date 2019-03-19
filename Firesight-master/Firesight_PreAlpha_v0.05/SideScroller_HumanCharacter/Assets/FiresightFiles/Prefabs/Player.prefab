@@ -3416,8 +3416,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424557076370672}
-  m_LocalRotation: {x: 0, y: 0.99865234, z: -0, w: -0.051900197}
-  m_LocalPosition: {x: 21.4, y: 6.326, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 217, y: 3, z: 0.5}
   m_LocalScale: {x: 0.9724, y: 0.97216123, z: 1}
   m_Children:
   - {fileID: 4212174780787886}
@@ -3949,7 +3949,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976295045716380}
   m_LocalRotation: {x: -0.0032290148, y: 0.9891278, z: 0.14670138, w: 0.009716483}
-  m_LocalPosition: {x: 0.0011830908, y: 0.8304892, z: -0.05165662}
+  m_LocalPosition: {x: 0.0011830908, y: 0.8304922, z: -0.05165662}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
   m_Children:
   - {fileID: 4363437809625584}
@@ -5507,8 +5507,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5, z: 1}
-  m_Center: {x: 0, y: 0.28, z: 0}
+  m_Size: {x: 1, y: 1.5137055, z: 1}
+  m_Center: {x: 0, y: 0.2731473, z: 0}
 --- !u!65 &65482475606623780
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5765,7 +5765,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424557076370672}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f10185cfc6321e941b069b5cf1374539, type: 3}
   m_Name: 
@@ -5866,7 +5866,7 @@ MonoBehaviour:
   impactSound: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 6b4133ead3acfd54483130f3bcbcf581, type: 3}
   deadSound: {fileID: 8300000, guid: 6b4133ead3acfd54483130f3bcbcf581, type: 3}
-  currentHealth: 1
+  currentHealth: 10
   takeImpactDmg: 0
   onlyRigidbodyImpact: 0
   respawn: 1

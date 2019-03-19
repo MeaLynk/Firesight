@@ -89,19 +89,22 @@ public class PressurePlate : MonoBehaviour
             #region Spikes Functionality
             else if (effect == EffectTypes.SPIKES)
             {
-                eventTimer += Time.deltaTime;  //Spikes spawn a little too fast, try to wait a few miliseconds for the player to be in the middle of the presure plate to spawn them (test timing in the test scene)
                 if (!spikesGenerated)
                 {
                     spikes = Instantiate(spikesPrefab);
                     spikes.transform.position = new Vector3(this.transform.position.x - 0.7f,
-                       transform.position.y - 1.2f, transform.position.z + 0.6f);
+                       transform.position.y - 1.4f, transform.position.z + 0.6f);
                     spikesGenerated = true;
                 }
-                if (spikesGenerated && spikeHeight <= 0.9f)
+                if (spikesGenerated && spikeHeight <= 1.1f)
                 {
-                    spikes.transform.position = new Vector3(spikes.transform.position.x,
-                        spikes.transform.position.y + (1.2f * Time.deltaTime), spikes.transform.position.z);
-                    spikeHeight += (1.2f * Time.deltaTime);
+                    eventTimer += Time.deltaTime;
+                    if (eventTimer >= 2.0f)
+                    {
+                        spikes.transform.position = new Vector3(spikes.transform.position.x,
+                            spikes.transform.position.y + (1.8f * Time.deltaTime), spikes.transform.position.z);
+                        spikeHeight += (1.8f * Time.deltaTime);
+                    }
                 }
             }
             #endregion
