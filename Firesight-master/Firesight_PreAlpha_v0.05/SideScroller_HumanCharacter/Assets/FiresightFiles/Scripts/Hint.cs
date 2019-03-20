@@ -8,12 +8,11 @@ public class Hint : MonoBehaviour
     public enum HintType { LOCKED_DOOR, DANGEROUS_PRESSURE_PLATE, NONE };
     public HintType hintType;
     public bool hintUsed;
+    public bool showHint;
 
     //--------------------------------------------------------------------
     // Private Members
-    private GameObject speechBubble;
     private GameObject player;
-    private TextMesh hintText;
     private bool hintAreaLeft;
     private float hintTimer;
 
@@ -22,11 +21,10 @@ public class Hint : MonoBehaviour
     //--------------------------------------------------------------------
     private void Start()
     {
-        speechBubble = GameObject.Find("SpeechBubble");
         player = GameObject.FindGameObjectWithTag("Player");
-        hintText = GameObject.Find("SpeechBubbleText").GetComponent<TextMesh>();
         hintAreaLeft = false;
         hintUsed = false;
+        showHint = false;
         hintTimer = 0.0f;
     }
 
@@ -35,38 +33,25 @@ public class Hint : MonoBehaviour
     //--------------------------------------------------------------------
     private void Update()
     {
-        //if speech bubble is enabled
-        if (speechBubble.GetComponent<SpriteRenderer>().enabled == true)
-        {
-            //make speech bubble follow the player
-            speechBubble.transform.position = player.transform.position + new Vector3(2, 2.25f, 0);
-
-            if (hintType == HintType.LOCKED_DOOR && !hintUsed)
-            {
-                hintText.text = "This door appears to be \r\nlocked. I better look for a \r\nkey or something on the \r\nground.";
-            }
-            else if (hintType == HintType.DANGEROUS_PRESSURE_PLATE && !hintUsed)
-            {
-                hintText.text = "I better watch my step.";
-            }
-            else if (hintUsed)
-            {
-                hintText.text = "";
-            }
-        }
         //if the player has left the hint area and the hint hasn't been displayed yet
-        if (hintAreaLeft == true && !hintUsed)
+        if (hintAreaLeft == true && !hintUsed && hintType == HintType.LOCKED_DOOR)
         {
             hintTimer += Time.deltaTime;
             if (hintTimer >= 3.0f)
             {
-                if (hintType != HintType.LOCKED_DOOR)
-                {
-                    hintUsed = true;
-                }
+                hintUsed = false;
                 hintTimer = 0.0f;
-                speechBubble.GetComponent<SpriteRenderer>().enabled = false;
-                hintText.text = "";
+                showHint = false;
+            }
+        }
+        else if (!hintUsed && hintType == HintType.DANGEROUS_PRESSURE_PLATE)
+        {
+            hintTimer += Time.deltaTime;
+            if (hintTimer >= 3.0f)
+            {
+                hintUsed = true;
+                hintTimer = 0.0f;
+                showHint = false;
             }
         }
     }
@@ -82,7 +67,11 @@ public class Hint : MonoBehaviour
         }
         else if (!hintUsed)
         {
-            speechBubble.GetComponent<SpriteRenderer>().enabled = true;
+            showHint = true;
+            if (hintType == HintType.DANGEROUS_PRESSURE_PLATE)
+            {
+                this.GetComponent<BoxCollider>().enabled = false;
+            }
         }
     }
 
@@ -95,14 +84,43 @@ public class Hint : MonoBehaviour
     }
 
     //--------------------------------------------------------------------
+    // Display UI stuff to the user
+    //--------------------------------------------------------------------
+    private void OnGUI()
+    {
+        if (showHint)
+        {
+            GUI.Box(new Rect(600, Screen.height - 190, Screen.width - 1200, 160), "");
+
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 42;
+            style.alignment = TextAnchor.MiddleCenter;
+            style.font = (Font)Resources.Load("HintFont");
+            style.fixedHeight = 0.5f;
+
+            if (hintType == HintType.LOCKED_DOOR && !hintUsed)
+            {
+                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This door appears to be locked.\r\nI better look for a key\r\nor something on the ground.", style);
+            }
+            else if (hintType == HintType.DANGEROUS_PRESSURE_PLATE && !hintUsed)
+            {
+                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "I better watch my step,\r\nThis place coule be trapped!", style);
+            }
+            else if (hintUsed)
+            {
+                //hintText.text = "";
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------
     // Used to reset the hints upon death 
     //--------------------------------------------------------------------
     public void ResetHint()
     {
-        speechBubble.GetComponent<SpriteRenderer>().enabled = false;
-        hintText.text = ""; ;
         hintAreaLeft = false;
         hintTimer = 0.0f;
         hintUsed = false;
+        showHint = false;
     }
 }

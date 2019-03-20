@@ -3,7 +3,7 @@
 public class Key : MonoBehaviour
 {
     public bool isCollected;
-    public string keyHint;
+    private string keyHint;
 
     private Vector3 startPos;
 
@@ -14,7 +14,7 @@ public class Key : MonoBehaviour
     {
         isCollected = false;
         startPos = transform.position;
-        keyHint = "there must be a key around here";
+        keyHint = "I better hold on to this";
     }
 
     //-----------------------------------------------------------
@@ -23,7 +23,7 @@ public class Key : MonoBehaviour
     void Update()
     {
         if (isCollected)
-            gameObject.SetActive(false);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
     //-----------------------------------------------------------

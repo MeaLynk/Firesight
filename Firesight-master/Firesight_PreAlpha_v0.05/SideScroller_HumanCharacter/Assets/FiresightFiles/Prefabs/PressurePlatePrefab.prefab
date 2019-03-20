@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23787580653598876}
   - component: {fileID: 82596510460819422}
   - component: {fileID: 114817255217411896}
+  - component: {fileID: 114516828466862696}
   m_Layer: 0
   m_Name: PressurePlatePrefab
   m_TagString: PressurePlate
@@ -193,6 +194,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114516828466862696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682477278039412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b7be2836ce69e4ca8a181a23b36de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintType: 1
+  hintUsed: 0
+  showHint: 0
 --- !u!114 &114817255217411896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,5 +225,6 @@ MonoBehaviour:
     type: 2}
   effect: 3
   arrowAmount: 6
-  pressurePlateLowerSpeed: 15
-  isReactivatable: 0
+  lowerAmount: 11
+  lowerSpeed: 55
+  isActivated: 0
