@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FireScript : MonoBehaviour
 {
@@ -34,7 +32,7 @@ public class FireScript : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if(cameraTarget == null)
+        if (cameraTarget == null)
         {
             cameraTarget = player;
         }
@@ -85,7 +83,10 @@ public class FireScript : MonoBehaviour
     //Lets player control fireball
     private void ControlFireball()
     {
-        fireBurnOutTimer += Time.deltaTime;
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target == currentPlayableFirePrefab.transform)
+        {
+            fireBurnOutTimer += Time.deltaTime;
+        }
 
         //-------------------------------------------------------------------------------------------------------------
         //NEW CODE

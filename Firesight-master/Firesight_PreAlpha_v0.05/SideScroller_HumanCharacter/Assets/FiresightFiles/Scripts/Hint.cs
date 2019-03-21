@@ -8,6 +8,8 @@ public class Hint : MonoBehaviour
     public HintType hintType;
     public bool hintUsed;
     public bool showHint;
+    public bool IsPan;
+    public GameObject panTarget;
 
     //--------------------------------------------------------------------
     // Private Members
@@ -56,13 +58,16 @@ public class Hint : MonoBehaviour
         }
         else if (showHint && hintType == HintType.PYRE)
         {
-            player.GetComponent<PlayerMove>().isPlayerInControl = false;
+            player.GetComponent<Rigidbody>().Sleep();
+            player.GetComponent<PlayerMove>().enabled = false;
+            player.GetComponent<PlayerMove>().animator.enabled = false;
+            
         }
         else if (showHint && hintType == HintType.BURNABLE_STRUCTURE)
         {
             CameraFollow cFollow = Camera.main.GetComponent<CameraFollow>();
             cFollow.followSpeed = 1.5f;
-            cFollow.target = GameObject.FindGameObjectWithTag("GameWorld").GetComponent<PanCamera>().panTargets[0].transform;
+            cFollow.target = panTarget.transform;
             cameraPanned = true;
             hintTimer += Time.deltaTime;
             if (hintTimer >= 4.0f)
@@ -160,7 +165,9 @@ public class Hint : MonoBehaviour
                     hintUsed = true;
                     hintTimer = 0.0f;
                     showHint = false;
-                    player.GetComponent<PlayerMove>().isPlayerInControl = true;
+                    player.GetComponent<Rigidbody>().WakeUp();
+                    player.GetComponent<PlayerMove>().enabled = true;
+                    player.GetComponent<PlayerMove>().animator.enabled = true;
                 }
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
