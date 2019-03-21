@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Hint : MonoBehaviour
 {
     //--------------------------------------------------------------------
     // Public Members
-    public enum HintType { LOCKED_DOOR, TRAP_DOOR, DANGEROUS_PRESSURE_PLATE, PYRE, BURNABLE_STRUCTURE, NONE };
+    public enum HintType { LOCKED_DOOR, TRAP_DOOR, LOOK_AHEAD, DANGEROUS_PRESSURE_PLATE, PYRE, BURNABLE_STRUCTURE, NONE };
     public HintType hintType;
     public bool hintUsed;
     public bool showHint;
@@ -77,6 +76,26 @@ public class Hint : MonoBehaviour
                 cameraPanned = false;
             }
         }
+        else if (showHint && hintType == HintType.TRAP_DOOR)
+        {
+            hintTimer += Time.deltaTime;
+            if (hintTimer >= 3.0f)
+            {
+                hintUsed = true;
+                hintTimer = 0.0f;
+                showHint = false;
+            }
+        }
+        else if (showHint && hintType == HintType.LOOK_AHEAD)
+        {
+            hintTimer += Time.deltaTime;
+            if (hintTimer >= 3.0f)
+            {
+                hintUsed = true;
+                hintTimer = 0.0f;
+                showHint = false;
+            }
+        }
     }
 
     //--------------------------------------------------------------------
@@ -91,7 +110,7 @@ public class Hint : MonoBehaviour
         else if (!hintUsed)
         {
             showHint = true;
-            if (hintType == HintType.DANGEROUS_PRESSURE_PLATE || hintType == HintType.BURNABLE_STRUCTURE)
+            if (hintType == HintType.DANGEROUS_PRESSURE_PLATE || hintType == HintType.BURNABLE_STRUCTURE || hintType == HintType.LOOK_AHEAD)
             {
                 this.GetComponent<BoxCollider>().enabled = false;
             }
@@ -148,6 +167,16 @@ public class Hint : MonoBehaviour
             {
                 GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
                 GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "It's always a good idea\r\nto look for things that can be burnt!", style);
+            }
+            else if (hintType == HintType.TRAP_DOOR && !hintUsed)
+            {
+                GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "My fireball might be able to get\r\nto areas I can't fit...", style);
+            }
+            else if (hintType == HintType.LOOK_AHEAD && !hintUsed)
+            {
+                GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "That's a long drop, I better\r\nuse my fireball to look ahead...", style);
             }
         }
     }
