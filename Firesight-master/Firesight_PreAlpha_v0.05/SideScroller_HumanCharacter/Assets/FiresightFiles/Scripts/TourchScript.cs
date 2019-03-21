@@ -48,7 +48,8 @@ public class TourchScript : MonoBehaviour {
             }
             else
             {
-                currentLifeTimer -= (5 * Time.deltaTime);
+                isTorchLit = true;
+                //currentLifeTimer -= (5 * Time.deltaTime);
                 //Debug.Log("Did a count.");
             }
         }

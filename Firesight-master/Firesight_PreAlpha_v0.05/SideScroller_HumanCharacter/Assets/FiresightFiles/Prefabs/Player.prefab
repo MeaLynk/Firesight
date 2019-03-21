@@ -1855,7 +1855,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424557076370672}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 207.6, y: -54.3, z: -1.36}
+  m_LocalPosition: {x: 88, y: -138, z: -1.584}
   m_LocalScale: {x: 0.9724, y: 0.97216123, z: 1}
   m_Children:
   - {fileID: 4212174780787886}
@@ -3278,8 +3278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireObject: {fileID: 0}
-  playableFirePrefab: {fileID: 1108292810818010, guid: 65b57b82adb4bce4b90b62f6961c3a6a,
-    type: 2}
+  playableFirePrefab: {fileID: 0}
   camera: {fileID: 0}
   player: {fileID: 1730954237447274}
   cameraTarget: {fileID: 1383080093807032}
@@ -3287,6 +3286,7 @@ MonoBehaviour:
   maxFireVelocity: 10
   fireBurnOutTimerLength: 15
   showDebugUI: 0
+  firePos: {x: 0, y: 2, z: 0}
 --- !u!114 &114662997379578270
 MonoBehaviour:
   m_ObjectHideFlags: 1

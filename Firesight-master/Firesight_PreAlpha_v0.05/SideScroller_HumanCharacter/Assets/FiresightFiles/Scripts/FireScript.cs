@@ -13,7 +13,7 @@ public class FireScript : MonoBehaviour
     public float maxFireVelocity = 20f;
     public float fireBurnOutTimerLength = 15.0f;
     public bool showDebugUI = false;
-
+    public Vector3 firePos = new Vector3(0, 2, 0);
     private bool isPlayerInControl;
     private float fireBurnOutTimer;
     private GameObject currentPlayableFirePrefab;
@@ -46,7 +46,7 @@ public class FireScript : MonoBehaviour
         if (isPlayerInControl == true)
         {
             //Centers fireball during rotation
-            fireObject.GetComponent<Transform>().position = this.gameObject.GetComponent<Transform>().position;
+            fireObject.GetComponent<Transform>().position = this.gameObject.GetComponent<Transform>().position + firePos;
 
             //Player activates fireball
             if (Input.GetButtonDown("Fireball") && gameObject.GetComponent<PlayerMove>().grounded == true && GameObject.Find("GameWorld").GetComponent<PauseGame>().GetPausedState() == false)
@@ -58,7 +58,7 @@ public class FireScript : MonoBehaviour
                 fireObject.SetActive(false);
 
                 //Creates the playable fireball prefab
-                currentPlayableFirePrefab = Instantiate(playableFirePrefab, gameObject.GetComponent<Transform>().position + new Vector3(0, 2, 0), Quaternion.identity);
+                currentPlayableFirePrefab = Instantiate(playableFirePrefab, gameObject.GetComponent<Transform>().position + firePos, Quaternion.identity);
 
                 Physics.IgnoreCollision(currentPlayableFirePrefab.GetComponent<Collider>(), GetComponent<Collider>());
 
