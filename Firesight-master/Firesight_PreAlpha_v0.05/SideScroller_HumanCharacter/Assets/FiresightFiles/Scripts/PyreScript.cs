@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PyreScript : MonoBehaviour {
 
-    public GameObject gameWorld;
+    public bool isPyreOn = false;
     public GameObject pyreParticles;
     public AudioClip triggerSFX;
 
-    private bool isPyreOn = false;
+    private GameObject gameWorld;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         pyreParticles.SetActive(false);
 

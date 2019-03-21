@@ -11,23 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1682477278039412}
   m_IsPrefabAsset: 1
---- !u!1 &1621068925978206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4254607675764376}
-  - component: {fileID: 65560894031040880}
-  - component: {fileID: 114315423275039142}
-  m_Layer: 0
-  m_Name: HintCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1682477278039412
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,19 +31,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4254607675764376
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621068925978206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4578318740045818}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4578318740045818
 Transform:
   m_ObjectHideFlags: 1
@@ -68,10 +38,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682477278039412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3796692, y: -0.95, z: -13.24}
+  m_LocalPosition: {x: 82.55, y: -48.41, z: -13.24}
   m_LocalScale: {x: 1.44634, y: 0.19999999, z: 2}
-  m_Children:
-  - {fileID: 4254607675764376}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,18 +86,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682477278039412}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65560894031040880
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621068925978206}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.0152626, y: 1, z: 2.170148}
-  m_Center: {x: -2.507631, y: 0, z: -0.16782618}
 --- !u!65 &65920316222354740
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -236,20 +193,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114315423275039142
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1621068925978206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b7be2836ce69e4ca8a181a23b36de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintType: 1
-  hintUsed: 0
-  showHint: 0
 --- !u!114 &114817255217411896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +209,7 @@ MonoBehaviour:
   spikesPrefab: {fileID: 1450367824513124, guid: cb704b7c3765d214192a7c6acf56b508,
     type: 2}
   effect: 2
-  arrowAmount: 4
+  arrowAmount: 2
   lowerAmount: 11
   lowerSpeed: 55
   isActivated: 0
