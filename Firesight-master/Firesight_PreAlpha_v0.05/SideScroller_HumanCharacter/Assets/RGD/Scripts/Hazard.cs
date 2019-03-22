@@ -14,6 +14,7 @@ public class Hazard : MonoBehaviour
     public string[] effectedTags = { "Player" };                //which objects are vulnerable to this hazard (tags)
     public AudioClip hitSound;                              //sound to play when an object is hurt by this hazard
 
+
     private DealDamage dealDamage;
     private AudioSource aSource;
 
@@ -50,6 +51,7 @@ public class Hazard : MonoBehaviour
         foreach (string tag in effectedTags)
             if (other.transform.tag == tag)
                 dealDamage.Attack(other.gameObject, damage, pushHeight, pushForce);
+
     }
 }
 

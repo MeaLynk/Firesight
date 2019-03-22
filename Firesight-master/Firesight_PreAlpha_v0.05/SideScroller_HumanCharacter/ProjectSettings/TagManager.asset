@@ -22,6 +22,8 @@ TagManager:
   - Door
   - Hint
   - Fire
+  - Platform
+  - CamTar
   layers:
   - Default
   - TransparentFX

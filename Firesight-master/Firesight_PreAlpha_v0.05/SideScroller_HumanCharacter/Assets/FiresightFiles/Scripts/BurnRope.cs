@@ -11,7 +11,6 @@ public class BurnRope : MonoBehaviour {
 
     private Vector3 defaultPos;
     private Quaternion defaultRot;
-
     // Use this for initialization
     void Start ()
     {
@@ -50,6 +49,9 @@ public class BurnRope : MonoBehaviour {
         platform.GetComponent<Rigidbody>().useGravity = true;
         platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+
+
     }
 
     //Gets called to reset ropes

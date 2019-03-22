@@ -25,7 +25,7 @@ public class KillFireScript : MonoBehaviour {
         {
             gameObject.GetComponent<AudioSource>().PlayOneShot(killedFireballSFX);
             player.GetComponent<FireScript>().QuitFireball();
-            Debug.Log("Firebaul Ended.");
+            Debug.Log("Fireball Ended.");
         }
     }
 }

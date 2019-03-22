@@ -177,6 +177,8 @@ public class FireScript : MonoBehaviour
         {
             QuitFireball();
         }
+
+
     }
 
     //Gets called to quit the fireball gameplay

@@ -76,7 +76,7 @@ public class Hint : MonoBehaviour
                 hintTimer = 0.0f;
                 showHint = false;
                 cFollow.followSpeed = 1.5f;
-                cFollow.target = GameObject.FindGameObjectWithTag("Player").transform;
+                cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
                 cFollow.followSpeed = 10;
                 cameraPanned = false;
             }
