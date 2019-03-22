@@ -49,7 +49,7 @@ public class BurnRope : MonoBehaviour {
         platform.GetComponent<AudioSource>().PlayOneShot(burningSFX);
         platform.GetComponent<Rigidbody>().useGravity = true;
         platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+        platform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
     //Gets called to reset ropes

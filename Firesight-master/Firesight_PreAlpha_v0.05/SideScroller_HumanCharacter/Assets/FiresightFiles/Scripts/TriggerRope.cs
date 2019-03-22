@@ -16,7 +16,7 @@ public class TriggerRope : MonoBehaviour {
             if (currentTimer <= 0)
             {
                 gameObject.GetComponentInParent<BurnRope>().Trigger();
-                Debug.Log("Call this");
+                //Debug.Log("Call this");
             }
             else
             {

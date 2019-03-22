@@ -59,7 +59,7 @@ public class TranspoObjects : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         isPlayerInRange = true;
-        Debug.Log("Player in object range");
+        //Debug.Log("Player in object range");
     }
 
     //Player exits range
@@ -67,7 +67,7 @@ public class TranspoObjects : MonoBehaviour {
     {
         isPlayerInRange = false;
         //gameObject.GetComponent<Renderer>().material.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1);
-        Debug.Log("Player left object range");
+        //Debug.Log("Player left object range");
     }
 
     //Timer for transpo

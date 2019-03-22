@@ -41,7 +41,7 @@ public class TriggerScript : MonoBehaviour
                 currentTime += Time.deltaTime;
             }
         }
-        if (startPan)
+        if (startPan && isPan == true)
         {
             cFollow.followSpeed = 1.5f;
             cFollow.target = panTarget.transform;
