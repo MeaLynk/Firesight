@@ -6,10 +6,19 @@ using UnityEditor;
 
 public class MenuControllerScript : MonoBehaviour
 {
-    #region Private Variables
-    private GameObject areYouSurePopUp;
+    public enum MenuStates { TRANSITION, START, MAINMENU } //Transition may be removed depending if needed
+
+    public GameObject menuFireball = null;
+    public GameObject areYouSurePopUp = null; //Prob gonna get rid of this or rework it
+    public Camera mainCamera = null;
+    public Transform camTar;
+    [Header("Must Have 2 values. (For now)")]
+    public Vector3[] camTarPos; //0 = start, 1 = mainMenu
+
     private bool isPossibleQuit;
-    #endregion
+    private MenuStates currentMenu = MenuStates.START;
+
+    public MenuStates GetCurrentMenu() { return currentMenu; }
 
     //---------------------------------------------------------//
     // Used to Initialize script
@@ -17,7 +26,24 @@ public class MenuControllerScript : MonoBehaviour
     void Start()
     {
         isPossibleQuit = false;
-        areYouSurePopUp = GameObject.Find("AreYouSure");
+        Cursor.visible = false;
+
+        if (areYouSurePopUp == null)
+        {
+            areYouSurePopUp = GameObject.Find("AreYouSure"); 
+        }
+
+        if(menuFireball == null)
+        {
+            menuFireball = GameObject.FindGameObjectWithTag("Fireball");
+        }
+
+        if (mainCamera == null)
+        {
+            menuFireball = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+
+        camTar.position = camTarPos[0];
     }
 
     //---------------------------------------------------------//
@@ -35,6 +61,19 @@ public class MenuControllerScript : MonoBehaviour
             // Hide the quit confirmation message
             areYouSurePopUp.SetActive(false);
         }
+
+        //Uses fireball as the cursor for the menu
+        menuFireball.GetComponent<Transform>().position = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 8));
+
+        //Menu States else if
+        if(currentMenu == MenuStates.START)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                camTar.position = camTarPos[1];
+                currentMenu = MenuStates.MAINMENU;
+            }
+        }
     }
 
     //---------------------------------------------------------//
@@ -43,6 +82,8 @@ public class MenuControllerScript : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+        Cursor.visible = true;
+        Debug.Log("Level " + levelName + " loaded.");
     }
 
     //---------------------------------------------------------//
@@ -75,5 +116,10 @@ public class MenuControllerScript : MonoBehaviour
     {
         Application.Quit();
     }
-    
+
+    //Debug stuff
+    private void OnGUI()
+    {
+        GUI.Box(new Rect(10, 10, 80, 30), currentMenu.ToString());
+    }
 }
