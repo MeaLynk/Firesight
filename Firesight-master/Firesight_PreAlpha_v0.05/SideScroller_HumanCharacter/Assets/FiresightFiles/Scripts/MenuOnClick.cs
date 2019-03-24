@@ -3,14 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events; // this namespace makes the magic, tho
+using TMPro;
 
 public class MenuOnClick : MonoBehaviour
 {
     public MenuControllerScript menuController;
     public MenuControllerScript.MenuStates menuStateNeeded;
+    public Color highlightColor;
     [SerializeField] UnityEvent anEvent; // puts an easy to setup event in the inspector and anEvent references it so you can .Invoke() it
 
+    private Color defaultColor;
     private bool isInArea = false;
+
+    private void Start()
+    {
+        defaultColor = gameObject.GetComponentInChildren<TextMeshPro>().color;
+    }
 
     private void Update()
     {
@@ -26,6 +34,7 @@ public class MenuOnClick : MonoBehaviour
         if(other.tag == "Fireball")
         {
             isInArea = true;
+            gameObject.GetComponentInChildren<TextMeshPro>().color = highlightColor;
         }
     }
 
@@ -34,6 +43,7 @@ public class MenuOnClick : MonoBehaviour
         if (other.tag == "Fireball")
         {
             isInArea = false;
+            gameObject.GetComponentInChildren<TextMeshPro>().color = defaultColor;
         }
     }
 

@@ -1441,6 +1441,7 @@ GameObject:
   - component: {fileID: 514583924}
   - component: {fileID: 514583923}
   - component: {fileID: 514583922}
+  - component: {fileID: 514583926}
   m_Layer: 0
   m_Name: PressAnyButton
   m_TagString: Untagged
@@ -1455,11 +1456,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 514583921}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 18.768665}
+  m_Center: {x: 0, y: 0.5, z: -8.884333}
 --- !u!23 &514583923
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1516,6 +1517,25 @@ Transform:
   m_Father: {fileID: 396865030}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514583926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 514583921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec78223103aeb242a3695ba398d71ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuController: {fileID: 1154394080}
+  menuStateNeeded: 0
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
+  anEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &521959094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,6 +3259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuController: {fileID: 1154394080}
   menuStateNeeded: 2
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
   anEvent:
     m_PersistentCalls:
       m_Calls:
