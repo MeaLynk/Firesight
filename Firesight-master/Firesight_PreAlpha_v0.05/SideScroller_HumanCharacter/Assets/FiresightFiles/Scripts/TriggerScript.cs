@@ -87,6 +87,11 @@ public class TriggerScript : MonoBehaviour
         {
             isActivated = true;
         }
+
+        else if (other.tag == "Player")
+        {
+            isActivated = true;
+        }
     }
 
     //maybe add reset here if it is needed

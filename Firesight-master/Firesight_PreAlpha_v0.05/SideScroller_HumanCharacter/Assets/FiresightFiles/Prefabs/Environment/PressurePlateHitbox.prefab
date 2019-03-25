@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 64441500251986754}
   - component: {fileID: 82888513815264582}
   - component: {fileID: 114647400825721036}
+  - component: {fileID: 114535658990965656}
   m_Layer: 0
   m_Name: PressurePlateHitbox
   m_TagString: Untagged
@@ -66,8 +67,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711623628566392}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 165, y: -81, z: -0.007436654}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 157.5, y: -81, z: -0.0074366597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4119826037550252}
@@ -232,6 +233,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114535658990965656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711623628566392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01183c52816f3434794b947a32bc184e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectWithAnimation: {fileID: 0}
+  panTarget: {fileID: 0}
+  timeBeforeActivation: 0.01
+  isPan: 0
+  cFollow: {fileID: 0}
+  doesControlGoBackToPlayer: 0
 --- !u!114 &114647400825721036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +265,6 @@ MonoBehaviour:
   spikesPrefab: {fileID: 0}
   effect: 4
   arrowAmount: 0
-  lowerAmount: 11
-  lowerSpeed: 55
+  lowerAmount: 20
+  lowerSpeed: 1000
   isActivated: 0
