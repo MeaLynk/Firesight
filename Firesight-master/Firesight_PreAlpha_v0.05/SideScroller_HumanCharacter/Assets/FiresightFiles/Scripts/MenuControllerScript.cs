@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using TMPro;
 
 public class MenuControllerScript : MonoBehaviour
 {
-    public enum MenuStates { START, MAINMENU, OPTIONS, LEVELSELECT, SHOWUI } //0 start, 1 mainmenu, 2 options, 3 level select
+    public enum MenuStates { START, MAINMENU, OPTIONS, LEVELSELECT, SHOWUI, EXITING } //0 start, 1 mainmenu, 2 options, 3 level select
 
     public GameObject menuFireball = null;
     public GameObject areYouSurePopUp = null; //Prob gonna get rid of this or rework it
@@ -14,7 +14,12 @@ public class MenuControllerScript : MonoBehaviour
     public Transform camTar;
     public AudioClip buttonClickSFX;
     [Header("Must Have 4 values. (For now)")]
-    public Vector3[] camTarPos; //0 start, 1 mainmenu, 2 options, 3 level select
+    public Vector3[] camTarPos; //0 start, 1 mainmenu, 2 options, 3 level select, 4 load level anim
+    [Header("MUST HAVE 2 IMAGES")] // for both levels
+    public Sprite[] levelImages;
+    public GameObject levelImageObject;
+    public TextMeshPro levelText;
+    
 
     private bool isPossibleQuit;
     private AudioSource sfxPlayer;
@@ -90,7 +95,36 @@ public class MenuControllerScript : MonoBehaviour
                 currentImage.SetActive(false);
             }
         }
+        else if(currentMenu == MenuStates.EXITING)
+        {
+            if(mainCamera.gameObject.GetComponent<Transform>().position.z > 5)
+            {
+                SceneManager.LoadScene(currentLevel);
+                //Cursor.visible = true;
+                Debug.Log("Level " + currentLevel + " loaded.");
+            }
+        }
     }
+
+    //---------------------------------------------------------//
+    // Changes selected Level
+    //---------------------------------------------------------//
+    public void ChangeLevel() //rework if changed to 3 levels
+    {
+        if(currentLevel == "FireSightLevel1")
+        {
+            currentLevel = "FireSightLevel2";
+            levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[1];
+            levelText.text = "Level 2";
+        }
+        else if (currentLevel == "FireSightLevel2")
+        {
+            currentLevel = "FireSightLevel1";
+            levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
+            levelText.text = "Level 1";
+        }
+    }
+
 
     //---------------------------------------------------------//
     // Used when the user presses the start button
@@ -98,9 +132,9 @@ public class MenuControllerScript : MonoBehaviour
     public void LoadLevel()
     {
         sfxPlayer.PlayOneShot(buttonClickSFX);
-        SceneManager.LoadScene(currentLevel);
-        //Cursor.visible = true;
-        Debug.Log("Level " + currentLevel + " loaded.");
+        currentMenu = MenuStates.EXITING;
+        camTar.position = camTarPos[4];
+
     }
 
     //---------------------------------------------------------//
