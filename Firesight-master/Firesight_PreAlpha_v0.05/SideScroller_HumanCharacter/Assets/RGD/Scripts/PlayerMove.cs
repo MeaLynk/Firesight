@@ -13,8 +13,9 @@ public class PlayerMove : MonoBehaviour
 	public Transform mainCam, floorChecks;		//main camera, and floorChecks object. FloorChecks are raycasted down from to check the player is grounded.
 	public Animator animator;					//object with animation controller on, which you want to animate
 	public AudioClip jumpSound;					//play when jumping
-	public AudioClip landSound;					//play when landing on ground
-	
+	public AudioClip landSound;                 //play when landing on ground
+    public bool canPlayerMove = true;
+
 	//movement
 	public float accel = 70f;					//acceleration/deceleration in air or on the ground
 	public float airAccel = 18f;			
@@ -91,7 +92,7 @@ public class PlayerMove : MonoBehaviour
 		rigid.WakeUp();
 
         //handle jumping
-        if (isPlayerInControl == true)
+        if (isPlayerInControl == true && canPlayerMove == true)
         {
             JumpCalculations();
         }
@@ -135,11 +136,14 @@ public class PlayerMove : MonoBehaviour
 	{
 		//are we grounded
 		grounded = IsGrounded ();
-		//move, rotate, manage speed
-		characterMotor.MoveTo (moveDirection, curAccel, 0.7f, true);
-		if (rotateSpeed != 0 && direction.magnitude != 0)
-			characterMotor.RotateToDirection (moveDirection , curRotateSpeed * 5, true);
-		characterMotor.ManageSpeed (curDecel, maxSpeed + movingObjSpeed.magnitude, true);
+        if (canPlayerMove == true)
+        {
+            //move, rotate, manage speed
+            characterMotor.MoveTo(moveDirection, curAccel, 0.7f, true);
+            if (rotateSpeed != 0 && direction.magnitude != 0)
+                characterMotor.RotateToDirection(moveDirection, curRotateSpeed * 5, true);
+            characterMotor.ManageSpeed(curDecel, maxSpeed + movingObjSpeed.magnitude, true);
+        }
 		//set animation values
 		if(animator)
 		{

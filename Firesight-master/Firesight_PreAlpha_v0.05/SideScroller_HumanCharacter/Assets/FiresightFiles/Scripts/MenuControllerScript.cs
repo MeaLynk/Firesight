@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
+using UnityEngine.UI;
 
 public class MenuControllerScript : MonoBehaviour
 {
-    public enum MenuStates { TRANSITION, START, MAINMENU } //Transition may be removed depending if needed
+    public enum MenuStates { START, MAINMENU, OPTIONS, LEVELSELECT, SHOWUI } //0 start, 1 mainmenu, 2 options, 3 level select
 
     public GameObject menuFireball = null;
     public GameObject areYouSurePopUp = null; //Prob gonna get rid of this or rework it
     public Camera mainCamera = null;
     public Transform camTar;
-    [Header("Must Have 2 values. (For now)")]
-    public Vector3[] camTarPos; //0 = start, 1 = mainMenu
+    public AudioClip buttonClickSFX;
+    [Header("Must Have 4 values. (For now)")]
+    public Vector3[] camTarPos; //0 start, 1 mainmenu, 2 options, 3 level select
 
     private bool isPossibleQuit;
+    private AudioSource sfxPlayer;
     private MenuStates currentMenu = MenuStates.START;
+
+    //Show UI stuff
+    private MenuStates storedState;
+    private GameObject currentImage;
+    private string currentLevel = "FireSightLevel1";
 
     public MenuStates GetCurrentMenu() { return currentMenu; }
 
@@ -25,9 +32,6 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     void Start()
     {
-        isPossibleQuit = false;
-        Cursor.visible = false;
-
         if (areYouSurePopUp == null)
         {
             areYouSurePopUp = GameObject.Find("AreYouSure"); 
@@ -43,6 +47,9 @@ public class MenuControllerScript : MonoBehaviour
             menuFireball = GameObject.FindGameObjectWithTag("MainCamera");
         }
 
+        isPossibleQuit = false;
+        Cursor.visible = false;
+        sfxPlayer = mainCamera.GetComponent<AudioSource>();
         camTar.position = camTarPos[0];
     }
 
@@ -66,12 +73,21 @@ public class MenuControllerScript : MonoBehaviour
         menuFireball.GetComponent<Transform>().position = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 8));
 
         //Menu States else if
-        if(currentMenu == MenuStates.START)
+        if (currentMenu == MenuStates.START)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 camTar.position = camTarPos[1];
                 currentMenu = MenuStates.MAINMENU;
+                sfxPlayer.PlayOneShot(buttonClickSFX);
+            }
+        }
+        else if(currentMenu == MenuStates.SHOWUI)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                currentMenu = storedState;
+                currentImage.SetActive(false);
             }
         }
     }
@@ -79,12 +95,49 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     // Used when the user presses the start button
     //---------------------------------------------------------//
-    public void LoadLevel(string levelName)
+    public void LoadLevel()
     {
-        SceneManager.LoadScene(levelName);
-        Cursor.visible = true;
-        Debug.Log("Level " + levelName + " loaded.");
+        sfxPlayer.PlayOneShot(buttonClickSFX);
+        SceneManager.LoadScene(currentLevel);
+        //Cursor.visible = true;
+        Debug.Log("Level " + currentLevel + " loaded.");
     }
+
+    //---------------------------------------------------------//
+    // Changes Scene
+    //---------------------------------------------------------//
+    public void ChangeScene(int newLevelStateInt)
+    {
+        sfxPlayer.PlayOneShot(buttonClickSFX);
+        MenuStates newMenuState = (MenuStates)newLevelStateInt;
+        currentMenu = newMenuState;
+
+        if(newMenuState == MenuStates.MAINMENU)
+        {
+            camTar.position = camTarPos[1];
+        }
+        else if(newMenuState == MenuStates.OPTIONS)
+        {
+            camTar.position = camTarPos[2];
+        }
+        else if(newMenuState == MenuStates.LEVELSELECT)
+        {
+            camTar.position = camTarPos[3];
+        }
+    }
+
+    //---------------------------------------------------------//
+    // Shows UI
+    //---------------------------------------------------------//
+    public void ShowUI(GameObject showUIObject)
+    {
+        storedState = currentMenu;
+        currentMenu = MenuStates.SHOWUI;
+        currentImage = showUIObject;
+
+        currentImage.SetActive(true);
+    }
+
 
     //---------------------------------------------------------//
     // Used when the user presses the quit button
@@ -114,6 +167,7 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     public void EngageQuit()
     {
+        sfxPlayer.PlayOneShot(buttonClickSFX);
         Application.Quit();
         Debug.Log("Quit Game");
     }
@@ -121,6 +175,6 @@ public class MenuControllerScript : MonoBehaviour
     //Debug stuff
     private void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 80, 30), currentMenu.ToString());
+        GUI.Box(new Rect(10, 10, 150, 30), "Menu State:" + currentMenu.ToString());
     }
 }
