@@ -82,7 +82,7 @@ public class MenuControllerScript : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Debug.Log("Level " + levelName + " loaded.");
     }
 
@@ -115,6 +115,7 @@ public class MenuControllerScript : MonoBehaviour
     public void EngageQuit()
     {
         Application.Quit();
+        Debug.Log("Quit Game");
     }
 
     //Debug stuff

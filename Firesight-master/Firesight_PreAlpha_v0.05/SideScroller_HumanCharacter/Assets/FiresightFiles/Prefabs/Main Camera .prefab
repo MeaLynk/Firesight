@@ -180,10 +180,10 @@ MonoBehaviour:
   target: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: -7.5}
   lockRotation: 0
-  followSpeed: 10
+  followSpeed: 5
   inputRotationSpeed: 0
   mouseFreelook: 0
-  rotateDamping: 5
+  rotateDamping: 1
   waterFilter: {fileID: 0}
   avoidClippingTags: []
   isPlayerInUse: 1

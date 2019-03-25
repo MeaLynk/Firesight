@@ -46,10 +46,5 @@ public class MenuOnClick : MonoBehaviour
             gameObject.GetComponentInChildren<TextMeshPro>().color = defaultColor;
         }
     }
-
-    private void OnGUI()
-    {
-        GUI.Box(new Rect(10, 50, 80, 30), isInArea.ToString());
-    }
 }
 

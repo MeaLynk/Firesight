@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class KillFireScript : MonoBehaviour {
 
-    public GameObject player;
+    public GameObject player = null;
     public AudioClip killedFireballSFX;
+
+    private void Start()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+    }
+
+    private void Update()
+    {
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
