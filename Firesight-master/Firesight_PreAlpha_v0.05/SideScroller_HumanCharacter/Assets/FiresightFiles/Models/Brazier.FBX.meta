@@ -11,7 +11,37 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Brazier
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #590'
+    second: {fileID: 2100000, guid: d8782abf607c2c5408965e8bef9592fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #629'
+    second: {fileID: 2100000, guid: 4272d2351f2d02a4bb232c6e6794666f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #642'
+    second: {fileID: 2100000, guid: 066ed8160690d504785665711325ef1d, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coal
+    second: {fileID: 2800000, guid: 9da2283891e65a9489db59d5bf32e953, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: IronAlbedo
+    second: {fileID: 2800000, guid: 38b0d9f3f65784045b11d4e3558e1e64, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Stone_Slab
+    second: {fileID: 2800000, guid: 7dd4d12379f78b241bc7969dab1a4193, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

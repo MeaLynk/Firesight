@@ -526,7 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectWithAnimation: {fileID: 1467931409257848}
   panTarget: {fileID: 0}
-  timeBeforeActivation: 0.01
+  timeBeforeActivation: 0.25
   isPan: 0
   cFollow: {fileID: 0}
   doesControlGoBackToPlayer: 0
