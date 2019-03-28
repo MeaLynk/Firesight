@@ -6,6 +6,7 @@ public class TriggerScript : MonoBehaviour
     [Header("Use 'Trigger' for the name of the trigger in Animator")]
     public GameObject objectWithAnimation;
     public bool doesAnimationObjectHaveSound;
+    public bool doesAnimationObjectHaveHint;
     public CameraFollow cFollow;
 
     public bool isActivated = false;
@@ -29,7 +30,8 @@ public class TriggerScript : MonoBehaviour
             {
                 objectWithAnimation.GetComponent<Animator>().SetTrigger("Trigger");
                 objectWithAnimation.GetComponent<Animator>().Play("DoorOpen");
-                objectWithAnimation.GetComponent<Hint>().hintUsed = true;
+                if (doesAnimationObjectHaveHint)
+                    objectWithAnimation.GetComponent<Hint>().hintUsed = true;
                 if (doesAnimationObjectHaveSound)
                     objectWithAnimation.GetComponent<AudioSource>().Play();
 

@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FiresightFiles/Scenes/FireSightLevel1.unity
     guid: 2ea2669edddb30841a4f853f0eb825e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/FiresightFiles/Scenes/FireSightLevel2.unity
     guid: abc37224bc7743a4a9bdaca61c6ff142
   m_configObjects: {}

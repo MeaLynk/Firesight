@@ -75,6 +75,7 @@ public class Hint : MonoBehaviour
             hintTimer += Time.deltaTime;
             player.GetComponent<Rigidbody>().Sleep();
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
+            player.GetComponent<FireScript>().enabled = false;
             if (hintTimer >= 5.5f)
             {
                 player.GetComponent<Rigidbody>().WakeUp();
@@ -86,6 +87,7 @@ public class Hint : MonoBehaviour
                 cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
                 cFollow.followSpeed = 10;
                 cameraPanned = false;
+                player.GetComponent<FireScript>().enabled = true;
             }
         }
         else if (showHint && hintType == HintType.TRAP_DOOR)
@@ -149,38 +151,38 @@ public class Hint : MonoBehaviour
             style.alignment = TextAnchor.MiddleCenter;
             style.font = (Font)Resources.Load("Enchanted Land");
             style.fixedHeight = 0.5f;
-            style.normal.textColor = Color.black;
+            style.normal.textColor = Color.white;
             //Texture scrollTex = (Texture)Resources.Load("backgroundtext");
 
             if (hintType == HintType.LOCKED_DOOR && !hintUsed)
             {
                // GUI.DrawTexture(new Rect(600, Screen.height - 190, Screen.width - 1200, 160), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This door appears to be locked.\r\nMaybe my fireball could be used to\r\nopen it.", style);
+                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This door appears to be locked. Maybe my fireball could be used to open it.", style);
             }
             else if (hintType == HintType.DANGER_AHEAD && !hintUsed)
             {
               //  GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "I better watch my step,\r\nThis place could be booby trapped!", style);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "I better watch my step, This place could be booby trapped!", style);
             }
             else if (hintType == HintType.PYRE && !hintUsed)
             {
               //  GUI.DrawTexture(new Rect(200, Screen.height - 180, Screen.width - 400, 160), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This is a pyre, when you walk near it, it will light up.\r\nThey serve as checkpoints when you perish. Good Luck!", style);
+                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This is a pyre, when you walk near it, it will light up. They serve as checkpoints when you perish. Good Luck!", style);
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
             {
                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "It's always a good idea\r\nto look for things that can be burnt!", style);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "It's always a good idea to look for things that can be burnt!", style);
             }
             else if (hintType == HintType.TRAP_DOOR && !hintUsed)
             {
                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "My fireball might be able to get\r\nto areas I can't fit...", style);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "My fireball might be able to get to areas I can't fit...", style);
             }
             else if (hintType == HintType.LOOK_AHEAD && !hintUsed)
             {
                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "That's a long drop, I better\r\nuse my fireball to look ahead...", style);
+                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "That's a long drop, I better use my fireball to look ahead...", style);
             }
         }
     }

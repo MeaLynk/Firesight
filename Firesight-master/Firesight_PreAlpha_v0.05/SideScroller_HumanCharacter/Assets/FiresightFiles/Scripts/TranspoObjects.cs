@@ -66,7 +66,7 @@ public class TranspoObjects : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         isPlayerInRange = false;
-        //gameObject.GetComponent<Renderer>().material.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1);
+        gameObject.GetComponent<Renderer>().material.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1);
         //Debug.Log("Player left object range");
     }
 
