@@ -58,10 +58,13 @@ public class Hint : MonoBehaviour
         }
         else if (showHint && hintType == HintType.PYRE)
         {
-            player.GetComponent<Rigidbody>().Sleep();
-            player.GetComponent<PlayerMove>().enabled = false;
-            player.GetComponent<PlayerMove>().animator.enabled = false;
-            
+            hintTimer += Time.deltaTime;
+            if (hintTimer >= 4.0f)
+            {
+                hintUsed = true;
+                hintTimer = 0.0f;
+                showHint = false;
+            }
         }
         else if (showHint && hintType == HintType.BURNABLE_STRUCTURE)
         {
@@ -70,7 +73,14 @@ public class Hint : MonoBehaviour
             cFollow.target = panTarget.transform;
             cameraPanned = true;
             hintTimer += Time.deltaTime;
-            if (hintTimer >= 4.0f)
+            player.GetComponent<Rigidbody>().Sleep();
+            player.GetComponent<PlayerMove>().isPlayerInControl = false;
+            if (hintTimer >= 4.75f)
+            {
+                player.GetComponent<Rigidbody>().WakeUp();
+                player.GetComponent<PlayerMove>().isPlayerInControl = true;
+            }
+            if (hintTimer >= 5.0f)
             {
                 hintUsed = true;
                 hintTimer = 0.0f;
@@ -140,10 +150,10 @@ public class Hint : MonoBehaviour
             GUIStyle style = new GUIStyle();
             style.fontSize = 42;
             style.alignment = TextAnchor.MiddleCenter;
-            style.font = (Font)Resources.Load("HintFont");
+            style.font = (Font)Resources.Load("Enchanted Land");
             style.fixedHeight = 0.5f;
-            style.normal.textColor = Color.black;
-            Texture scrollTex = (Texture)Resources.Load("ScrollTexture");
+            style.normal.textColor = Color.white;
+            Texture scrollTex = (Texture)Resources.Load("backgroundtext");
 
             if (hintType == HintType.LOCKED_DOOR && !hintUsed)
             {
@@ -157,18 +167,8 @@ public class Hint : MonoBehaviour
             }
             else if (hintType == HintType.PYRE && !hintUsed)
             {
-                style.fontSize = 34;
                 GUI.DrawTexture(new Rect(200, Screen.height - 180, Screen.width - 400, 160), scrollTex);
                 GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This is a pyre, when you walk near it, it will light up.\r\nThey serve as checkpoints when you perish. Good Luck!", style);
-                if (GUI.Button(new Rect((Screen.width / 2) - 20, Screen.height - 70, 50, 30), "Okay!"))
-                {
-                    hintUsed = true;
-                    hintTimer = 0.0f;
-                    showHint = false;
-                    player.GetComponent<Rigidbody>().WakeUp();
-                    player.GetComponent<PlayerMove>().enabled = true;
-                    player.GetComponent<PlayerMove>().animator.enabled = true;
-                }
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
             {

@@ -2,29 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillFireScript : MonoBehaviour {
+public class KillFireScript : MonoBehaviour
+{
 
-    public GameObject player = null;
+    private GameObject player;
     public AudioClip killedFireballSFX;
-
-
 
     private void Start()
     {
-        if(player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Fireball")
+        if (other.tag == "Fireball")
         {
             if (gameObject.GetComponent<AudioSource>())
             {

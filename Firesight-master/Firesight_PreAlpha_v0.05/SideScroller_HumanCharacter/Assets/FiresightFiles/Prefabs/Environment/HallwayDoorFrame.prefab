@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 33035153780756648}
   - component: {fileID: 23322280972045156}
   - component: {fileID: 95957569368732882}
+  - component: {fileID: 65695733843425316}
+  - component: {fileID: 114161693731486446}
   m_Layer: 0
   m_Name: DoorHinges
   m_TagString: Untagged
@@ -107,9 +109,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863498160318822}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 172.5, y: -63, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 165, y: -63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4453539722295156}
   - {fileID: 4711504499291950}
@@ -439,6 +441,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4a46ceec773e8864c81230e318f45fab, type: 3}
+--- !u!65 &65695733843425316
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228558487619226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6459982, y: 4.700001, z: 4.7000017}
+  m_Center: {x: 5.472616, y: -0.00000047683716, z: 2.8500023}
 --- !u!95 &95957569368732882
 Animator:
   serializedVersion: 3
@@ -457,3 +471,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114161693731486446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228558487619226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b7be2836ce69e4ca8a181a23b36de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintType: 0
+  hintUsed: 0
+  showHint: 0
+  IsPan: 0
+  panTarget: {fileID: 0}

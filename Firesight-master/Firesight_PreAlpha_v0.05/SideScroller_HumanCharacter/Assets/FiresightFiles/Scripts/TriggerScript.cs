@@ -8,14 +8,16 @@ public class TriggerScript : MonoBehaviour
     public GameObject panTarget;
     public float timeBeforeActivation = 0;
     public bool isPan;
-    public CameraFollow cFollow;
     public bool doesControlGoBackToPlayer;
+    public CameraFollow cFollow;
+    public float panDelay = 0.0f;
 
-    private bool isActivated = false;
+    public bool isActivated = false;
     private bool hasActivated = false;
     private bool startPan;
     private float currentTime = 0;
     private float panTimer;
+    public float newTimer = 0.0f;
 
     // Use this for initialization
     void Start()
@@ -30,18 +32,21 @@ public class TriggerScript : MonoBehaviour
     {
         if (isActivated == true && hasActivated == false)
         {
-            startPan = true;
+            if (isPan)
+                startPan = true;
             if (currentTime >= timeBeforeActivation)
             {
                 objectWithAnimation.GetComponent<Animator>().SetTrigger("Trigger");
                 hasActivated = true;
+                objectWithAnimation.GetComponent<Hint>().hintUsed = true;
             }
             else
             {
                 currentTime += Time.deltaTime;
             }
         }
-        if (startPan && isPan == true)
+
+        if (startPan)
         {
             cFollow.followSpeed = 1.5f;
             cFollow.target = panTarget.transform;
@@ -56,11 +61,10 @@ public class TriggerScript : MonoBehaviour
                 fireScript.enabled = false;
             }
 
-            panTimer += Time.deltaTime;
 
-            if (panTimer >= 4.0f)
+            if (panTimer >= panDelay)
             {
-                if (doesControlGoBackToPlayer)
+                if (doesControlGoBackToPlayer && isPan)
                 {
                     cFollow.followSpeed = 1.5f;
                     cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;

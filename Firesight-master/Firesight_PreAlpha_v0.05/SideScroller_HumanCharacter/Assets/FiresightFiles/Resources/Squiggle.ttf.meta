@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e65806d782491d4ab5d3dec64314831
+guid: 84d4ddb13c2215649899f85530792362
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: White On Black
+  fontName: Sketch Gothic School
   fontNames:
-  - White On Black
+  - HintFont
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
