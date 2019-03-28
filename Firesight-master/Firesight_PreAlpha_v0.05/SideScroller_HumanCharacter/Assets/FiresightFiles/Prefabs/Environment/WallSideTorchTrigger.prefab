@@ -272,14 +272,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108126957332266}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 180, y: -48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4278147575707974}
   - {fileID: 4644892119486512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!4 &4787142355474158
 Transform:
   m_ObjectHideFlags: 1
@@ -547,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectWithAnimation: {fileID: 0}
   doesAnimationObjectHaveSound: 1
+  doesAnimationObjectHaveHint: 0
   cFollow: {fileID: 0}
   isActivated: 0
   hasBeenActivatedAlready: 0
