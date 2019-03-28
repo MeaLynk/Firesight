@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PyreScript : MonoBehaviour {
+public class PyreScript : MonoBehaviour
+{
 
     public bool isPyreOn = false;
     public GameObject pyreParticles;
-    public AudioClip triggerSFX;
+    public AudioSource audioSource;
+    public AudioClip lightingSound;
+    public AudioClip fireBlazingSound;
 
     private GameObject gameWorld;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         pyreParticles.SetActive(false);
 
@@ -31,12 +32,14 @@ public class PyreScript : MonoBehaviour {
     //Player triggers checkpoint
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && isPyreOn == false)
+        if (other.tag == "Player" && isPyreOn == false)
         {
             isPyreOn = true;
             pyreParticles.SetActive(true);
             gameWorld.GetComponent<CheckpointManager>().ActivateCheckpoint(gameObject);
-            gameWorld.GetComponent<PauseGame>().player.GetComponent<FireScript>().SFXPlayer.PlayOneShot(triggerSFX);
+            audioSource.PlayOneShot(lightingSound);
+            audioSource.clip = fireBlazingSound;
+            audioSource.PlayDelayed(2.0f);
         }
     }
 }

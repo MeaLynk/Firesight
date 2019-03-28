@@ -95,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 1662014906474008}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 157.5, y: -81, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4962470114985704}
   - {fileID: 4886509205427124}
@@ -410,7 +410,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -527,9 +527,14 @@ MonoBehaviour:
   objectWithAnimation: {fileID: 1467931409257848}
   panTarget: {fileID: 0}
   timeBeforeActivation: 0.25
+  panDelay: 0
+  hasCameraMoveDelay: 0
   isPan: 0
-  cFollow: {fileID: 0}
   doesControlGoBackToPlayer: 0
+  doesAnimationObjectHaveSound: 0
+  cFollow: {fileID: 0}
+  isActivated: 0
+  newTimer: 0
 --- !u!114 &114030426827740762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -559,7 +564,7 @@ MonoBehaviour:
   collisionEnter: 1
   effectedTags:
   - Player
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: f40f27597790e4b448f47b212651f6ce, type: 3}
 --- !u!114 &114538578768126858
 MonoBehaviour:
   m_ObjectHideFlags: 1

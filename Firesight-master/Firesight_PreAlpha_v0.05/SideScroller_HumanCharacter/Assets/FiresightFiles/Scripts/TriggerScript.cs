@@ -5,86 +5,47 @@ public class TriggerScript : MonoBehaviour
 
     [Header("Use 'Trigger' for the name of the trigger in Animator")]
     public GameObject objectWithAnimation;
-    public GameObject panTarget;
-    public float timeBeforeActivation = 0;
-    public bool isPan;
-    public bool doesControlGoBackToPlayer;
+    public bool doesAnimationObjectHaveSound;
     public CameraFollow cFollow;
-    public float panDelay = 0.0f;
 
     public bool isActivated = false;
-    private bool hasActivated = false;
-    private bool startPan;
-    private float currentTime = 0;
-    private float panTimer;
-    public float newTimer = 0.0f;
+    public bool hasBeenActivatedAlready = false;
+    public float delayTimer = 0.0f;
+    public float delayTime = 0.0f;
 
     // Use this for initialization
     void Start()
     {
         cFollow = Camera.main.GetComponent<CameraFollow>();
-        panTimer = 0.0f;
-        startPan = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isActivated == true && hasActivated == false)
+        if (isActivated && !hasBeenActivatedAlready)
         {
-            if (isPan)
-                startPan = true;
-            if (currentTime >= timeBeforeActivation)
+            delayTimer += Time.deltaTime;
+            if (delayTimer >= delayTime)
             {
                 objectWithAnimation.GetComponent<Animator>().SetTrigger("Trigger");
-                hasActivated = true;
+                objectWithAnimation.GetComponent<Animator>().Play("DoorOpen");
                 objectWithAnimation.GetComponent<Hint>().hintUsed = true;
-            }
-            else
-            {
-                currentTime += Time.deltaTime;
-            }
-        }
+                if (doesAnimationObjectHaveSound)
+                    objectWithAnimation.GetComponent<AudioSource>().Play();
 
-        if (startPan)
-        {
-            cFollow.followSpeed = 1.5f;
-            cFollow.target = panTarget.transform;
-            if (doesControlGoBackToPlayer)
-            {
-                FireScript fireScript = GameObject.FindGameObjectWithTag("Player").GetComponent<FireScript>();
-                fireScript.QuitFireball();
-            }
-            else
-            {
-                FireScript fireScript = GameObject.FindGameObjectWithTag("Player").GetComponent<FireScript>();
-                fireScript.enabled = false;
-            }
+                delayTimer = 0.0f;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<FireScript>().QuitFireball();
 
+                cFollow.followSpeed = 1.0f;
+                cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
+                cFollow.followSpeed = 10;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<FireScript>().enabled = true;
 
-            if (panTimer >= panDelay)
-            {
-                if (doesControlGoBackToPlayer && isPan)
-                {
-                    cFollow.followSpeed = 1.5f;
-                    cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
-                    cFollow.followSpeed = 10;
-                    startPan = false;
-                }
-                else
-                {
-                    cFollow.followSpeed = 1.5f;
-                    cFollow.target = GameObject.FindGameObjectWithTag("Fireball").transform;
-                    cFollow.followSpeed = 10;
-                    startPan = false;
-                    FireScript fireScript = GameObject.FindGameObjectWithTag("Player").GetComponent<FireScript>();
-                    fireScript.enabled = true;
-                }
+                hasBeenActivatedAlready = true;
             }
         }
     }
 
-    //Triggers animation
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Fireball")
