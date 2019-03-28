@@ -63,7 +63,7 @@ public class TriggerScript : MonoBehaviour
                 if (doesControlGoBackToPlayer)
                 {
                     cFollow.followSpeed = 1.5f;
-                    cFollow.target = GameObject.FindGameObjectWithTag("Player").transform;
+                    cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
                     cFollow.followSpeed = 10;
                     startPan = false;
                 }

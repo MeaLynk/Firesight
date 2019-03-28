@@ -7,6 +7,8 @@ public class KillFireScript : MonoBehaviour {
     public GameObject player = null;
     public AudioClip killedFireballSFX;
 
+
+
     private void Start()
     {
         if(player == null)
