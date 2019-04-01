@@ -209,6 +209,6 @@ public class MenuControllerScript : MonoBehaviour
     //Debug stuff
     private void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 150, 30), "Menu State:" + currentMenu.ToString());
+        //GUI.Box(new Rect(10, 10, 150, 30), "Menu State:" + currentMenu.ToString());
     }
 }

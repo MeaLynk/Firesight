@@ -76,7 +76,7 @@ public class Hint : MonoBehaviour
             player.GetComponent<Rigidbody>().Sleep();
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
             player.GetComponent<FireScript>().enabled = false;
-            if (hintTimer >= 5.5f)
+            if (hintTimer >= 5.5f || Input.GetKeyDown(KeyCode.Space)) //Input space so player can skip it
             {
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
@@ -144,7 +144,7 @@ public class Hint : MonoBehaviour
     //--------------------------------------------------------------------
     private void OnGUI()
     {
-        if (showHint)
+        if (showHint) //GUI IS FOR DEBUG, NOT UI. next time use canvases for UI
         {
             GUIStyle style = new GUIStyle();
             style.fontSize = 42;
