@@ -5644,19 +5644,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1424557076370672, guid: 84859512eed8b0c48b57abfe1d195a60,
     type: 2}
   m_PrefabInternal: {fileID: 1591015339}
---- !u!136 &79284498
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 79284497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.85
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!4 &79284509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4237983724310830, guid: 84859512eed8b0c48b57abfe1d195a60,
@@ -36795,35 +36782,7 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1224094407}
-    - target: {fileID: 114662997379578270, guid: 84859512eed8b0c48b57abfe1d195a60,
-        type: 2}
-      propertyPath: slideAmount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114662997379578270, guid: 84859512eed8b0c48b57abfe1d195a60,
-        type: 2}
-      propertyPath: slopeLimit
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 65807330621400038, guid: 84859512eed8b0c48b57abfe1d195a60,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445787306933650, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.0011848755
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445787306933650, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.83044153
-      objectReference: {fileID: 0}
-    - target: {fileID: 4445787306933650, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.051750164
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 65826283755914946, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1593664591

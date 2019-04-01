@@ -5,7 +5,9 @@ public class TriggerScript : MonoBehaviour
 
     [Header("Use 'Trigger' for the name of the trigger in Animator")]
     public GameObject objectWithAnimation;
+    [Header("Does object have sound")]
     public bool doesAnimationObjectHaveSound;
+    [Header("Does object have hint")]
     public bool doesAnimationObjectHaveHint;
     public CameraFollow cFollow;
 
