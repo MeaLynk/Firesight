@@ -18,6 +18,7 @@ public class FireScript : MonoBehaviour
     private bool isPlayerInControl;
     private float fireBurnOutTimer;
     private float fireBallLightPower = 0;
+    private float storedParticleSize;
     private GameObject currentPlayableFirePrefab;
     private Vector3 fireDirection;
 
@@ -39,6 +40,7 @@ public class FireScript : MonoBehaviour
             cameraTarget = player;
         }
 
+        storedParticleSize = playableFirePrefab.GetComponentInChildren<ParticleSystem>().startSize;
         camera.GetComponent<CameraFollow>().target = cameraTarget.transform;
         fireBallLightPower = playableFirePrefab.GetComponentInChildren<Light>().intensity;
     }
@@ -178,7 +180,7 @@ public class FireScript : MonoBehaviour
         //Changes power of light to signal how much time is left in the fireball
         float temp = ((fireBurnOutTimerLength - fireBurnOutTimer) / fireBurnOutTimerLength);
 
-
+        currentPlayableFirePrefab.GetComponentInChildren<ParticleSystem>().startSize = temp * storedParticleSize;
         currentPlayableFirePrefab.GetComponentInChildren<Light>().intensity = temp * fireBallLightPower;
         
 

@@ -22795,6 +22795,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198175647616742844, guid: 3f9a642169305e84485fc0cc468d9398,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9a642169305e84485fc0cc468d9398, type: 2}
   m_IsPrefabAsset: 0
@@ -36782,6 +36787,11 @@ Prefab:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1224094407}
+    - target: {fileID: 114444095498306064, guid: 84859512eed8b0c48b57abfe1d195a60,
+        type: 2}
+      propertyPath: showDebugUI
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84859512eed8b0c48b57abfe1d195a60, type: 2}
   m_IsPrefabAsset: 0
