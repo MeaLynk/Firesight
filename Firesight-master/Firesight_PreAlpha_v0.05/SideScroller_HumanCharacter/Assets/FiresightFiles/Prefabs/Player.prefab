@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 65807330621400038}
   - component: {fileID: 114131389192498666}
   - component: {fileID: 114444095498306064}
-  - component: {fileID: 136511756324909082}
+  - component: {fileID: 136857176931606570}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2914,10 +2914,11 @@ MonoBehaviour:
   camera: {fileID: 0}
   player: {fileID: 1730954237447274}
   cameraTarget: {fileID: 1383080093807032}
+  fireballMaterial: {fileID: 2100000, guid: 3349fc02d104e2b458470ec533f51c16, type: 2}
   SFXPlayer: {fileID: 82183405322499256}
   maxFireVelocity: 10
   fireBurnOutTimerLength: 15
-  showDebugUI: 0
+  showDebugUI: 1
   firePos: {x: 0, y: 2, z: 0}
 --- !u!114 &114662997379578270
 MonoBehaviour:
@@ -3020,7 +3021,7 @@ MonoBehaviour:
   sidescroller: 1
   currentSpeed: {x: 0, y: 0, z: 0}
   DistanceToTarget: 0
---- !u!136 &136511756324909082
+--- !u!136 &136857176931606570
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

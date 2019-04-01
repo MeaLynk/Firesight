@@ -8,9 +8,8 @@ public class TranspoObjects : MonoBehaviour {
     public float fadeSpeed = 1.0f;
     [Header("OBJECT WITH SCRIPT MUST HAVE MESH RENDERER IF TRUE.")]
     public bool affectChildObjects = false;
-    [Header("0.0 = Transparent, 1.0 = Solid")]
-    public float maxTranspo = 0.0f;
 
+    private float maxTranspo = 0.0f;
     private Renderer[] childObjects;
     private bool isPlayerInRange = false;
     private bool isProgressChanged = false;
@@ -29,17 +28,16 @@ public class TranspoObjects : MonoBehaviour {
             childObjects = gameObject.GetComponentsInChildren<Renderer>();
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         isProgressChanged = false;
-
         transpoTimer();
 
-        if(isProgressChanged == true)
+        if (isProgressChanged == true)
         {
-            if(affectChildObjects == true)
+            if (affectChildObjects == true)
             {
                 //Affects all child objects and parent with script applied
                 for (int i = 0; i < gameObject.transform.childCount + 1; i++)
@@ -53,21 +51,14 @@ public class TranspoObjects : MonoBehaviour {
                 gameObject.GetComponent<Renderer>().material.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, transpoProgress);
             }
         }
-	}
+    }
+    
 
     //Player enters range
     private void OnTriggerEnter(Collider other)
     {
         isPlayerInRange = true;
         //Debug.Log("Player in object range");
-    }
-
-    //Player exits range
-    private void OnTriggerExit(Collider other)
-    {
-        isPlayerInRange = false;
-        gameObject.GetComponent<Renderer>().material.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1);
-        //Debug.Log("Player left object range");
     }
 
     //Timer for transpo
@@ -81,25 +72,25 @@ public class TranspoObjects : MonoBehaviour {
 
             if(transpoProgress <= maxTranspo)
             {
-                transpoProgress = maxTranspo;
+                gameObject.GetComponent<TranspoObjects>().enabled = false;
             }
         }
-        else if(isPlayerInRange == false && transpoProgress < 1)
-        {
-            currentTranspoTimer += Time.deltaTime;
-            transpoProgress = currentTranspoTimer / fadeSpeed;
-            isProgressChanged = true;
+        //else if(isPlayerInRange == false && transpoProgress < 1)
+        //{
+        //    currentTranspoTimer += Time.deltaTime;
+        //    transpoProgress = currentTranspoTimer / fadeSpeed;
+        //    isProgressChanged = true;
 
-            if (transpoProgress >= 1)
-            {
-                transpoProgress = 1;
-            }
-        }
+        //    if (transpoProgress >= 1)
+        //    {
+        //        transpoProgress = 1;
+        //    }
+        //}
     }
 
     //Debug UI
-    private void OnGUI()
-    {
-        //GUI.Box(new Rect(10, 250, 120, 40), "Transpo Progress:\n" + transpoProgress);
-    }
+    //private void OnGUI()
+    //{
+    //    //GUI.Box(new Rect(10, 250, 120, 40), "Transpo Progress:\n" + transpoProgress);
+    //}
 }

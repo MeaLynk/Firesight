@@ -5,16 +5,15 @@ public class TriggerScript : MonoBehaviour
 
     [Header("Use 'Trigger' for the name of the trigger in Animator")]
     public GameObject objectWithAnimation;
-    [Header("Does object have sound")]
     public bool doesAnimationObjectHaveSound;
-    [Header("Does object have hint")]
     public bool doesAnimationObjectHaveHint;
     public CameraFollow cFollow;
-
-    public bool isActivated = false;
-    public bool hasBeenActivatedAlready = false;
-    public float delayTimer = 0.0f;
     public float delayTime = 0.0f;
+
+    //make varibles like these that only change in the code private so this can't be messed with in unity
+    private bool hasBeenActivatedAlready = false;
+    private float delayTimer = 0.0f;
+    private bool isActivated = false;
 
     // Use this for initialization
     void Start()
@@ -52,16 +51,16 @@ public class TriggerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Fireball")
-        {
-            isActivated = true;
-        }
-
-        else if (other.tag == "Player")
+        if (other.tag == "Fireball" || other.tag == "Player")
         {
             isActivated = true;
         }
     }
 
-    //maybe add reset here if it is needed
+    public void ResetAnims()
+    {
+        isActivated = false;
+        hasBeenActivatedAlready = false; //isn't this a duplicate var?
+        delayTimer = 0;
+    }
 }

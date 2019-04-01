@@ -67,8 +67,8 @@ public class PressurePlate : MonoBehaviour
         gameObject.GetComponent<Transform>().position = startingPos;
         gameObject.GetComponent<Collider>().enabled = true;
         lowerAmount = pressurePlateLowerAmount;
-        GetComponent<TriggerScript>().isActivated = false;
-        GetComponent<TriggerScript>().hasBeenActivatedAlready = false;
+        //GetComponent<TriggerScript>().isActivated = false;
+        //GetComponent<TriggerScript>().hasBeenActivatedAlready = false; //Gets called in death script
         GetComponent<PressurePlate>().isActivated = false;
         GetComponent<MeshCollider>().enabled = true;
     }

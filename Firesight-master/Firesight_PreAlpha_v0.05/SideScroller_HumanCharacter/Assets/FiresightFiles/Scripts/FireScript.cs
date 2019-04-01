@@ -14,8 +14,10 @@ public class FireScript : MonoBehaviour
     public float fireBurnOutTimerLength = 15.0f;
     public bool showDebugUI = false;
     public Vector3 firePos = new Vector3(0, 2, 0);
+
     private bool isPlayerInControl;
     private float fireBurnOutTimer;
+    private float fireBallLightPower = 0;
     private GameObject currentPlayableFirePrefab;
     private Vector3 fireDirection;
 
@@ -38,6 +40,7 @@ public class FireScript : MonoBehaviour
         }
 
         camera.GetComponent<CameraFollow>().target = cameraTarget.transform;
+        fireBallLightPower = playableFirePrefab.GetComponentInChildren<Light>().intensity;
     }
 
     // Update is called once per frame
@@ -83,7 +86,7 @@ public class FireScript : MonoBehaviour
     //Lets player control fireball
     private void ControlFireball()
     {
-        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target == currentPlayableFirePrefab.transform)
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target == currentPlayableFirePrefab.transform) 
         {
             fireBurnOutTimer += Time.deltaTime;
         }
@@ -172,13 +175,18 @@ public class FireScript : MonoBehaviour
 
         currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity = newVelocity;
 
+        //Changes power of light to signal how much time is left in the fireball
+        float temp = ((fireBurnOutTimerLength - fireBurnOutTimer) / fireBurnOutTimerLength);
+
+
+        currentPlayableFirePrefab.GetComponentInChildren<Light>().intensity = temp * fireBallLightPower;
+        
+
         //Checks if the player has more time to control the fireball
         if (fireBurnOutTimer >= fireBurnOutTimerLength)
         {
             QuitFireball();
         }
-
-
     }
 
     //Gets called to quit the fireball gameplay
@@ -204,6 +212,8 @@ public class FireScript : MonoBehaviour
         {
             GUI.Box(new Rect(10, 300, 120, 40), "Fireball velocity: \n" + currentPlayableFirePrefab.GetComponent<Rigidbody>().velocity.ToString());
             GUI.Box(new Rect(10, 350, 120, 40), "Burn Out Timer: \n" + ((int)fireBurnOutTimerLength - (int)fireBurnOutTimer).ToString());
+            GUI.Box(new Rect(10, 400, 120, 40), currentPlayableFirePrefab.GetComponentInChildren<Light>().intensity.ToString());
         }
+
     }
 }
