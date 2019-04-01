@@ -62,6 +62,7 @@ public class PauseGame : MonoBehaviour
 
             pauseCanvas.SetActive(true);
             storedVelocity = player.GetComponent<Rigidbody>().velocity;
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<PlayerMove>().enabled = false;
             player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             player.GetComponent<Health>().enabled = false;

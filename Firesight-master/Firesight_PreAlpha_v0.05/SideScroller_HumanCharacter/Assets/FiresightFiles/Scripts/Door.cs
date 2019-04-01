@@ -85,14 +85,14 @@ public class Door : MonoBehaviour
                     return true;
                 }
             }
-            else if (requirementObjects[i].tag == "Key")
-            {
-                if (!requirementObjects[i].GetComponent<Key>().isCollected)
-                {
-                    Debug.Log("Door is locked");
-                    return true;
-                }
-            }
+            //else if (requirementObjects[i].tag == "Key")
+            //{
+            //    if (!requirementObjects[i].GetComponent<Key>().isCollected)
+            //    {
+            //        Debug.Log("Door is locked");
+            //        return true;
+            //    }
+            //}
         }
         Debug.Log("Door Unlocked");
         return false;
