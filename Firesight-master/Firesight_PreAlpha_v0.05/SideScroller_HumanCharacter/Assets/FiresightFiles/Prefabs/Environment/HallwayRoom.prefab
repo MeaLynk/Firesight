@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33180475420976118}
   - component: {fileID: 23490415112837276}
   - component: {fileID: 64109725832502126}
+  - component: {fileID: 65616280370601852}
   m_Layer: 0
   m_Name: HallwayRoom
   m_TagString: Untagged
@@ -173,3 +174,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 46f66d3b196d1af438727c286007ed32, type: 3}
+--- !u!65 &65616280370601852
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822825674780260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.500003, y: 15.050006, z: 9.5037985}
+  m_Center: {x: -0.00000011920929, y: -3.7250018, z: 4.7481036}

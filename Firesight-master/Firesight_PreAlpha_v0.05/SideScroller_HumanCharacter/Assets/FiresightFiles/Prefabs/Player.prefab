@@ -2630,7 +2630,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730954237447274}
   m_LocalRotation: {x: -0, y: -0.025368659, z: -0, w: 0.9996782}
-  m_LocalPosition: {x: 0.0030862782, y: -0.469, z: 0.06223664}
+  m_LocalPosition: {x: 0.0030862782, y: 0, z: 0.06223664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4644192177648082}
@@ -2914,11 +2914,10 @@ MonoBehaviour:
   camera: {fileID: 0}
   player: {fileID: 1730954237447274}
   cameraTarget: {fileID: 1383080093807032}
-  fireballMaterial: {fileID: 2100000, guid: 3349fc02d104e2b458470ec533f51c16, type: 2}
   SFXPlayer: {fileID: 82183405322499256}
   maxFireVelocity: 10
   fireBurnOutTimerLength: 15
-  showDebugUI: 1
+  showDebugUI: 0
   firePos: {x: 0, y: 2, z: 0}
 --- !u!114 &114662997379578270
 MonoBehaviour:
