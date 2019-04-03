@@ -145,7 +145,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047293702348344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 127.5, y: -40.5, z: 7.5}
+=======
+  m_LocalPosition: {x: 3.2920303, y: 32.018543, z: 2.392715}
+>>>>>>> 20cd1ae456389d8d918fa31d8cbd1813535c8b5b
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808028798349098}
@@ -413,7 +417,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422160615560284}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 200
   simulationSpeed: 1
   stopAction: 0
   looping: 1
