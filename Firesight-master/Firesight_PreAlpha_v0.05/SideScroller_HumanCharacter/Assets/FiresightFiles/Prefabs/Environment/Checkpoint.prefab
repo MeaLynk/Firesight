@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4715400251686684}
   - component: {fileID: 65208143852341186}
   - component: {fileID: 114026074624973490}
-  - component: {fileID: 82498578064321050}
+  - component: {fileID: 82782991894753772}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Checkpoint
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047293702348344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 127.5, y: -40.5, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4808028798349098}
@@ -222,7 +222,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.5, y: 7.5, z: 7.5}
   m_Center: {x: 0, y: 3.75, z: -7.5}
---- !u!82 &82498578064321050
+--- !u!82 &82782991894753772
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,18 +231,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f8c53982f22b51e43a474560684898a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 0.94
-  MinDistance: 17.487305
-  MaxDistance: 30
+  DopplerLevel: 1
+  MinDistance: 9.801177
+  MaxDistance: 36.8
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -252,22 +252,40 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1.0057297
-      inSlope: 0
-      outSlope: 0
+      time: 0.41603845
+      value: 0.98991776
+      inSlope: -1.5310427
+      outSlope: -1.5310427
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -2.8142803
-      outSlope: -2.8142803
+      time: 0.68800765
+      value: 0.5254893
+      inSlope: -1.9751804
+      outSlope: -1.9751804
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.82601833
+      value: 0.24086487
+      inSlope: -1.2366537
+      outSlope: -1.2366537
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.2667584
+      outSlope: -1.2667584
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.86279505
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -286,13 +304,13 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.023256302
-      value: 0.48403084
+      time: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -316,7 +334,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95486165628921912
 Animator:
   serializedVersion: 3
@@ -385,7 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPyreOn: 0
   pyreParticles: {fileID: 1422160615560284}
-  audioSource: {fileID: 82498578064321050}
+  audioSource: {fileID: 82782991894753772}
   lightingSound: {fileID: 8300000, guid: 0298861fd235d6240b791ad4dde85360, type: 3}
   fireBlazingSound: {fileID: 8300000, guid: f8c53982f22b51e43a474560684898a0, type: 3}
 --- !u!198 &198039563259433398
