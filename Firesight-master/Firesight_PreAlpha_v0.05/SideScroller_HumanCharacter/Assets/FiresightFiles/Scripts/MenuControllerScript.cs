@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class MenuControllerScript : MonoBehaviour
@@ -19,11 +20,13 @@ public class MenuControllerScript : MonoBehaviour
     public Sprite[] levelImages;
     public GameObject levelImageObject;
     public TextMeshPro levelText;
-    
+    public Image fadeToBlackImage;
+    public float fadeTimer = 1;
 
     private bool isPossibleQuit;
     private AudioSource sfxPlayer;
     private MenuStates currentMenu = MenuStates.START;
+    private float currentFadeTimer;
 
     //Show UI stuff
     private MenuStates storedState;
@@ -97,11 +100,17 @@ public class MenuControllerScript : MonoBehaviour
         }
         else if(currentMenu == MenuStates.EXITING)
         {
-            if(mainCamera.gameObject.GetComponent<Transform>().position.z > 5)
+            if (currentFadeTimer <= 0)
             {
                 SceneManager.LoadScene(currentLevel);
                 //Cursor.visible = true;
                 Debug.Log("Level " + currentLevel + " loaded.");
+            }
+            else
+            {
+                currentFadeTimer -= Time.deltaTime;
+                float tempNewTranspo = ((fadeTimer - currentFadeTimer) / fadeTimer);
+                fadeToBlackImage.color = new Color(0, 0, 0, tempNewTranspo);
             }
         }
     }
@@ -135,6 +144,7 @@ public class MenuControllerScript : MonoBehaviour
         currentMenu = MenuStates.EXITING;
         camTar.position = camTarPos[4];
 
+        currentFadeTimer = fadeTimer;
     }
 
     //---------------------------------------------------------//

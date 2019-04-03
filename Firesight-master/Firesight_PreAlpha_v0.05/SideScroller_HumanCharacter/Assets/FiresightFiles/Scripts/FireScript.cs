@@ -7,7 +7,6 @@ public class FireScript : MonoBehaviour
     public GameObject fireObject;
     public GameObject playableFirePrefab;
     public GameObject camera;
-    public GameObject player;
     public GameObject cameraTarget;
     public AudioSource SFXPlayer;
     public float maxFireVelocity = 20f;
@@ -20,6 +19,7 @@ public class FireScript : MonoBehaviour
     private float fireBallLightPower = 0;
     private float storedParticleSize;
     private GameObject currentPlayableFirePrefab;
+    private GameObject player;
     private Vector3 fireDirection;
 
     public bool GetIsPlayerInControl() { return isPlayerInControl; }
@@ -29,11 +29,7 @@ public class FireScript : MonoBehaviour
     {
         fireBurnOutTimer = 0.0f;
         isPlayerInControl = true;
-
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
+        player = gameObject;
 
         if (cameraTarget == null)
         {
@@ -71,6 +67,8 @@ public class FireScript : MonoBehaviour
                 camera.GetComponent<CameraFollow>().target = currentPlayableFirePrefab.transform;
 
                 fireBurnOutTimer = 0.0f;
+
+                player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
         }
         else
@@ -205,6 +203,8 @@ public class FireScript : MonoBehaviour
         camera.GetComponent<CameraFollow>().target = cameraTarget.transform;
 
         fireBurnOutTimer = 0.0f;
+
+        player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
     }
 
     //Debug GUI
