@@ -30,7 +30,6 @@ GameObject:
   - component: {fileID: 54404003201090472}
   - component: {fileID: 114988023331575866}
   - component: {fileID: 114002482496066236}
-  - component: {fileID: 114770708547788704}
   m_Layer: 2
   m_Name: 'Main Camera '
   m_TagString: MainCamera
@@ -180,33 +179,13 @@ MonoBehaviour:
   target: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: -7.5}
   lockRotation: 0
-  followSpeed: 5
+  followSpeed: 10
   inputRotationSpeed: 0
   mouseFreelook: 0
   rotateDamping: 1
   waterFilter: {fileID: 0}
   avoidClippingTags: []
   isPlayerInUse: 1
---- !u!114 &114770708547788704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1038500779404556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Radius: 0.685
-  m_SampleCount: 2
-  m_OcclusionIntensity: 1.39
-  m_Blur: 3
-  m_Downsampling: 1
-  m_OcclusionAttenuation: 1.518
-  m_MinZ: 0.068
-  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
-  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!114 &114803051143783910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,13 +210,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Radius: 0.685
+  m_Radius: 0.8
   m_SampleCount: 2
-  m_OcclusionIntensity: 1.39
+  m_OcclusionIntensity: 3
   m_Blur: 3
   m_Downsampling: 1
-  m_OcclusionAttenuation: 1.518
-  m_MinZ: 0.068
+  m_OcclusionAttenuation: 2
+  m_MinZ: 0.00001
   m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
   m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!124 &124878771379850338
