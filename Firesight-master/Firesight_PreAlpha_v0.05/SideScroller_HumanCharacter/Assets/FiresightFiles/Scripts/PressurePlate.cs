@@ -31,11 +31,8 @@ public class PressurePlate : MonoBehaviour
         if (isActivated)
         {
             //lowers the pressure plate and activates the sound it will use
-            this.GetComponent<Collider>().enabled = false;
             if (!isLowered)
             {
-                if (this.GetComponent<AudioSource>().isPlaying == false)
-                    this.GetComponent<AudioSource>().Play();
                 this.transform.position = new Vector3(this.transform.position.x,
                     this.transform.position.y - (lowerSpeed * Time.deltaTime), this.transform.position.z);
                 lowerAmount -= (lowerSpeed * Time.deltaTime);
@@ -53,7 +50,7 @@ public class PressurePlate : MonoBehaviour
         if (other.tag == "Player" && isActivated == false)
         {
             isActivated = true;
-            GetComponent<AudioSource>().Play();
+            this.GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
             Debug.Log("Presure Plate Activated");
         }
     }
@@ -64,12 +61,10 @@ public class PressurePlate : MonoBehaviour
 
         isActivated = false;
         isLowered = false;
-        gameObject.GetComponent<Transform>().position = startingPos;
-        gameObject.GetComponent<Collider>().enabled = true;
+        GetComponent<Transform>().position = startingPos;
         lowerAmount = pressurePlateLowerAmount;
         //GetComponent<TriggerScript>().isActivated = false;
-        //GetComponent<TriggerScript>().hasBeenActivatedAlready = false; //Gets called in death script
-        GetComponent<PressurePlate>().isActivated = false;
+        //GetComponent<TriggerScript>().hasBeenActivatedAlready = false;
         GetComponent<MeshCollider>().enabled = true;
     }
 }

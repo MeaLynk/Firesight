@@ -4,7 +4,7 @@ public class Hint : MonoBehaviour
 {
     //--------------------------------------------------------------------
     // Public Members
-    public enum HintType { LOCKED_DOOR, TRAP_DOOR, LOOK_AHEAD, DANGER_AHEAD, PYRE, BURNABLE_STRUCTURE, FIREBALL_USE, NONE };
+    public enum HintType { LOCKED_DOOR, DANGER_AHEAD, PYRE, BURNABLE_STRUCTURE, FIREBALL_USE, NONE };
     public HintType hintType;
     public bool hintUsed;
     public bool showHint;
@@ -46,7 +46,7 @@ public class Hint : MonoBehaviour
             player.GetComponent<Rigidbody>().Sleep();
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
             player.GetComponent<FireScript>().enabled = false;
-            if (isPan && !cameraPanned && hintTimer >= 2.5f)
+            if (isPan && !cameraPanned && hintTimer >= 3.0f)
             {
                 cFollow.followSpeed = 3.0f;
                 cFollow.target = panTarget.transform;
@@ -59,7 +59,7 @@ public class Hint : MonoBehaviour
                 cFollow.targetOffset = new Vector3(-3.0f, 0.0f, -1.5f);
             }
 
-            if ((Input.GetKeyUp(KeyCode.LeftShift) && hintTimer >= 4.5f) || hintTimer >= 9.5f)
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 hintUsed = true;
                 hintTimer = 0.0f;
@@ -123,7 +123,7 @@ public class Hint : MonoBehaviour
                 cFollow.target = panTarget.transform;
                 cameraPanned = true;
             }
-            if (hintTimer >= 4.0f || Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 hintUsed = true;
                 hintTimer = 0.0f;
@@ -138,23 +138,6 @@ public class Hint : MonoBehaviour
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
                 player.GetComponent<FireScript>().enabled = true;
-            }
-        }
-        else if (showHint && hintType == HintType.TRAP_DOOR)
-        {
-            player.GetComponent<Rigidbody>().Sleep();
-            player.GetComponent<PlayerMove>().isPlayerInControl = false;
-            player.GetComponent<FireScript>().enabled = false;
-
-            hintTimer += Time.deltaTime;
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                player.GetComponent<Rigidbody>().WakeUp();
-                player.GetComponent<PlayerMove>().isPlayerInControl = true;
-                player.GetComponent<FireScript>().enabled = true;
-                hintUsed = true;
-                hintTimer = 0.0f;
-                showHint = false;
             }
         }
         else if (showHint && hintType == HintType.FIREBALL_USE)
@@ -177,23 +160,6 @@ public class Hint : MonoBehaviour
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
                 player.GetComponent<FireScript>().enabled = true;
-            }
-        }
-        else if (showHint && hintType == HintType.LOOK_AHEAD)
-        {
-            player.GetComponent<Rigidbody>().Sleep();
-            player.GetComponent<PlayerMove>().isPlayerInControl = false;
-            player.GetComponent<FireScript>().enabled = false;
-
-            hintTimer += Time.deltaTime;
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                player.GetComponent<Rigidbody>().WakeUp();
-                player.GetComponent<PlayerMove>().isPlayerInControl = true;
-                player.GetComponent<FireScript>().enabled = true;
-                hintUsed = true;
-                hintTimer = 0.0f;
-                showHint = false;
             }
         }
     }
@@ -227,66 +193,67 @@ public class Hint : MonoBehaviour
     //--------------------------------------------------------------------
     private void OnGUI()
     {
-        if (showHint) //GUI IS FOR DEBUG, NOT UI. next time use canvases for UI
+        if (showHint)
         {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 42;
-            style.alignment = TextAnchor.MiddleCenter;
-            style.font = (Font)Resources.Load("Enchanted Land");
-            style.fixedHeight = 0.5f;
-            style.normal.textColor = Color.white;
+            GUIStyle playerText = new GUIStyle();
+            playerText.fontSize = 42;
+            playerText.alignment = TextAnchor.MiddleCenter;
+            playerText.font = (Font)Resources.Load("Enchanted Land");
+            playerText.fixedHeight = 0.5f;
+            playerText.normal.textColor = Color.yellow;
 
-            GUIStyle newStyle = new GUIStyle();
-            newStyle.fontSize = 38;
-            newStyle.alignment = TextAnchor.MiddleCenter;
-            newStyle.font = (Font)Resources.Load("Enchanted Land");
-            newStyle.fixedHeight = 0.5f;
-            newStyle.normal.textColor = Color.white;
-            //Texture scrollTex = (Texture)Resources.Load("backgroundtext");
+            GUIStyle gameText = new GUIStyle();
+            gameText.fontSize = 42;
+            gameText.alignment = TextAnchor.MiddleCenter;
+            gameText.font = (Font)Resources.Load("Enchanted Land");
+            gameText.fixedHeight = 0.5f;
+            gameText.normal.textColor = Color.white;
+            Texture textBackground = (Texture)Resources.Load("textBackground");
 
             if (hintType == HintType.LOCKED_DOOR && !hintUsed)
             {
-                // GUI.DrawTexture(new Rect(600, Screen.height - 190, Screen.width - 1200, 160), scrollTex);
+                //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
+
                 if (hintTimer <= 3.0f)
-                    GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This door appears to be locked. Maybe my fireball could be used to open it.", style);
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""Looks like a dead end. I should try looking around...""", playerText);
                 if (hintTimer >= 4.5f)
-                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Your Fireball can reach places you can't...\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.DANGER_AHEAD && !hintUsed)
             {
-                //  GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "I better watch my step, This place could be booby trapped!", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
+                //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
+
+                if (hintTimer <= 3.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""This place is a deathtrap! I better be cautious...""", playerText);
+                if (hintTimer >= 3.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "placeholder\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.PYRE && !hintUsed)
             {
-                //  GUI.DrawTexture(new Rect(200, Screen.height - 180, Screen.width - 400, 160), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 110, Screen.width - 1600, 80), "This is a pyre, when you walk near it, it will light up. They serve as checkpoints when you perish. Good Luck!", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
+                //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
+
+                if (hintTimer <= 4.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""This place looks safe... If I run into trouble I'll make my way back here!""", playerText);
+                if (hintTimer >= 4.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "When you die, you'll respawn at the last Pyre you activated!\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
             {
-                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "It's always a good idea to look for things that can be burnt!", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
-            }
-            else if (hintType == HintType.TRAP_DOOR && !hintUsed)
-            {
-                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "My fireball might be able to get to areas I can't fit...", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
-            }
-            else if (hintType == HintType.LOOK_AHEAD && !hintUsed)
-            {
-                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "That's a long drop, I better use my fireball to look ahead...", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
+                //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
+
+                if (hintTimer <= 3.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""Those scaffolds look weak...""", playerText);
+                if (hintTimer >= 3.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Some scaffolds can be burnt down to create a path!\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.FIREBALL_USE && !hintUsed)
             {
-                // GUI.DrawTexture(new Rect(400, Screen.height - 180, Screen.width - 800, 170), scrollTex);
-                GUI.Label(new Rect(800, Screen.height - 100, Screen.width - 1600, 50), "I wonder what will happen if I press shift...", style);
-                GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "SKIP (SHIFT)", newStyle);
+                //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
+
+                if (hintTimer <= 4.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""placeholder!""", playerText);
+                if (hintTimer >= 4.0f)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "placeholder\nPress Shift to continue.", gameText);
             }
         }
     }

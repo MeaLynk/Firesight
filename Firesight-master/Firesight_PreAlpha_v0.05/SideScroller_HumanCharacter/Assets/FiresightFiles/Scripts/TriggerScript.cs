@@ -13,9 +13,9 @@ public class TriggerScript : MonoBehaviour
     public float delayTime = 0.0f;
 
     //make varibles like these that only change in the code private so this can't be messed with in unity
-    private bool hasBeenActivatedAlready = false;
+    public bool hasBeenActivatedAlready = false;
     private float delayTimer = 0.0f;
-    private bool isActivated = false;
+    public bool isActivated = false;
 
     // Use this for initialization
     void Start()
@@ -62,7 +62,7 @@ public class TriggerScript : MonoBehaviour
     public void ResetAnims()
     {
         isActivated = false;
-        hasBeenActivatedAlready = false; //isn't this a duplicate var?
+        hasBeenActivatedAlready = false;
         delayTimer = 0;
     }
 }

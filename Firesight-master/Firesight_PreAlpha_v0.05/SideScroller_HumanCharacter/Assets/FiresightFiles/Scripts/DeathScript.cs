@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeathScript : MonoBehaviour {
 
     [Header("Objects that will reset after death")]
-    public GameObject[] presurePlates;
+    public GameObject[] pressurePlates;
     public GameObject[] hints;
     public GameObject[] burnableRopes;
     public GameObject[] triggerAnims;
@@ -25,11 +25,11 @@ public class DeathScript : MonoBehaviour {
     //Resets the all gameobjects to their default states
     public void ResetObjects()
     {
-        for (int i = 0; i < presurePlates.Length; i++)
+        for (int i = 0; i < pressurePlates.Length; i++)
         {
-            if (presurePlates[i] != null)
+            if (pressurePlates[i] != null)
             {
-                presurePlates[i].GetComponent<PressurePlate>().ResetPresurePlate();
+                pressurePlates[i].GetComponent<PressurePlate>().ResetPresurePlate();
             }
         }
         //for (int i = 0; i < doors.Length; i++)

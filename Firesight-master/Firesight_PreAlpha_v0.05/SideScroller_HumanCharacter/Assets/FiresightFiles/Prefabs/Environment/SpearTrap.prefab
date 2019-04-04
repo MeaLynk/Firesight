@@ -20,11 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4655011761706846}
   - component: {fileID: 33616628282945792}
-  - component: {fileID: 23291896611639326}
   - component: {fileID: 64542352287897488}
-  - component: {fileID: 114825018510256906}
-  - component: {fileID: 114300715696221258}
-  - component: {fileID: 82359752327526366}
+  - component: {fileID: 114328285855466302}
+  - component: {fileID: 82509046948717284}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -42,6 +40,8 @@ GameObject:
   - component: {fileID: 4225553040284434}
   - component: {fileID: 33439980543794412}
   - component: {fileID: 23864220572946862}
+  - component: {fileID: 114834556722815106}
+  - component: {fileID: 65232611413491162}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -109,8 +109,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1314596946898378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4655011761706846}
@@ -196,41 +196,6 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 066ed8160690d504785665711325ef1d, type: 2}
   - {fileID: 2100000, guid: f384ef04649db224f8d0302fd71e4942, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23291896611639326
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067133424765932}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: bc1bfe3a755850c44befdebac55e3ddc, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -341,6 +306,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4b0c17d7e1bdfe447985f057d088cf7e, type: 3}
+--- !u!65 &65232611413491162
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314596946898378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4699998, y: 2.4700003, z: 0.24999955}
+  m_Center: {x: 0.11999935, y: 0.06499989, z: 0.074999765}
 --- !u!82 &82358462672654842
 AudioSource:
   m_ObjectHideFlags: 1
@@ -436,7 +413,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &82359752327526366
+--- !u!82 &82509046948717284
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,7 +422,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f35aadcd488e7514384662b07ffef34f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -453,7 +430,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -579,7 +556,7 @@ MonoBehaviour:
   effectedTags:
   - Player
   hitSound: {fileID: 8300000, guid: f40f27597790e4b448f47b212651f6ce, type: 3}
---- !u!114 &114300715696221258
+--- !u!114 &114328285855466302
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -590,15 +567,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f51618b7b89ac4596d3f8579b91590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerAmount: 20
-  lowerSpeed: 200
+  lowerAmount: 22.3
+  lowerSpeed: 1500
   isActivated: 0
---- !u!114 &114825018510256906
+--- !u!114 &114834556722815106
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067133424765932}
+  m_GameObject: {fileID: 1314596946898378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01183c52816f3434794b947a32bc184e, type: 3}
@@ -608,7 +585,6 @@ MonoBehaviour:
   doesAnimationObjectHaveSound: 0
   doesAnimationObjectHaveHint: 0
   cFollow: {fileID: 0}
-  isActivated: 0
-  hasBeenActivatedAlready: 0
-  delayTimer: 0
   delayTime: 0
+  hasBeenActivatedAlready: 0
+  isActivated: 0
