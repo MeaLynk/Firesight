@@ -9,7 +9,10 @@ public class Hint : MonoBehaviour
     public bool hintUsed;
     public bool showHint;
     public bool isPan;
+    public bool lightUpFireball = false;
+    public bool fireballLit = false;
     public GameObject panTarget;
+    public GameObject fireBallParticles;
 
     //--------------------------------------------------------------------
     // Private Members
@@ -142,9 +145,12 @@ public class Hint : MonoBehaviour
         }
         else if (showHint && hintType == HintType.FIREBALL_USE)
         {
-            cFollow.target = panTarget.transform;
-            cFollow.targetOffset = new Vector3(0.0f, 2.0f, -3.0f);
-            cameraPanned = true;
+            if (panTarget != null)
+            {
+                cFollow.target = panTarget.transform;
+                cFollow.targetOffset = new Vector3(0.0f, 2.0f, -3.0f);
+                cameraPanned = true;
+            }
             player.GetComponent<Rigidbody>().Sleep();
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
             player.GetComponent<FireScript>().enabled = false;
@@ -153,10 +159,32 @@ public class Hint : MonoBehaviour
                 hintUsed = true;
                 hintTimer = 0.0f;
                 showHint = false;
-                cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
-                cFollow.targetOffset = new Vector3(0.0f, 0.0f, -7.5f);
-                cFollow.followSpeed = 10;
-                cameraPanned = false;
+                player.GetComponent<FireScript>().enabled = true;
+                fireBallParticles.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+                lightUpFireball = true;
+                if (panTarget != null)
+                {
+                    cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
+                    cFollow.targetOffset = new Vector3(0.0f, 0.0f, -7.5f);
+                    cFollow.followSpeed = 10;
+                    cameraPanned = false;
+                }
+            }
+        }
+        if (lightUpFireball)
+        {
+            if (fireBallParticles.transform.localScale.x < 2.5f ||
+                fireBallParticles.transform.localScale.y < 2.5f ||
+                fireBallParticles.transform.localScale.z < 2.5f)
+            {
+                fireBallParticles.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f) * Time.deltaTime;
+            }
+            if (fireBallParticles.transform.localScale.x >= 0.25f &&
+                fireBallParticles.transform.localScale.y >= 0.25f &&
+                fireBallParticles.transform.localScale.z >= 0.25f)
+            {
+                lightUpFireball = false;
+                fireballLit = true;
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
                 player.GetComponent<FireScript>().enabled = true;
@@ -226,15 +254,15 @@ public class Hint : MonoBehaviour
                 if (hintTimer <= 3.0f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""This place is a deathtrap! I better be cautious...""", playerText);
                 if (hintTimer >= 3.0f)
-                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "placeholder\nPress Shift to continue.", gameText);
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "The crypt is filled with fatal traps. Avoid them if you want to survive!\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.PYRE && !hintUsed)
             {
                 //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
 
-                if (hintTimer <= 4.0f)
+                if (hintTimer <= 3.5f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""This place looks safe... If I run into trouble I'll make my way back here!""", playerText);
-                if (hintTimer >= 4.0f)
+                if (hintTimer >= 3.5f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "When you die, you'll respawn at the last Pyre you activated!\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
@@ -251,9 +279,9 @@ public class Hint : MonoBehaviour
                 //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
 
                 if (hintTimer <= 4.0f)
-                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""placeholder!""", playerText);
-                if (hintTimer >= 4.0f)
-                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "placeholder\nPress Shift to continue.", gameText);
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "\"Can't see a thing in here... Time to make some light!\"\nPress Shift to activate your fireball.", playerText);
+                // if (showGUI)
+                //    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Press shift to light\nPress Shift to continue.", gameText);
             }
         }
     }

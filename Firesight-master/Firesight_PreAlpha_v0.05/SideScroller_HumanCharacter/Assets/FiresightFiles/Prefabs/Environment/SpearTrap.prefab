@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4655011761706846}
   - component: {fileID: 33616628282945792}
-  - component: {fileID: 64542352287897488}
   - component: {fileID: 114328285855466302}
   - component: {fileID: 82509046948717284}
+  - component: {fileID: 64953593018885232}
   m_Layer: 0
   m_Name: PressurePlate
   m_TagString: Untagged
@@ -278,7 +278,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067133424765932}
   m_Mesh: {fileID: 4300000, guid: bc1bfe3a755850c44befdebac55e3ddc, type: 3}
---- !u!64 &64542352287897488
+--- !u!64 &64953593018885232
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,7 +316,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4699998, y: 2.4700003, z: 0.24999955}
+  m_Size: {x: 2.4699998, y: 2.4700003, z: 0.5}
   m_Center: {x: 0.11999935, y: 0.06499989, z: 0.074999765}
 --- !u!82 &82358462672654842
 AudioSource:
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f51618b7b89ac4596d3f8579b91590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowerAmount: 22.3
+  lowerAmount: 50
   lowerSpeed: 1500
   isActivated: 0
 --- !u!114 &114834556722815106

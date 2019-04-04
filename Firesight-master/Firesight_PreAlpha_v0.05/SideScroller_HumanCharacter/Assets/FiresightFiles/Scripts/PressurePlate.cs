@@ -65,6 +65,6 @@ public class PressurePlate : MonoBehaviour
         lowerAmount = pressurePlateLowerAmount;
         //GetComponent<TriggerScript>().isActivated = false;
         //GetComponent<TriggerScript>().hasBeenActivatedAlready = false;
-        GetComponent<MeshCollider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
     }
 }
