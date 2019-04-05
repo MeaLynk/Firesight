@@ -10,7 +10,6 @@ public class Hint : MonoBehaviour
     public bool showHint;
     public bool isPan;
     public bool lightUpFireball = false;
-    public bool fireballLit = false;
     public GameObject panTarget;
     public GameObject fireBallParticles;
 
@@ -19,7 +18,7 @@ public class Hint : MonoBehaviour
     private GameObject player;
     private bool hintAreaLeft;
     private bool cameraPanned;
-    private float hintTimer;
+    public float hintTimer;
     private CameraFollow cFollow;
 
     //--------------------------------------------------------------------
@@ -32,7 +31,7 @@ public class Hint : MonoBehaviour
         hintUsed = false;
         showHint = false;
         hintTimer = 0.0f;
-        cFollow = Camera.main.GetComponent<CameraFollow>();
+        cFollow = Camera.main.GetComponent<CameraFollow>();        
     }
 
     //--------------------------------------------------------------------
@@ -145,50 +144,34 @@ public class Hint : MonoBehaviour
         }
         else if (showHint && hintType == HintType.FIREBALL_USE)
         {
-            if (panTarget != null)
-            {
-                cFollow.target = panTarget.transform;
-                cFollow.targetOffset = new Vector3(0.0f, 2.0f, -3.0f);
-                cameraPanned = true;
-            }
+            player.GetComponent<PlayerMove>().grounded = false;
+            player.transform.position = new Vector3(player.transform.position.x, -29.995f, player.transform.position.z);
+            player.GetComponent<PlayerMove>().grounded = true;
             player.GetComponent<Rigidbody>().Sleep();
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
-            player.GetComponent<FireScript>().enabled = false;
-            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+
+            hintTimer += Time.deltaTime;
+
+            if (hintTimer >= 7.0f && !lightUpFireball)
             {
-                hintUsed = true;
-                hintTimer = 0.0f;
-                showHint = false;
-                player.GetComponent<FireScript>().enabled = true;
-                fireBallParticles.transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
-                lightUpFireball = true;
-                if (panTarget != null)
+                if (Input.GetKeyUp(KeyCode.LeftShift))
                 {
-                    cFollow.target = GameObject.FindGameObjectWithTag("CamTar").transform;
-                    cFollow.targetOffset = new Vector3(0.0f, 0.0f, -7.5f);
-                    cFollow.followSpeed = 10;
-                    cameraPanned = false;
+                    player.GetComponent<FireScript>().enabled = true;
+                    lightUpFireball = true;
+                    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
                 }
             }
-        }
-        if (lightUpFireball)
-        {
-            if (fireBallParticles.transform.localScale.x < 2.5f ||
-                fireBallParticles.transform.localScale.y < 2.5f ||
-                fireBallParticles.transform.localScale.z < 2.5f)
+            else if (lightUpFireball)
             {
-                fireBallParticles.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f) * Time.deltaTime;
+                if (Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    player.GetComponent<Rigidbody>().WakeUp();
+                    hintTimer = 0.0f;
+                    showHint = false;
+                    hintUsed = true;
+                }
             }
-            if (fireBallParticles.transform.localScale.x >= 0.25f &&
-                fireBallParticles.transform.localScale.y >= 0.25f &&
-                fireBallParticles.transform.localScale.z >= 0.25f)
-            {
-                lightUpFireball = false;
-                fireballLit = true;
-                player.GetComponent<Rigidbody>().WakeUp();
-                player.GetComponent<PlayerMove>().isPlayerInControl = true;
-                player.GetComponent<FireScript>().enabled = true;
-            }
+
         }
     }
 
@@ -260,9 +243,9 @@ public class Hint : MonoBehaviour
             {
                 //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
 
-                if (hintTimer <= 3.5f)
+                if (hintTimer <= 5.0f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), @"""This place looks safe... If I run into trouble I'll make my way back here!""", playerText);
-                if (hintTimer >= 3.5f)
+                if (hintTimer >= 5.0f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "When you die, you'll respawn at the last Pyre you activated!\nPress Shift to continue.", gameText);
             }
             else if (hintType == HintType.BURNABLE_STRUCTURE && !hintUsed && cameraPanned)
@@ -274,14 +257,17 @@ public class Hint : MonoBehaviour
                 if (hintTimer >= 3.0f)
                     GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Some scaffolds can be burnt down to create a path!\nPress Shift to continue.", gameText);
             }
-            else if (hintType == HintType.FIREBALL_USE && !hintUsed)
+            else if (hintType == HintType.FIREBALL_USE)
             {
                 //GUI.DrawTexture(new Rect((Screen.width / 4), Screen.height - 125, Screen.width / 2, 200), textBackground);
-
-                if (hintTimer <= 4.0f)
-                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "\"Can't see a thing in here... Time to make some light!\"\nPress Shift to activate your fireball.", playerText);
-                // if (showGUI)
-                //    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Press shift to light\nPress Shift to continue.", gameText);
+                if (hintTimer >= 1.0f && hintTimer <= 4.0f && !lightUpFireball)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "...", playerText);
+                if (hintTimer >= 4.0f && hintTimer <= 7.0f && !lightUpFireball)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "\"Can't see a thing in here... Time to make some light!\"", playerText);
+                if (hintTimer >= 7.0f && !lightUpFireball)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Press Shift to activate your fireball!", gameText);
+                if (hintTimer >= 7.0f && lightUpFireball)
+                    GUI.Label(new Rect(800, Screen.height - 60, Screen.width - 1600, 80), "Press Shift to control your fireball. Use WASD to move around!", gameText);
             }
         }
     }

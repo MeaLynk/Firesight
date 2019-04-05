@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100079115482982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 142.5, y: -40.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4811437617709088}
@@ -495,7 +495,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -598,10 +598,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 7.5
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -634,7 +634,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 1492824288822982}
   rope: {fileID: 1237616125801140}
-  burningSFX: {fileID: 8300000, guid: 3d1491ece7ec4e04d86eae1c4c22f64b, type: 3}
+  burningSFX: {fileID: 8300000, guid: 7930e41b1a22f5349af16c1649913131, type: 3}
 --- !u!114 &114127328326356018
 MonoBehaviour:
   m_ObjectHideFlags: 1

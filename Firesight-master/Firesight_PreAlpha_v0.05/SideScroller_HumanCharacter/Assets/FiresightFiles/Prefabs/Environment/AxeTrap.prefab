@@ -91,7 +91,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1656130075147688}
-  m_LocalRotation: {x: -0.15817517, y: 0, z: 0, w: 0.98741114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 9.400008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798842006975954}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 25.583874, y: 0, z: 0}
+  m_LocalPosition: {x: 187.5, y: -64.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4418718438057354}
@@ -276,7 +276,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d112192da2ace64d879504f74a34170, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -284,10 +284,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0.3
-  MinDistance: 9.801177
+  MinDistance: 7.5
   MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -295,10 +295,10 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.3935699
-      value: 1.0058212
-      inSlope: -1.5310427
-      outSlope: -1.5310427
+      time: 0.5
+      value: 1
+      inSlope: -2.0008
+      outSlope: -2.0008
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -306,8 +306,8 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.6536722
-      outSlope: -0.6536722
+      inSlope: -0.5002
+      outSlope: -0.5002
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -517,8 +517,11 @@ MonoBehaviour:
   hintType: 3
   hintUsed: 1
   showHint: 0
-  IsPan: 0
+  isPan: 0
+  lightUpFireball: 0
   panTarget: {fileID: 0}
+  fireBallParticles: {fileID: 0}
+  hintTimer: 0
 --- !u!136 &136469773794687838
 CapsuleCollider:
   m_ObjectHideFlags: 1
