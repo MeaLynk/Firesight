@@ -10,7 +10,7 @@ public class MenuControllerScript : MonoBehaviour
     public enum MenuStates { START, MAINMENU, OPTIONS, LEVELSELECT, SHOWUI, EXITING } //0 start, 1 mainmenu, 2 options, 3 level select
 
     public GameObject menuFireball = null;
-    public GameObject areYouSurePopUp = null; //Prob gonna get rid of this or rework it
+    //public GameObject areYouSurePopUp = null; //Prob gonna get rid of this or rework it
     public Camera mainCamera = null;
     public Transform camTar;
     public AudioClip buttonClickSFX;
@@ -22,6 +22,10 @@ public class MenuControllerScript : MonoBehaviour
     public TextMeshPro levelText;
     public Image fadeToBlackImage;
     public float fadeTimer = 1;
+    public GameObject saveGame;
+
+    //[HideInInspector]
+    //public bool hasSaveLoaded = false;
 
     private bool isPossibleQuit;
     private AudioSource sfxPlayer;
@@ -35,15 +39,25 @@ public class MenuControllerScript : MonoBehaviour
 
     public MenuStates GetCurrentMenu() { return currentMenu; }
 
+    private void Awake()
+    {
+        //if (hasSaveLoaded == false && GameObject.Find("SaveObject") == null)
+        //{
+        //    DontDestroyOnLoad(Instantiate(saveGamePrefab, transform));
+        //    hasSaveLoaded = true;
+        //}
+
+        //if (hasSaveLoaded == true)
+        //{
+        //    Destroy(saveGame);
+        //}
+    }
+
     //---------------------------------------------------------//
     // Used to Initialize script
     //---------------------------------------------------------//
     void Start()
     {
-        if (areYouSurePopUp == null)
-        {
-            areYouSurePopUp = GameObject.Find("AreYouSure"); 
-        }
 
         if(menuFireball == null)
         {
@@ -66,16 +80,16 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     void Update()
     {
-        if (isPossibleQuit)
-        {
-            // Show the quit confirmation message
-            areYouSurePopUp.SetActive(true);
-        }
-        else if (!isPossibleQuit)
-        {
-            // Hide the quit confirmation message
-            areYouSurePopUp.SetActive(false);
-        }
+        //if (isPossibleQuit)
+        //{
+        //    // Show the quit confirmation message
+        //    areYouSurePopUp.SetActive(true);
+        //}
+        //else if (!isPossibleQuit)
+        //{
+        //    // Hide the quit confirmation message
+        //    areYouSurePopUp.SetActive(false);
+        //}
 
         //Uses fireball as the cursor for the menu
         menuFireball.GetComponent<Transform>().position = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 8));
@@ -85,14 +99,14 @@ public class MenuControllerScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                sfxPlayer.PlayOneShot(buttonClickSFX);
                 camTar.position = camTarPos[1];
                 currentMenu = MenuStates.MAINMENU;
-                sfxPlayer.PlayOneShot(buttonClickSFX);
             }
         }
         else if(currentMenu == MenuStates.SHOWUI)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
                 currentMenu = storedState;
                 currentImage.SetActive(false);
@@ -102,6 +116,7 @@ public class MenuControllerScript : MonoBehaviour
         {
             if (currentFadeTimer <= 0)
             {
+                //GameObject.FindGameObjectWithTag("Save").GetComponent<SaveScript>().SaveGame();
                 SceneManager.LoadScene(currentLevel);
                 //Cursor.visible = true;
                 Debug.Log("Level " + currentLevel + " loaded.");
@@ -180,6 +195,14 @@ public class MenuControllerScript : MonoBehaviour
         currentImage = showUIObject;
 
         currentImage.SetActive(true);
+    }
+
+    //---------------------------------------------------------//
+    // Starts New Save
+    //---------------------------------------------------------//
+    public void NewSave()
+    {
+        GameObject.Find("SaveObject").GetComponent<SaveScript>().DeleteSave();
     }
 
 

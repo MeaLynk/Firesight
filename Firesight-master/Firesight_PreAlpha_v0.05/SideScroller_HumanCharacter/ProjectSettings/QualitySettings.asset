@@ -7,7 +7,7 @@ QualitySettings:
   m_CurrentQuality: 5
   m_QualitySettings:
   - serializedVersion: 2
-    name: Fastest
+    name: Supreme
     pixelLightCount: 0
     shadows: 0
     shadowResolution: 1
@@ -39,9 +39,7 @@ QualitySettings:
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
     resolutionScalingFixedDPIFactor: 1
-    excludedTargetPlatforms:
-    - Standalone
-    - Android
+    excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Fast
     pixelLightCount: 0

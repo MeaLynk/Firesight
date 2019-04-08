@@ -13,6 +13,8 @@ public class FireScript : MonoBehaviour
     public float fireBurnOutTimerLength = 15.0f;
     public bool showDebugUI = false;
     public Vector3 firePos = new Vector3(0, 2, 0);
+    [Header("SET FALSE ON  LEVEL 1")]
+    public bool hasFireballUnlocked = true;
 
     private bool isPlayerInControl;
     private float fireBurnOutTimer;
@@ -44,13 +46,13 @@ public class FireScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerInControl == true)
+        if (isPlayerInControl == true && hasFireballUnlocked == true)
         {
             //Centers fireball during rotation
             fireObject.GetComponent<Transform>().position = this.gameObject.GetComponent<Transform>().position + firePos;
 
             //Player activates fireball
-            if (Input.GetButtonDown("Fireball") && gameObject.GetComponent<PlayerMove>().grounded == true && GameObject.Find("GameWorld").GetComponent<PauseGame>().GetPausedState() == false)
+            if (Input.GetButtonDown("Fireball") && gameObject.GetComponent<PlayerMove>().grounded == true && GameObject.Find("GameWorld").GetComponent<PauseGame>().GetPausedState() == false && hasFireballUnlocked == true)
             {
                 //Stops the player and player animations
                 isPlayerInControl = false;
@@ -71,7 +73,7 @@ public class FireScript : MonoBehaviour
                 player.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
         }
-        else
+        else if(hasFireballUnlocked == true)
         {
             ControlFireball();
 
@@ -196,8 +198,11 @@ public class FireScript : MonoBehaviour
 
         gameObject.GetComponent<PlayerMove>().isPlayerInControl = true;
 
-        fireObject.SetActive(true);
-        Destroy(currentPlayableFirePrefab);
+        if (hasFireballUnlocked == true)
+        {
+            fireObject.SetActive(true);
+            Destroy(currentPlayableFirePrefab);
+        }
 
         camera.GetComponent<CameraFollow>().isPlayerInUse = true;
         camera.GetComponent<CameraFollow>().target = cameraTarget.transform;

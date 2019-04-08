@@ -7424,6 +7424,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4786517363584096, guid: a9dedc31f5ad64142b1d38d5a97bf1c5,
     type: 2}
   m_PrefabInternal: {fileID: 679370817}
+--- !u!1 &425166863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1797335938374810, guid: a7c8612fe88af3e48a19033e080aab29,
+    type: 2}
+  m_PrefabInternal: {fileID: 131581297}
 --- !u!4 &428810885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4995514928365516, guid: c2321bff625515442965b72e86f8bf7f,
@@ -18690,7 +18695,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 425166863}
     - target: {fileID: 114549092103320410, guid: ca452324e56aeb4478b7c951dff65a84,
         type: 2}
       propertyPath: checkpointPyres.Array.data[0]
@@ -18865,7 +18870,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 425166863}
     - target: {fileID: 114436460461352142, guid: ca452324e56aeb4478b7c951dff65a84,
         type: 2}
       propertyPath: pauseCanvas
@@ -18991,7 +18996,13 @@ Prefab:
       propertyPath: burnableRopes.Array.data[1]
       value: 
       objectReference: {fileID: 732434313}
-    m_RemovedComponents: []
+    - target: {fileID: 114847142604598490, guid: ca452324e56aeb4478b7c951dff65a84,
+        type: 2}
+      propertyPath: fadeToBlackImage
+      value: 
+      objectReference: {fileID: 1084957601}
+    m_RemovedComponents:
+    - {fileID: 114847142604598490, guid: ca452324e56aeb4478b7c951dff65a84, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ca452324e56aeb4478b7c951dff65a84, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1128273353 stripped

@@ -16035,6 +16035,11 @@ Prefab:
     - target: {fileID: 114444095498306064, guid: 84859512eed8b0c48b57abfe1d195a60,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444095498306064, guid: 84859512eed8b0c48b57abfe1d195a60,
+        type: 2}
+      propertyPath: hasFireballUnlocked
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

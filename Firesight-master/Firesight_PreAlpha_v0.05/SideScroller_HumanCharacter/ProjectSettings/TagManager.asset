@@ -25,6 +25,7 @@ TagManager:
   - Platform
   - CamTar
   - MenuController
+  - Save
   layers:
   - Default
   - TransparentFX

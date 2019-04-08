@@ -154,16 +154,16 @@ public class Hint : MonoBehaviour
 
             if (hintTimer >= 7.0f && !lightUpFireball)
             {
-                if (Input.GetKeyUp(KeyCode.LeftShift))
+                if (Input.GetButtonDown("Fireball")) //USE THIS INSTEAD
                 {
-                    player.GetComponent<FireScript>().enabled = true;
+                    player.GetComponent<FireScript>().hasFireballUnlocked = true;
                     lightUpFireball = true;
                     GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
                 }
             }
             else if (lightUpFireball)
             {
-                if (Input.GetKeyUp(KeyCode.LeftShift))
+                if (Input.GetButtonDown("Fireball"))
                 {
                     player.GetComponent<Rigidbody>().WakeUp();
                     hintTimer = 0.0f;

@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 	public Color hitFlashColor = Color.red;			//color object should flash when it takes damage
 	public Transform flashObject;					//object to flash upon receiving damage (ie: a child mesh). If left blank it defaults to this object.
 	public GameObject[] spawnOnDeath;				//objects to spawn upon death of this object (ie: a particle effect or a coin)
-	
+
 	[HideInInspector]
 	public bool dead, flashing;
 	[HideInInspector]
@@ -87,38 +87,47 @@ public class Health : MonoBehaviour
 			nextFlash = Time.time + hitFlashDelay;
 		}
 	}
-	
-	//respawn object, or destroy it and create the SpawnOnDeath objects
-	void Death()
-	{
-		//player drop item
-		if(tag == "Player")
-			throwing = GetComponent<Throwing>();
-		if(throwing && throwing.heldObj && throwing.heldObj.tag == "Pickup")
-			throwing.ThrowPickup();
-		
-		if (deadSound)
-			AudioSource.PlayClipAtPoint(deadSound, transform.position);
-		flashing = false;
-		flashObject.GetComponent<Renderer>().material.color = originalColor;
-		if(respawn)
-		{
-			Rigidbody rigid = GetComponent<Rigidbody>();
-			if(rigid)
-				rigid.velocity *= 0;
-			transform.position = respawnPos;
-			dead = false;
-			currentHealth = defHealth;
-		}
-		else
-			Destroy (gameObject);
-		
-		if (spawnOnDeath.Length != 0)
-			foreach(GameObject obj in spawnOnDeath)
-				Instantiate(obj, transform.position, Quaternion.Euler(Vector3.zero));
+
+    //respawn object, or destroy it and create the SpawnOnDeath objects
+    void Death()
+    {
+        //player drop item
+        if (tag == "Player")
+            throwing = GetComponent<Throwing>();
+        if (throwing && throwing.heldObj && throwing.heldObj.tag == "Pickup")
+            throwing.ThrowPickup();
+
+        if (deadSound)
+            AudioSource.PlayClipAtPoint(deadSound, transform.position);
+        flashing = false;
+        flashObject.GetComponent<Renderer>().material.color = originalColor;
+        if (respawn)
+        {
+            Rigidbody rigid = GetComponent<Rigidbody>();
+            if (rigid)
+                rigid.velocity *= 0;
+            transform.position = respawnPos;
+            dead = false;
+            currentHealth = defHealth;
+        }
+        else
+            Destroy(gameObject);
+
+        if (spawnOnDeath.Length != 0)
+            foreach (GameObject obj in spawnOnDeath)
+                Instantiate(obj, transform.position, Quaternion.Euler(Vector3.zero));
 
         GameObject.FindGameObjectWithTag("GameWorld").GetComponent<DeathScript>().ResetObjects();
-	}
+
+        if (GameObject.Find("SaveObject") != null)
+        {
+            GameObject.Find("SaveObject").GetComponent<SaveScript>().AddDeath();
+        }
+        else
+        {
+            Debug.LogError("ERROR: No save object loaded from main menu. DO NOT ADD ONE IN THE LEVEL!!!!!!");
+        }
+    }
 	
 	//calculate impact damage on collision
 	void OnCollisionEnter(Collision col)
