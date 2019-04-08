@@ -11,6 +11,7 @@ public class SaveScript : MonoBehaviour {
     private string fileName = "Firesight_Save.json";
     private string filePath;
 
+    private static SaveScript playerInstance;
     private static SaveClass _instance;
     public SaveClass Instance
     {
@@ -19,13 +20,24 @@ public class SaveScript : MonoBehaviour {
     }
 
     public void AddDeath() { currentSave.numOfDeaths++; }
+    public void UnlockLevel2() { currentSave.hasLevel1Beat = true; }
     public int GetNumOfDeaths() { return currentSave.numOfDeaths; }
+    public bool GetLevel1Beat() { return currentSave.hasLevel1Beat; }
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
 
-        if(_instance == null)
+        if (playerInstance == null)
+        {
+            playerInstance = this;
+        }
+        else
+        {
+            DestroyObject(gameObject);
+        }
+
+        if (_instance == null)
         {
             _instance = new SaveClass();
         }
@@ -98,6 +110,7 @@ public class SaveScript : MonoBehaviour {
 
     private void OnGUI()
     {
-        GUI.Box(new Rect(10, 250, 50, 30), currentSave.numOfDeaths.ToString());
+        //GUI.Box(new Rect(10, 250, 50, 30), currentSave.numOfDeaths.ToString());
+        //GUI.Box(new Rect(10, 280, 70, 30), currentSave.hasLevel1Beat.ToString());
     }
 }

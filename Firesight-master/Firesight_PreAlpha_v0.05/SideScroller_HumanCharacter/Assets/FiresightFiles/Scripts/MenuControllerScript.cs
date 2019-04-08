@@ -14,6 +14,7 @@ public class MenuControllerScript : MonoBehaviour
     public Camera mainCamera = null;
     public Transform camTar;
     public AudioClip buttonClickSFX;
+    public AudioClip errorSFX;
     [Header("Must Have 4 values. (For now)")]
     public Vector3[] camTarPos; //0 start, 1 mainmenu, 2 options, 3 level select, 4 load level anim
     [Header("MUST HAVE 2 IMAGES")] // for both levels
@@ -23,6 +24,7 @@ public class MenuControllerScript : MonoBehaviour
     public Image fadeToBlackImage;
     public float fadeTimer = 1;
     public GameObject saveGame;
+    public GameObject numOfDeathsTxt;
 
     //[HideInInspector]
     //public bool hasSaveLoaded = false;
@@ -112,6 +114,10 @@ public class MenuControllerScript : MonoBehaviour
                 currentImage.SetActive(false);
             }
         }
+        else if(currentMenu == MenuStates.OPTIONS)
+        {
+            numOfDeathsTxt.GetComponent<TextMeshPro>().text = "Number Of Deaths: " + GameObject.Find("SaveObject").GetComponent<SaveScript>().GetNumOfDeaths();
+        }
         else if(currentMenu == MenuStates.EXITING)
         {
             if (currentFadeTimer <= 0)
@@ -135,17 +141,25 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     public void ChangeLevel() //rework if changed to 3 levels
     {
-        if(currentLevel == "FireSightLevel1")
+        if (GameObject.Find("SaveObject").GetComponent<SaveScript>().GetLevel1Beat() == true)
         {
-            currentLevel = "FireSightLevel2";
-            levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[1];
-            levelText.text = "Level 2";
+            if (currentLevel == "FireSightLevel1")
+            {
+                currentLevel = "FireSightLevel2";
+                levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[1];
+                levelText.text = "Level 2";
+            }
+            else if (currentLevel == "FireSightLevel2")
+            {
+                currentLevel = "FireSightLevel1";
+                levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
+                levelText.text = "Level 1";
+            }
         }
-        else if (currentLevel == "FireSightLevel2")
+        else
         {
-            currentLevel = "FireSightLevel1";
-            levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
-            levelText.text = "Level 1";
+            //Error sfx for feedback that they can't change level.
+            sfxPlayer.PlayOneShot(errorSFX);
         }
     }
 
@@ -200,9 +214,15 @@ public class MenuControllerScript : MonoBehaviour
     //---------------------------------------------------------//
     // Starts New Save
     //---------------------------------------------------------//
-    public void NewSave()
+    public void NewSave(GameObject text)
     {
         GameObject.Find("SaveObject").GetComponent<SaveScript>().DeleteSave();
+        text.GetComponent<TextMeshPro>().text = "New Save\nstarted.";
+
+        //Resets level select
+        currentLevel = "FireSightLevel1";
+        levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
+        levelText.text = "Level 1";
     }
 
 

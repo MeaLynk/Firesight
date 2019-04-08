@@ -61,7 +61,7 @@ public class Hint : MonoBehaviour
                 cFollow.targetOffset = new Vector3(-3.0f, 0.0f, -1.5f);
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Fireball")) //PLEASE USE THE INPUT MANAGER FOR INPUTS INSTEAD OF KEYCODES
             {
                 hintUsed = true;
                 hintTimer = 0.0f;
@@ -86,7 +86,7 @@ public class Hint : MonoBehaviour
             player.GetComponent<FireScript>().enabled = false;
 
             hintTimer += Time.deltaTime;
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Fireball"))
             {
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
@@ -103,7 +103,7 @@ public class Hint : MonoBehaviour
             player.GetComponent<FireScript>().enabled = false;
 
             hintTimer += Time.deltaTime;
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Fireball"))
             {
                 player.GetComponent<Rigidbody>().WakeUp();
                 player.GetComponent<PlayerMove>().isPlayerInControl = true;
@@ -125,7 +125,7 @@ public class Hint : MonoBehaviour
                 cFollow.target = panTarget.transform;
                 cameraPanned = true;
             }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Fireball"))
             {
                 hintUsed = true;
                 hintTimer = 0.0f;
@@ -154,7 +154,7 @@ public class Hint : MonoBehaviour
 
             if (hintTimer >= 7.0f && !lightUpFireball)
             {
-                if (Input.GetButtonDown("Fireball")) //USE THIS INSTEAD
+                if (Input.GetButtonDown("Fireball"))
                 {
                     player.GetComponent<FireScript>().hasFireballUnlocked = true;
                     lightUpFireball = true;
