@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FiresightFiles/Scenes/FireSightLevel2.unity
     guid: abc37224bc7743a4a9bdaca61c6ff142
+  - enabled: 1
+    path: Assets/FiresightFiles/Scenes/EndCutScene.unity
+    guid: b63b35bcb5067ba4c85158e0120694db
   m_configObjects: {}
