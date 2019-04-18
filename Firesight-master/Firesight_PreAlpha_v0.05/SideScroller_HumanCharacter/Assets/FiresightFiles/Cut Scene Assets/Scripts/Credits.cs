@@ -10,20 +10,25 @@ public class Credits : MonoBehaviour
     public Camera creditsCamera;
     public bool hasFadeIn = true;
     [Range(0.0f, 1.0f)] public float fadeSpeed = 1.0f;
+    public bool hasFadeOut = true;
+    public float deltaY = 0.0f;
 
     //-----------------------------------------------------
     // Private Members
     private bool fadeIn = false;
-    private bool startFadeWait = false;
-    private bool doneFading = false;
-    private float fadeWaitTimer = 0.0f;
+    private bool startFadeInWait = false;
+    private bool doneFadingIn = false;
+    public bool fadeOut = false;
+    public bool startFadeOutWait = false;
+    public bool doneFadingOut = false;
+    public float fadeWaitTimer = 0.0f;
 
     // Use this for initialization
     void Awake()
     {
         cutScene.SetActive(false);
         if (hasFadeIn)
-            startFadeWait = true;
+            startFadeInWait = true;
         else
             fade.color = fade.color + new Color(0.0f, 0.0f, 0.0f, -1.0f);
 
@@ -34,13 +39,14 @@ public class Credits : MonoBehaviour
     {
         if (hasFadeIn)
         {
-            if (startFadeWait)
+            if (startFadeInWait)
             {
                 fadeWaitTimer += Time.deltaTime;
                 if (fadeWaitTimer >= 1.5f)
                 {
-                    startFadeWait = false;
+                    startFadeInWait = false;
                     fadeIn = true;
+                    fadeWaitTimer = 0.0f;
                 }
             }
             if (fadeIn)
@@ -50,13 +56,41 @@ public class Credits : MonoBehaviour
                     fade.color = fade.color + (new Color(0.0f, 0.0f, 0.0f, -fadeSpeed) * Time.deltaTime);
                 }
                 else
-                    doneFading = true;
+                    doneFadingIn = true;
                     
             }
         }
-        if ((hasFadeIn && doneFading) || !hasFadeIn)
+        if ((hasFadeIn && doneFadingIn) || !hasFadeIn)
         {
             creditsCamera.transform.position += (new Vector3(0.0f, -1.0f, 0.0f) * Time.deltaTime);
+            deltaY += -1.0f * Time.deltaTime;
+        }
+        if (deltaY * -1 >= 53.4f)
+        {
+            startFadeOutWait = true;
+        }
+        if (hasFadeOut)
+        {
+            if (startFadeOutWait)
+            {
+                fadeWaitTimer += Time.deltaTime;
+                if (fadeWaitTimer >= 1.5f)
+                {
+                    startFadeOutWait = false;
+                    fadeOut = true;
+                    fadeWaitTimer = 0.0f;
+                    deltaY = 50.0f;
+                }
+            }
+            if (fadeOut)
+            {
+                if (fade.color.a < 1)
+                {
+                    fade.color = fade.color + (new Color(0.0f, 0.0f, 0.0f, fadeSpeed) * Time.deltaTime);
+                }
+                else
+                    doneFadingOut = true;
+            }
         }
     }
 }

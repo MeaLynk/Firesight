@@ -23,6 +23,10 @@ public class LoadCutScene : MonoBehaviour
     {
         if (startFade)
         {
+            GameObject.Find("Ozin").GetComponent<Animator>().SetBool("Grounded", true);
+            GameObject.Find("Ozin").GetComponent<Animator>().SetFloat("DistanceToTarget", 0.8f);
+            GameObject.Find("Ozin").GetComponent<Animator>().applyRootMotion = true;
+
             if (fade.color.a < 1)
             {
                 fade.color = (fade.color) + (new Color(0.0f, 0.0f, 0.0f, 0.5f) * Time.deltaTime);
@@ -44,10 +48,9 @@ public class LoadCutScene : MonoBehaviour
         if (other.tag == "Player")
         {
             startFade = true;
-            player.GetComponent<PlayerMove>().canPlayerMove = false;
+            player.GetComponent<PlayerMove>().canPlayerMove = true;
             player.GetComponent<PlayerMove>().isPlayerInControl = false;
             player.GetComponent<FireScript>().enabled = false;
-            GameObject.Find("Ozin").GetComponent<Animator>().Play("Run");
         }
     }
 }
