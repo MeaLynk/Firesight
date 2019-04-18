@@ -37,7 +37,7 @@ public class MenuControllerScript : MonoBehaviour
     //Show UI stuff
     private MenuStates storedState;
     private GameObject currentImage;
-    private string currentLevel = "FireSightLevel1";
+    private string currentLevel = "IntroCutScene";
 
     public MenuStates GetCurrentMenu() { return currentMenu; }
 
@@ -143,7 +143,7 @@ public class MenuControllerScript : MonoBehaviour
     {
         if (GameObject.Find("SaveObject").GetComponent<SaveScript>().GetLevel1Beat() == true)
         {
-            if (currentLevel == "FireSightLevel1")
+            if (currentLevel == "IntroCutScene")
             {
                 currentLevel = "FireSightLevel2";
                 levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[1];
@@ -151,7 +151,7 @@ public class MenuControllerScript : MonoBehaviour
             }
             else if (currentLevel == "FireSightLevel2")
             {
-                currentLevel = "FireSightLevel1";
+                currentLevel = "IntroCutScene";
                 levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
                 levelText.text = "Level 1";
             }
@@ -220,7 +220,7 @@ public class MenuControllerScript : MonoBehaviour
         text.GetComponent<TextMeshPro>().text = "New Save\nstarted.";
 
         //Resets level select
-        currentLevel = "FireSightLevel1";
+        currentLevel = "IntroCutScene";
         levelImageObject.GetComponent<SpriteRenderer>().sprite = levelImages[0];
         levelText.text = "Level 1";
     }
