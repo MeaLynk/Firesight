@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class Credits : MonoBehaviour
         {
             creditsCamera.transform.position += (new Vector3(0.0f, -1.0f, 0.0f) * Time.deltaTime);
             deltaY += -1.0f * Time.deltaTime;
+        }
+        if (deltaY <= -60.0f)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
