@@ -33,7 +33,7 @@ public class TriggerScript : MonoBehaviour
         if (isActivated && !hasBeenActivatedAlready)
         {
             delayTimer += Time.deltaTime;
-            if (delayTimer >= 2.0f && hasDoorPan)
+            if (delayTimer >= 2.0f)
             {
                 if (hasDoorPan && !isPanned)
                 {
@@ -65,10 +65,6 @@ public class TriggerScript : MonoBehaviour
 
                     hasBeenActivatedAlready = true;
                 }
-            }
-            else
-            {
-                objectWithAnimation.GetComponent<Animator>().SetTrigger("Trigger");
             }
         }
     }

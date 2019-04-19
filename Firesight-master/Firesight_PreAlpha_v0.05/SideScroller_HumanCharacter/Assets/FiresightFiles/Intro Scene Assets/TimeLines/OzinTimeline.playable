@@ -580,9 +580,31 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
+<<<<<<< HEAD
       m_Curve: []
 <<<<<<< HEAD
 =======
+=======
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+>>>>>>> parent of 5088fdc... shit
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -609,14 +631,58 @@ MonoBehaviour:
     m_BlendOutDuration: 0.9214285714285708
     m_MixInCurve:
       serializedVersion: 2
+<<<<<<< HEAD
       m_Curve: []
+=======
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+>>>>>>> parent of 5088fdc... shit
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
+<<<<<<< HEAD
       m_Curve: []
 >>>>>>> f1150122f50840296952a6898a6bd1dc6c0b1304
+=======
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+>>>>>>> parent of 5088fdc... shit
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -733,39 +799,6 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: HumanoidRun
     m_Version: 1
-  - m_Start: 11.58333333333335
-    m_ClipIn: 0
-    m_Asset: {fileID: 114611130157252412}
-    m_Duration: 2.571428571428573
-    m_TimeScale: 0.7
-    m_ParentTrack: {fileID: 114266191568207686}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0.466666666666665
-    m_BlendOutDuration: 0.9214285714285708
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 1
-    m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: HumanoidRun
-    m_Version: 1
   m_Version: 1
   m_OpenClipPreExtrapolation: 0
   m_OpenClipPostExtrapolation: 0
@@ -793,12 +826,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 1cb8ed3cbba15f0479fbae54e0a963df, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Position: {x: -3.8214545, y: 0, z: 43.569866}
   m_EulerAngles: {x: 0, y: 12, z: 0}
 =======
   m_Position: {x: -4.4, y: 0, z: 43.569866}
   m_EulerAngles: {x: 0, y: 17, z: 0}
 >>>>>>> f1150122f50840296952a6898a6bd1dc6c0b1304
+=======
+  m_Position: {x: -4.9, y: 0, z: 43.569866}
+  m_EulerAngles: {x: 0, y: 15, z: 0}
+>>>>>>> parent of 5088fdc... shit
   m_UseTrackMatchFields: 0
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1

@@ -582,10 +582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectWithAnimation: {fileID: 1467931409257848}
-  panTarget: {fileID: 0}
-  hasAnimationObjectSound: 0
-  hasAnimationObjectHint: 0
-  hasDoorPan: 0
+  doesAnimationObjectHaveSound: 0
+  doesAnimationObjectHaveHint: 0
   cFollow: {fileID: 0}
-  delayTimer: 0
+  delayTime: 0
+  hasBeenActivatedAlready: 0
   isActivated: 0
