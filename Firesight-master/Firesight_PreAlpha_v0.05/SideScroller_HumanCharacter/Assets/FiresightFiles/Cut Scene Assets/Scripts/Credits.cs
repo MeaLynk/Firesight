@@ -27,22 +27,77 @@ public class Credits : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        creditsCamera.transform.position = new Vector3(-7.81f, 3.69f, 97.5f);
         cutScene.SetActive(false);
-        fade.GetComponent<Animator>().Play("FadeOutAnim");
+        if (hasFadeIn)
+            startFadeInWait = true;
+        else
+            fade.color = fade.color + new Color(0.0f, 0.0f, 0.0f, -1.0f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (creditsCamera.enabled)
+        if (hasFadeIn)
+        {
+            if (startFadeInWait)
+            {
+                fadeWaitTimer += Time.deltaTime;
+                if (fadeWaitTimer >= 1.5f)
+                {
+                    startFadeInWait = false;
+                    fadeIn = true;
+                    fadeWaitTimer = 0.0f;
+                }
+            }
+            if (fadeIn)
+            {
+                if (fade.color.a > 0)
+                {
+                    fade.color = fade.color + (new Color(0.0f, 0.0f, 0.0f, -fadeSpeed) * Time.deltaTime);
+                }
+                else
+                    doneFadingIn = true;
+                    
+            }
+        }
+        if ((hasFadeIn && doneFadingIn) || !hasFadeIn)
         {
             creditsCamera.transform.position += (new Vector3(0.0f, -1.0f, 0.0f) * Time.deltaTime);
             deltaY += -1.0f * Time.deltaTime;
         }
+<<<<<<< HEAD
         if (deltaY <= -60.0f)
         {
             SceneManager.LoadScene(0);
+=======
+        if (deltaY * -1 >= 53.4f)
+        {
+            startFadeOutWait = true;
+        }
+        if (hasFadeOut)
+        {
+            if (startFadeOutWait)
+            {
+                fadeWaitTimer += Time.deltaTime;
+                if (fadeWaitTimer >= 1.5f)
+                {
+                    startFadeOutWait = false;
+                    fadeOut = true;
+                    fadeWaitTimer = 0.0f;
+                    deltaY = 50.0f;
+                }
+            }
+            if (fadeOut)
+            {
+                if (fade.color.a < 1)
+                {
+                    fade.color = fade.color + (new Color(0.0f, 0.0f, 0.0f, fadeSpeed) * Time.deltaTime);
+                }
+                else
+                    doneFadingOut = true;
+            }
+>>>>>>> parent of 25aed7e... updated again
         }
     }
 }
