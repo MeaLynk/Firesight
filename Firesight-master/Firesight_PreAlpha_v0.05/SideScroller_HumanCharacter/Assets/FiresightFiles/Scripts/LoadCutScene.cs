@@ -26,6 +26,8 @@ public class LoadCutScene : MonoBehaviour
             GameObject.Find("Ozin").GetComponent<Animator>().SetBool("Grounded", true);
             GameObject.Find("Ozin").GetComponent<Animator>().SetFloat("DistanceToTarget", 0.8f);
             GameObject.Find("Ozin").GetComponent<Animator>().applyRootMotion = true;
+            player.GetComponent<FireScript>().enabled = false;
+            GameObject.Find("Fireball").transform.position = GameObject.Find("Ozin").transform.position + new Vector3(0.0f, 3.0f, 0.0f);
 
             if (fade.color.a < 1)
             {
